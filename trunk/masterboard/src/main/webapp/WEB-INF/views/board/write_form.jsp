@@ -29,7 +29,7 @@
 </p>
 <p>
 	<label for="subject">내용</label>
-	<form:input path="content" value="${boardDataModel.content }"/>
+	<form:textarea path="content" value="${boardDataModel.content }" />
 	<form:errors path="content">
 	<c:forEach items="${messages}" var="message">
 		<div class="errors"><springs:message code="${message}" /></div>

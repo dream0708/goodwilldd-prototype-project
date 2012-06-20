@@ -1,5 +1,6 @@
 package com.phillit.pez.board;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -11,13 +12,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.phillit.pez.board.model.BoardDataModel;
 import com.phillit.pez.board.model.BoardListModel;
+import com.phillit.pez.common.exception.CommonException;
+import com.phillit.pez.common.exception.ICommonExceptionHandler;
 
 @Controller
 @RequestMapping(value = "/b")
-public class BoardController {
+public class BoardController implements ICommonExceptionHandler {
 	private static final Logger log = LoggerFactory
 			.getLogger(BoardController.class);
 
@@ -43,14 +47,15 @@ public class BoardController {
 	@RequestMapping(value = { "/write", "/edit", "/reply", "/modify" }, method = { RequestMethod.POST })
 	public String boardActionProcess(Model model,
 			@ModelAttribute("boardDataModel") @Valid BoardDataModel board,
-			BindingResult result, SessionStatus status) {
+			BindingResult result, SessionStatus status) throws Exception {
 		log.debug(board.toString());
 
 		if (result.hasErrors()) {
 			model.addAttribute("boardDataModel", board);
 			return "/board/write_form";
 		} else {
-			return "redirect:list";
+			throw new Exception("field.isnull");
+			// return "redirect:list";
 		}
 	}
 
@@ -63,9 +68,8 @@ public class BoardController {
 	 */
 	@RequestMapping(value = "/list", method = { RequestMethod.GET })
 	public String boardListProcessGet(Model model) throws Exception {
-		// model.addAttribute("boardListModel", new BoardListModel());
-		throw new NullPointerException("domain.AppException");
-		// return "/board/list";
+		model.addAttribute("boardListModel", new BoardListModel());
+		return "/board/list";
 	}
 
 	@RequestMapping(value = "/list", method = { RequestMethod.POST })
@@ -78,5 +82,11 @@ public class BoardController {
 
 		}
 		return "/board/list";
+	}
+
+	@Override
+	public ModelAndView exceptionHandler(Exception ex,
+			HttpServletRequest request) throws Exception {
+		return CommonException.errorModelAndView(ex);
 	}
 }
