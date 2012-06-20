@@ -47,15 +47,14 @@ public class BoardController implements ICommonExceptionHandler {
 	@RequestMapping(value = { "/write", "/edit", "/reply", "/modify" }, method = { RequestMethod.POST })
 	public String boardActionProcess(Model model,
 			@ModelAttribute("boardDataModel") @Valid BoardDataModel board,
-			BindingResult result, SessionStatus status) throws Exception {
+			BindingResult result, SessionStatus status) {
 		log.debug(board.toString());
 
 		if (result.hasErrors()) {
 			model.addAttribute("boardDataModel", board);
 			return "/board/write_form";
 		} else {
-			throw new Exception("field.isnull");
-			// return "redirect:list";
+			return "redirect:list";
 		}
 	}
 
