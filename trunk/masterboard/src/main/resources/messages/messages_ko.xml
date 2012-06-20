@@ -4,4 +4,5 @@
 	<entry key="alter.using.exception">사용 중 오류가 발생하였습니다.</entry>
 	<entry key="field.isnull">해당 필드는 꼭 입력하셔야 합니다.</entry>
 	<entry key="field.min1">최소 한 자 이상입력하세요.</entry>
+	<entry key="alert.common.not_found_tags">사용 중 오류가 발생하였습니다. 웹 관리자에게 문의하세요.오류가 발생하였습니다. 웹 관리자에게 문의하세요.</entry>
 </properties>
