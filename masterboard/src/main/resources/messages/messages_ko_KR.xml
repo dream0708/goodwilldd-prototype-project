@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="domain.AppException">Test</entry>
-	<entry key="field.isnull">Field is Null</entry>
-	<entry key="field.min1">This Field min 1 length</entry>
+	<entry key="alter.using.exception">사용 중 오류가 발생하였습니다.</entry>
+	<entry key="field.isnull">해당 필드는 꼭 입력하셔야 합니다.</entry>
+	<entry key="field.min1">최소 한 자 이상입력하세요.</entry>
 </properties>
