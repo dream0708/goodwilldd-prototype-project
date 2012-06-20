@@ -11,8 +11,13 @@
 </head>
 <body>
 <div class="box">
-<div class="errors">${messageCode } / <s:message code="${messageCode }"/></div>
-<div class="errors_detail">${exceptionMsg }</div>
+<c:catch var="errors">
+    <div class="errors"><s:message code="${messageCode }"/></div>
+    <div class="errors_detail">${exceptionMsg }</div>
+</c:catch>
+<c:if test="${!empty errors }">
+    <div class="errors"><s:message code="alert.common.not_found_tags"/></div>
+</c:if>
 </div>
 </body>
 </html>
