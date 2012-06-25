@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.phillit.pez.board.model.BoardDataModel;
 import com.phillit.pez.board.model.BoardListModel;
+import com.phillit.pez.board.service.IBoardService;
 import com.phillit.pez.common.exception.CommonException;
 import com.phillit.pez.common.exception.ICommonExceptionHandler;
 
@@ -25,6 +27,9 @@ public class BoardController implements ICommonExceptionHandler {
 	private static final Logger log = LoggerFactory
 			.getLogger(BoardController.class);
 
+	@Autowired
+	IBoardService boardService;
+	
 	/**
 	 * 쓰기, 수정, 답글에 대한 폼 처리
 	 * 
@@ -41,20 +46,24 @@ public class BoardController implements ICommonExceptionHandler {
 	/**
 	 * 글쓰기, 수정하기, 답글쓰기에 대한 처리
 	 * 
-	 * @param board
+	 * @param data
 	 * @return
 	 */
 	@RequestMapping(value = { "/write", "/edit", "/reply", "/modify" }, method = { RequestMethod.POST })
 	public String boardActionProcess(Model model,
-			@ModelAttribute("boardDataModel") @Valid BoardDataModel board,
-			BindingResult result, SessionStatus status) {
-		log.debug(board.toString());
+			@ModelAttribute("boardDataModel") @Valid BoardDataModel data,
+			BindingResult result, SessionStatus status) throws Exception {
+		log.debug(data.toString());
 
 		if (result.hasErrors()) {
-			model.addAttribute("boardDataModel", board);
+			model.addAttribute("boardDataModel", data);
 			return "/board/write_form";
 		} else {
-			return "redirect:list";
+			if ( boardService.write(data) ) {
+				return "redirect:list";				
+			} else {
+				throw new Exception("alert.write.error");
+			}
 		}
 	}
 
