@@ -66,4 +66,12 @@ public class BoardListModel extends BoardParentModel {
 	public void setPaging(BoardPaging paging) {
 		this.paging = paging;
 	}
+
+	public int getStartPageBoard() {
+		return paging.getStartPageBoard();
+	}
+
+	public int getPagePerSize() {
+		return paging.getPagePerSize();
+	}
 }

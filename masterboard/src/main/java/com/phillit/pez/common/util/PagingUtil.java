@@ -16,6 +16,7 @@ public class PagingUtil extends CommonModel {
 	private int currentBlock;
 	private int startBlock;
 	private int endBlock;
+	private int startPageBoard;
 
 	// type1
 	private int startPage;
@@ -85,6 +86,7 @@ public class PagingUtil extends CommonModel {
 			result.add(i);
 		}
 		this.pages = result;
+		this.startPageBoard = this.startPage - 1 <= 0 ? 0 : this.startPage - 1;
 	}
 
 	public int getTotalCount() {
@@ -145,6 +147,10 @@ public class PagingUtil extends CommonModel {
 
 	public ArrayList<Integer> getPages() {
 		return pages;
+	}
+
+	public int getStartPageBoard() {
+		return startPageBoard;
 	}
 
 }
