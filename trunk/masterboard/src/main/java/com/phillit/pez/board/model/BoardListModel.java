@@ -14,7 +14,8 @@ public class BoardListModel extends BoardParentModel {
 
 	private int currentPageNum;
 	private String searchValue;
-	private String searchField;
+	private BoardSearchParam searchField;
+
 	private ArrayList<BoardDataModel> list;
 
 	public int getCurrentPageNum() {
@@ -33,11 +34,11 @@ public class BoardListModel extends BoardParentModel {
 		this.searchValue = searchValue;
 	}
 
-	public String getSearchField() {
+	public BoardSearchParam getSearchField() {
 		return searchField;
 	}
 
-	public void setSearchField(String searchField) {
+	public void setSearchField(BoardSearchParam searchField) {
 		this.searchField = searchField;
 	}
 
