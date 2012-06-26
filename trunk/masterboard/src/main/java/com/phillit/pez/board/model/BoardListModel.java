@@ -12,11 +12,12 @@ public class BoardListModel extends BoardParentModel {
 		this.boardName = boardName;
 	}
 
-	private int currentPageNum;
+	private int currentPageNum = 1;
+	private int totalCount;
 	private String searchValue;
 	private BoardSearchParam searchField;
-
 	private ArrayList<BoardDataModel> list;
+	private BoardPaging paging;
 
 	public int getCurrentPageNum() {
 		return currentPageNum;
@@ -48,5 +49,21 @@ public class BoardListModel extends BoardParentModel {
 
 	public void setList(ArrayList<BoardDataModel> list) {
 		this.list = list;
+	}
+
+	public int getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
+
+	public BoardPaging getPaging() {
+		return paging;
+	}
+
+	public void setPaging(BoardPaging paging) {
+		this.paging = paging;
 	}
 }
