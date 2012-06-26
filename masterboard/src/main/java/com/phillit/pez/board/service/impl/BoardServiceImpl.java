@@ -35,14 +35,20 @@ public class BoardServiceImpl implements IBoardService {
 	}
 
 	@Override
-	public ArrayList<BoardDataModel> getList(BoardListModel list) {
-		ArrayList<BoardDataModel> result = new ArrayList<>();
+	public void getList(BoardListModel list) {
 		try {
-			result = boardMapper.getList(list);
+			list.setList(boardMapper.getList(list));
 		} catch (SQLException e) {
-			return new ArrayList<>();
+			list.setList(new ArrayList<BoardDataModel>());
 		}
-		return result;
+	}
+
+	@Override
+	public void getListTotalCount(BoardListModel list) {
+		try {
+			list.setTotalCount(boardMapper.getListTotalCount(list));
+		} catch (SQLException e) {
+		}
 	}
 
 }

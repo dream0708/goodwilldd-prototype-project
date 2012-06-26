@@ -16,7 +16,12 @@ public interface IBoardService {
 	/**
 	 * 해당 게시판의 목록을 가져온다
 	 * @param list 
-	 * @return
 	 */
-	public ArrayList<BoardDataModel> getList(BoardListModel list);
+	public void getList(BoardListModel list);
+
+	/**
+	 * 해당 게시판의 총 게시물 수를 반환한다.
+	 * @param list
+	 */
+	public void getListTotalCount(BoardListModel list);
 }

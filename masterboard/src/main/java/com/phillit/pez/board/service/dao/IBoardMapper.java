@@ -13,4 +13,6 @@ public interface IBoardMapper {
 
 	public ArrayList<BoardDataModel> getList(BoardListModel list)
 			throws SQLException;
+
+	public int getListTotalCount(BoardListModel list) throws SQLException;;
 }

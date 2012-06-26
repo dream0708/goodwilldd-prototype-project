@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.phillit.pez.board.model.BoardDataModel;
 import com.phillit.pez.board.model.BoardListModel;
+import com.phillit.pez.board.model.BoardPaging;
 import com.phillit.pez.board.service.IBoardService;
 import com.phillit.pez.common.exception.CommonException;
 import com.phillit.pez.common.exception.ICommonExceptionHandler;
@@ -74,11 +75,15 @@ public class BoardController implements ICommonExceptionHandler {
 	 */
 	@RequestMapping(value = "/list", method = { RequestMethod.GET })
 	public String boardListProcessGet(Model model) throws Exception {
-		BoardListModel list = new BoardListModel();
+		BoardListModel board = new BoardListModel();
 		// TODO 게시판 이름을 설정하는 방법
-		list.setBoardName("1");
-		list.setList(boardService.getList(list));
-		model.addAttribute("boardListModel", list);
+		board.setBoardName("1");
+		boardService.getListTotalCount(board);
+		boardService.getList(board);
+		board.setPaging(new BoardPaging(board));
+		model.addAttribute("boardListModel", board);
+		
+		log.debug(board.toString());
 		return "/board/list";
 	}
 
@@ -90,8 +95,11 @@ public class BoardController implements ICommonExceptionHandler {
 		if (result.hasErrors()) {
 			throw new Exception("alert.list.error");
 		} else {
-			board.setList(boardService.getList(board));
+			boardService.getListTotalCount(board);
+			boardService.getList(board);
+			board.setPaging(new BoardPaging(board));
 		}
+		log.debug(board.toString());
 		return "/board/list";
 	}
 

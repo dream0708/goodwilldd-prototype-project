@@ -38,4 +38,27 @@
 		</trim>
 		order by bseq desc
 	</select>
+	
+	<select id="getListTotalCount" resultType="int" parameterType="BoardListModel">
+	   select count(bSeq) from board
+        <trim prefix="where" prefixOverrides="and |or ">
+            and isEnabled=0
+            <if test="@org.springframework.util.StringUtils@hasLength(boardName)">
+                and boardName=#{boardName}
+            </if>
+            <if test="@org.springframework.util.StringUtils@hasLength(searchValue)">
+                <choose>
+                    <when test="searchField.ieq(searchField, 'subject')">
+                        and subject like concat('%',#{searchValue}, '%')
+                    </when>
+                    <when test="searchField.ieq(searchField, 'content')">
+                        and content like concat('%',#{searchValue}, '%')
+                    </when>
+                    <when test="searchField.ieq(searchField, 'regdate')">
+                        and regdate like concat('%',#{searchValue}, '%')
+                    </when>
+                </choose>
+            </if>
+        </trim>
+	</select>
 </mapper>

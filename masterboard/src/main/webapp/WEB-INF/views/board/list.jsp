@@ -7,9 +7,11 @@
 <%@ taglib prefix="pez" tagdir="/WEB-INF/tags" %>
 <%@page import="com.phillit.pez.board.model.BoardSearchParam"%>
 <%@page import="java.util.EnumSet"%>
+<c:url var="css" value="/resources/default.css" />
 <html>
 <head>
 	<title>Home</title>
+	<link rel="stylesheet" href="${css }" />
 </head>
 <body>
 <form:form commandName="boardListModel">
@@ -39,8 +41,7 @@
 <form:hidden path="currentPageNum" value="${currentPageNum }" />
 <form:hidden path="boardName" value="${boardListModel.boardName }" />
 <table width="100%">
-    <thead>
-    </thead>
+    <thead></thead>
     <tbody>
         <tr>
             <td>
@@ -51,6 +52,12 @@
             <form:input path="searchValue" value="${boardListModel.searchValue }"/>
             <form:button>검색</form:button>
             </td>
+        </tr>
+        <tr align="center">
+            <td><pez:paging paging="${boardListModel.paging }" type="normal" divId="paging" /></td>
+        </tr>
+        <tr align="center">
+            <td><pez:paging paging="${boardListModel.paging }" type="top"  divId="paging" /></td>
         </tr>
     </tbody>
 </table>
