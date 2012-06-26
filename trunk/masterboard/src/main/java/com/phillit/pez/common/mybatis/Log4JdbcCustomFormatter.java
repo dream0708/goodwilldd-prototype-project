@@ -1,5 +1,7 @@
 package com.phillit.pez.common.mybatis;
 
+import com.phillit.pez.common.util.CommonUtil;
+
 import net.sf.log4jdbc.Slf4jSpyLogDelegator;
 import net.sf.log4jdbc.Spy;
 import net.sf.log4jdbc.tools.LoggingType;
@@ -7,83 +9,78 @@ import net.sf.log4jdbc.tools.LoggingType;
 public class Log4JdbcCustomFormatter extends Slf4jSpyLogDelegator {
 	private LoggingType loggingType = LoggingType.DISABLED;
 
-    private String margin = "";
+	private String margin = "";
 
-    private String sqlPrefix = "SQL:";
+	private String sqlPrefix = "SQL:";
 
+	public int getMargin() {
+		return margin.length();
+	}
 
-    public int getMargin() {
-        return margin.length();
-    }
+	public void setMargin(int n) {
+		margin = String.format("%1$" + n + "s", "");
+	}
 
-    public void setMargin(int n) {
-        margin = String.format("%1$" + n + "s", "");
-    }
+	public Log4JdbcCustomFormatter() {
+	}
 
+	@Override
+	public String sqlOccured(Spy spy, String methodCall, String rawSql) {
+		if (loggingType == LoggingType.DISABLED) {
+			return "";
+		}
 
-    public Log4JdbcCustomFormatter() {
-    }
+		// Remove all existing cr lf, unless MULTI_LINE
+		if (loggingType != LoggingType.MULTI_LINE) {
+			rawSql = rawSql.replaceAll("\r", "");
+			rawSql = rawSql.replaceAll("\n", "");
+		}
+		final String fromClause = " from ";
+		String sql = rawSql;
+		if (loggingType == LoggingType.MULTI_LINE) {
+			final String whereClause = " where ";
+			final String andClause = " and ";
+			final String subSelectClauseS = "\\(select";
+			final String subSelectClauseR = " (select";
+			sql = sql.replaceAll(fromClause, "\n" + margin + fromClause);
+			sql = sql.replaceAll(whereClause, "\n" + margin + whereClause);
+			sql = sql.replaceAll(andClause, "\n" + margin + andClause);
+			sql = sql.replaceAll(subSelectClauseS, "\n" + margin
+					+ subSelectClauseR);
+		}
+		if (loggingType == LoggingType.SINGLE_LINE_TWO_COLUMNS) {
+			if (sql.startsWith("select")) {
+				String from = sql.substring(sql.indexOf(fromClause)
+						+ fromClause.length());
+				sql = from + "\t" + sql;
+			}
+		}
+		getSqlOnlyLogger().info(CommonUtil.removeWhiteSpace(sqlPrefix + sql));
+		return sql;
+	}
 
+	@Override
+	public String sqlOccured(Spy spy, String methodCall, String[] sqls) {
+		String s = "";
+		for (int i = 0; i < sqls.length; i++) {
+			s += sqlOccured(spy, methodCall, sqls[i]) + String.format("%n");
+		}
+		return s;
+	}
 
-    
-    @Override
-    public String sqlOccured(Spy spy, String methodCall, String rawSql) {
-        if (loggingType == LoggingType.DISABLED) {
-            return "";
-        }
+	public LoggingType getLoggingType() {
+		return loggingType;
+	}
 
-        // Remove all existing cr lf, unless MULTI_LINE
-        if (loggingType != LoggingType.MULTI_LINE) {
-            rawSql = rawSql.replaceAll("\r", "");
-            rawSql = rawSql.replaceAll("\n", "");
-        }
-        final String fromClause = " from ";
-        String sql = rawSql;
-        if (loggingType == LoggingType.MULTI_LINE) {
-            final String whereClause = " where ";
-            final String andClause = " and ";
-            final String subSelectClauseS = "\\(select";
-            final String subSelectClauseR = " (select";
-            sql = sql.replaceAll(fromClause, "\n" + margin + fromClause);
-            sql = sql.replaceAll(whereClause, "\n" + margin + whereClause);
-            sql = sql.replaceAll(andClause, "\n" + margin + andClause);
-            sql = sql.replaceAll(subSelectClauseS, "\n" + margin + subSelectClauseR);
-        }
-        if (loggingType == LoggingType.SINGLE_LINE_TWO_COLUMNS) {
-            if (sql.startsWith("select")) {
-                String from = sql.substring(sql.indexOf(fromClause) + fromClause.length());
-                sql = from + "\t" + sql;
-            }
-        }
-        StringBuilder builder = new StringBuilder(sqlPrefix + "\n" + margin + sql);
-        getSqlOnlyLogger().info(builder.toString());
-        return sql;
-    }
+	public void setLoggingType(LoggingType loggingType) {
+		this.loggingType = loggingType;
+	}
 
-    @Override
-    public String sqlOccured(Spy spy, String methodCall, String[] sqls) {
-        String s = "";
-        for (int i = 0; i < sqls.length; i++) {
-            s += sqlOccured(spy, methodCall, sqls[i]) + String.format("%n");
-        }
-        return s;
-    }
+	public String getSqlPrefix() {
+		return sqlPrefix;
+	}
 
-    public LoggingType getLoggingType() {
-        return loggingType;
-    }
-
-    public void setLoggingType(LoggingType loggingType) {
-        this.loggingType = loggingType;
-    }
-
-    public String getSqlPrefix()
-    {
-        return sqlPrefix;
-    }
-
-    public void setSqlPrefix(String sqlPrefix)
-    {
-        this.sqlPrefix = sqlPrefix;
-    }
+	public void setSqlPrefix(String sqlPrefix) {
+		this.sqlPrefix = sqlPrefix;
+	}
 }

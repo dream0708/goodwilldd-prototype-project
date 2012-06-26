@@ -37,9 +37,7 @@
 		<constructor-arg ref="mysql_datasource" />
 		<property name="logFormatter">
 			<bean class="com.phillit.pez.common.mybatis.Log4JdbcCustomFormatter">
-				<property name="loggingType" value="MULTI_LINE" />
-				<property name="margin" value="19" />
-				<property name="sqlPrefix" value="SQL:::" />
+				<property name="loggingType" value="SINGLE_LINE" />
 			</bean>
 		</property>
 	</bean>

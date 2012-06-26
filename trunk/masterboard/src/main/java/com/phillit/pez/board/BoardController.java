@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.phillit.pez.board.model.BoardDataModel;
 import com.phillit.pez.board.model.BoardListModel;
-import com.phillit.pez.board.model.BoardPaging;
 import com.phillit.pez.board.service.IBoardService;
 import com.phillit.pez.common.exception.CommonException;
 import com.phillit.pez.common.exception.ICommonExceptionHandler;
@@ -67,7 +66,7 @@ public class BoardController implements ICommonExceptionHandler {
 	}
 
 	/**
-	 * 목록에 대한 처리
+	 * 목록
 	 * 
 	 * @param board
 	 * @return
@@ -76,30 +75,28 @@ public class BoardController implements ICommonExceptionHandler {
 	@RequestMapping(value = "/list", method = { RequestMethod.GET })
 	public String boardListProcessGet(Model model) throws Exception {
 		BoardListModel board = new BoardListModel();
-		// TODO 게시판 이름을 설정하는 방법
-		board.setBoardName("1");
-		boardService.getListTotalCount(board);
 		boardService.getList(board);
-		board.setPaging(new BoardPaging(board));
 		model.addAttribute("boardListModel", board);
-		
-		log.debug(board.toString());
 		return "/board/list";
 	}
 
+	/**
+	 * 목록에 대한 처리 및 검색
+	 * @param board
+	 * @param result
+	 * @param status
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/list", method = { RequestMethod.POST })
 	public String boardListProcessPost(
 			@ModelAttribute("boardListModel") BoardListModel board,
 			BindingResult result, SessionStatus status) throws Exception {
-		log.debug(board.toString());
 		if (result.hasErrors()) {
 			throw new Exception("alert.list.error");
 		} else {
-			boardService.getListTotalCount(board);
 			boardService.getList(board);
-			board.setPaging(new BoardPaging(board));
 		}
-		log.debug(board.toString());
 		return "/board/list";
 	}
 

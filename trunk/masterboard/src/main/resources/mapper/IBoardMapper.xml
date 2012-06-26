@@ -6,17 +6,17 @@
 		keyColumn="bSeq" keyProperty="bSeq" useGeneratedKeys="true">
 		<selectKey order="AFTER" keyProperty="bSeq" resultType="int"
 			statementType="PREPARED">select last_insert_id()</selectKey>
-		insert into board(boardName, register, subject, content)
+		insert into board_data(boardName, register, subject, content)
 		values(#{boardName}, #{register}, #{subject}, #{content})
 	</insert>
 
 	<update id="doUpdateToRef" parameterType="BoardDataModel">
-		update board set
+		update board_data set
 		ref=#{bSeq} where bSeq=#{bSeq}
 	</update>
 
 	<select id="getList" resultType="BoardDataModel" parameterType="BoardListModel">
-		select * from board
+		select * from board_data
 		<trim prefix="where" prefixOverrides="and |or ">
 			and isEnabled=0
 			<if test="@org.springframework.util.StringUtils@hasLength(boardName)">
@@ -36,11 +36,11 @@
 				</choose>
 			</if>
 		</trim>
-		order by bseq desc
+		order by ref desc, step asc limit ${startPageBoard}, ${pagePerSize} 
 	</select>
 	
 	<select id="getListTotalCount" resultType="int" parameterType="BoardListModel">
-	   select count(bSeq) from board
+	   select count(bSeq) from board_data
         <trim prefix="where" prefixOverrides="and |or ">
             and isEnabled=0
             <if test="@org.springframework.util.StringUtils@hasLength(boardName)">
@@ -60,5 +60,9 @@
                 </choose>
             </if>
         </trim>
+	</select>
+	
+	<select id="getFirstBoard" resultType="BoardModel">
+	   select * from board where boardOrder=(select min(boardOrder) from board)
 	</select>
 </mapper>
