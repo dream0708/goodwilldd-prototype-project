@@ -2,14 +2,22 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-   
-   <bean
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="jdbc">
 		<property name="locations">
 			<value>classpath:database/jdbc.properties</value>
 		</property>
 		<property name="fileEncoding" value="UTF-8"></property>
 	</bean>
+	
+	<!-- <bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" id="log4jdbc">
+		<property name="locations">
+			<value>classpath:database/log4jdbc.properties</value>
+		</property>
+		<property name="fileEncoding" value="UTF-8"></property>
+	</bean> -->
 
 	<!-- default data source -->
 	<bean id="mysql_datasource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -23,5 +31,16 @@
 		<property name="maxWait" value="10000" />
 		<property name="defaultAutoCommit" value="false" />
 		<property name="validationQuery" value="select 1 from dual" />
+	</bean>
+
+	<bean id="logDataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="mysql_datasource" />
+		<property name="logFormatter">
+			<bean class="com.phillit.pez.common.mybatis.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE" />
+				<property name="margin" value="19" />
+				<property name="sqlPrefix" value="SQL:::" />
+			</bean>
+		</property>
 	</bean>
 </beans>

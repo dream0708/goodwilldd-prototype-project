@@ -301,7 +301,7 @@ public class PezSqlSessionFactoryBean extends SqlSessionFactoryBean {
 			configuration.setVariables(this.configurationProperties);
 		}
 
-		/*if (StringUtils.hasLength(this.typeAliasesPackage)) {
+		if (StringUtils.hasLength(this.typeAliasesPackage)) {
 			String[] typeAliasPackageArray = StringUtils.tokenizeToStringArray(
 					this.typeAliasesPackage,
 					ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS);
@@ -315,9 +315,9 @@ public class PezSqlSessionFactoryBean extends SqlSessionFactoryBean {
 				}
 			}
 			log.debug("######################################################");
-		}*/
+		}
 		
-		if (!ObjectUtils.isEmpty(this.test)) {
+		/*if (!ObjectUtils.isEmpty(this.test)) {
 			String typeAliasPackage;
 			log.debug("######################################################");
 			for (Resource typeAliases : this.test) {
@@ -332,7 +332,7 @@ public class PezSqlSessionFactoryBean extends SqlSessionFactoryBean {
 						+ "' for aliases");
 			}
 			log.debug("######################################################");
-		}
+		}*/
 		
 		if (!ObjectUtils.isEmpty(this.typeAliases)) {
 			for (Class<?> typeAlias : this.typeAliases) {

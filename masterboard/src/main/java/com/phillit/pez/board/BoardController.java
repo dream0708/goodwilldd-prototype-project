@@ -29,7 +29,7 @@ public class BoardController implements ICommonExceptionHandler {
 
 	@Autowired
 	IBoardService boardService;
-	
+
 	/**
 	 * 쓰기, 수정, 답글에 대한 폼 처리
 	 * 
@@ -53,14 +53,12 @@ public class BoardController implements ICommonExceptionHandler {
 	public String boardActionProcess(Model model,
 			@ModelAttribute("boardDataModel") @Valid BoardDataModel data,
 			BindingResult result, SessionStatus status) throws Exception {
-		log.debug(data.toString());
-
 		if (result.hasErrors()) {
 			model.addAttribute("boardDataModel", data);
 			return "/board/write_form";
 		} else {
-			if ( boardService.write(data) ) {
-				return "redirect:list";				
+			if (boardService.write(data)) {
+				return "redirect:list";
 			} else {
 				throw new Exception("alert.write.error");
 			}
@@ -76,18 +74,23 @@ public class BoardController implements ICommonExceptionHandler {
 	 */
 	@RequestMapping(value = "/list", method = { RequestMethod.GET })
 	public String boardListProcessGet(Model model) throws Exception {
-		model.addAttribute("boardListModel", new BoardListModel());
+		BoardListModel list = new BoardListModel();
+		// TODO 게시판 이름을 설정하는 방법
+		list.setBoardName("1");
+		list.setList(boardService.getList(list));
+		model.addAttribute("boardListModel", list);
 		return "/board/list";
 	}
 
 	@RequestMapping(value = "/list", method = { RequestMethod.POST })
 	public String boardListProcessPost(
 			@ModelAttribute("boardListModel") BoardListModel board,
-			BindingResult result, SessionStatus status) {
+			BindingResult result, SessionStatus status) throws Exception {
+		log.debug(board.toString());
 		if (result.hasErrors()) {
-
+			throw new Exception("alert.list.error");
 		} else {
-
+			board.setList(boardService.getList(board));
 		}
 		return "/board/list";
 	}

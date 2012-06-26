@@ -1,6 +1,9 @@
 package com.phillit.pez.board.service;
 
+import java.util.ArrayList;
+
 import com.phillit.pez.board.model.BoardDataModel;
+import com.phillit.pez.board.model.BoardListModel;
 
 public interface IBoardService {
 	/**
@@ -9,4 +12,11 @@ public interface IBoardService {
 	 * @return
 	 */
 	public boolean write(BoardDataModel data);
+
+	/**
+	 * 해당 게시판의 목록을 가져온다
+	 * @param list 
+	 * @return
+	 */
+	public ArrayList<BoardDataModel> getList(BoardListModel list);
 }

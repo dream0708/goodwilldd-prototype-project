@@ -10,31 +10,21 @@
 	<!-- transaction manager -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="mysql_datasource" />
+		<property name="dataSource" ref="logDataSource" />
 	</bean>
 
 	<!-- transaction annotation -->
 	<tx:annotation-driven />
 
 	<!-- ==== mybatis sessionFactory ==== -->
-	<!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="mysql_datasource" />
-		<property name="typeAliasesPackage">
-			<array>
-				<value>com.phillit.pez.board.model</value>
-			</array>
-		</property>
-		<property name="mapperLocations" value="classpath:mapper/*.xml" />
-	</bean> -->
 	<bean id="sqlSessionFactory" class="com.phillit.pez.common.mybatis.PezSqlSessionFactoryBean">
-        <property name="dataSource" ref="mysql_datasource" />
+        <property name="dataSource" ref="logDataSource" />
         <property name="typeAliasesPackage">
             <array>
                 <value>com.phillit.pez.board.model</value>
             </array>
         </property>
-        <!-- <property name="test" value="classpath:com/phillit/pez/*/model" /> -->
-        <property name="test" value="com.phillit.pez.*.model" />
+        <property name="test" value="classpath:com/phillit/pez/*/model" />
         <property name="mapperLocations" value="classpath:mapper/*.xml" />
     </bean>
 
