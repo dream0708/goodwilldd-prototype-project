@@ -7,14 +7,14 @@
 <%@ taglib prefix="pez" tagdir="/WEB-INF/tags" %>
 <%@page import="com.phillit.pez.board.model.BoardSearchParam"%>
 <%@page import="java.util.EnumSet"%>
-<c:url var="css" value="/resources/default.css" />
+<c:url var="writeform" value="write/form" />
+<c:url var="readform" value="read/form" />
 <html>
 <head>
-	<title>Home</title>
-	<link rel="stylesheet" href="${css }" />
+	<pez:include />
 </head>
 <body>
-<form:form commandName="boardListModel">
+<form:form commandName="boardListModel" method="post">
 <c:set var="currentPageNum" value="1" />
 <table width="100%">
     <thead>
@@ -27,7 +27,9 @@
     <tbody>
         <c:forEach items="${boardListModel.list }" var="list">
         <tr>
-            <td>${list.subject }</td>
+            <td>
+                <span style="margin-left: ${list.reLevel*20 }px;"><a href="${readform }?bSeq=${list.bSeq}">${list.subject }</a></span>
+            </td>
             <td>${list.register }</td>
             <td>${list.regdate }</td>
         </tr>
@@ -38,13 +40,13 @@
     <c:when test="${boardListModel.currentPageNum == 0}"><c:set var="currentPageNum" value="1" /></c:when>
     <c:otherwise><c:set var="currentPageNum" value="${boardListModel.currentPageNum }" /></c:otherwise>
 </c:choose>
-<form:hidden path="currentPageNum" value="${currentPageNum }" />
-<form:hidden path="boardName" value="${boardListModel.boardName }" />
+<form:hidden path="currentPageNum" />
+<form:hidden path="boardName" />
 <table width="100%">
     <thead></thead>
     <tbody>
         <tr>
-            <td>
+            <td align="center">
             <%-- <form:select path="searchField">
                 <form:options items="${boardListModel.searchField}" itemValue="item" itemLabel="localizationKey" />
             </form:select> --%>
@@ -53,11 +55,16 @@
             <form:button>검색</form:button>
             </td>
         </tr>
-        <tr align="center">
-            <td><pez:paging paging="${boardListModel.paging }" type="normal" divId="paging" /></td>
+        <tr>
+            <td align="center"><pez:paging paging="${boardListModel.paging }" type="normal" divId="paging" /></td>
         </tr>
-        <tr align="center">
-            <td><pez:paging paging="${boardListModel.paging }" type="top"  divId="paging" /></td>
+        <tr>
+            <td align="center"><pez:paging paging="${boardListModel.paging }" type="top"  divId="paging" /></td>
+        </tr>
+        <tr>
+            <td align="right">
+                <form:button type="button" onclick="location.href='${writeform }';">쓰기</form:button>
+            </td>
         </tr>
     </tbody>
 </table>

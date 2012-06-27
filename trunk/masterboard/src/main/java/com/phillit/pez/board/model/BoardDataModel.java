@@ -21,26 +21,24 @@ public class BoardDataModel extends BoardParentModel {
 
 	private int bSeq;
 
-	@NotNull(message = "field.isnotnull")
+	@NotNull(message = "field.isnull")
 	@Size(min = 1, message = "field.min1")
 	private String subject;
 
-	@NotNull(message = "field.isnotnull")
+	@NotNull(message = "field.isnull")
 	@Size(min = 1, message = "field.min1")
 	private String content;
 
 	@DateTimeFormat(style = "S-")
 	@Future
 	private Date regdate = new Date(new Date().getTime() + 31536000000L);
-	
-	@NotNull(message = "field.isnotnull")
+
+	@NotNull(message = "field.isnull")
 	private String register;
-	
+
 	private int readNum;
-	private int ref;
-	private int step;
-	private int depth;
-	private int childCount;
+	private int reLevel;
+	private int reStep;
 	private int isEnabled;
 
 	public int getbSeq() {
@@ -91,43 +89,27 @@ public class BoardDataModel extends BoardParentModel {
 		this.readNum = readNum;
 	}
 
-	public int getRef() {
-		return ref;
-	}
-
-	public void setRef(int ref) {
-		this.ref = ref;
-	}
-
-	public int getStep() {
-		return step;
-	}
-
-	public void setStep(int step) {
-		this.step = step;
-	}
-
-	public int getDepth() {
-		return depth;
-	}
-
-	public void setDepth(int depth) {
-		this.depth = depth;
-	}
-
-	public int getChildCount() {
-		return childCount;
-	}
-
-	public void setChildCount(int childCount) {
-		this.childCount = childCount;
-	}
-
 	public int getIsEnabled() {
 		return isEnabled;
 	}
 
 	public void setIsEnabled(int isEnabled) {
 		this.isEnabled = isEnabled;
+	}
+
+	public int getReLevel() {
+		return reLevel;
+	}
+
+	public void setReLevel(int reLevel) {
+		this.reLevel = reLevel;
+	}
+
+	public int getReStep() {
+		return reStep;
+	}
+
+	public void setReStep(int reStep) {
+		this.reStep = reStep;
 	}
 }

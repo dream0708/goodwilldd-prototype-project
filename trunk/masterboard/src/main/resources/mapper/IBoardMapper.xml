@@ -6,14 +6,35 @@
 		keyColumn="bSeq" keyProperty="bSeq" useGeneratedKeys="true">
 		<selectKey order="AFTER" keyProperty="bSeq" resultType="int"
 			statementType="PREPARED">select last_insert_id()</selectKey>
-		insert into board_data(boardName, register, subject, content)
-		values(#{boardName}, #{register}, #{subject}, #{content})
+		insert into board_data(boardName, register, subject, content, reStep,
+		reLevel)
+		<choose>
+			<when test="bSeq != 0">
+				select #{boardName}, #{register}, #{subject},
+				#{content}, reStep-1, reLevel+1
+			</when>
+			<otherwise>
+				select #{boardName}, #{register}, #{subject}, #{content},
+				ifnull(((floor(max(reStep)/100))+1)*100+99, 199), 0
+			</otherwise>
+		</choose>
+		from board_data
+		where bSeq=#{bSeq}
 	</insert>
 
-	<update id="doUpdateToRef" parameterType="BoardDataModel">
-		update board_data set
-		ref=#{bSeq} where bSeq=#{bSeq}
+	<update id="doReStepUpdate" parameterType="int">
+       <![CDATA[
+       update board_data as t1 
+          set t1.reStep=t1.reStep-1 
+        where t1.reStep > (floor((select xx.reStep from (select t2.reStep from board_data as t2 where bSeq=#{bSeq}) as xx)/100)*100)
+          and t1.reStep < (select xx.reStep from (select t2.reStep from board_data as t2 where bSeq=#{bSeq}) as xx)
+       ]]>
 	</update>
+
+	<select id="doRead" parameterType="String" resultType="BoardDataModel">
+		select *
+		from board_data where bSeq=#{bSeq}
+	</select>
 
 	<select id="getList" resultType="BoardDataModel" parameterType="BoardListModel">
 		select * from board_data
@@ -36,33 +57,44 @@
 				</choose>
 			</if>
 		</trim>
-		order by ref desc, step asc limit ${startPageBoard}, ${pagePerSize} 
+		order by reStep desc limit ${startPageBoard}, ${pagePerSize}
 	</select>
-	
+
 	<select id="getListTotalCount" resultType="int" parameterType="BoardListModel">
-	   select count(bSeq) from board_data
-        <trim prefix="where" prefixOverrides="and |or ">
-            and isEnabled=0
-            <if test="@org.springframework.util.StringUtils@hasLength(boardName)">
-                and boardName=#{boardName}
-            </if>
-            <if test="@org.springframework.util.StringUtils@hasLength(searchValue)">
-                <choose>
-                    <when test="searchField.ieq(searchField, 'subject')">
-                        and subject like concat('%',#{searchValue}, '%')
-                    </when>
-                    <when test="searchField.ieq(searchField, 'content')">
-                        and content like concat('%',#{searchValue}, '%')
-                    </when>
-                    <when test="searchField.ieq(searchField, 'regdate')">
-                        and regdate like concat('%',#{searchValue}, '%')
-                    </when>
-                </choose>
-            </if>
-        </trim>
+		select count(bSeq) from board_data
+		<trim prefix="where" prefixOverrides="and |or ">
+			and isEnabled=0
+			<if test="@org.springframework.util.StringUtils@hasLength(boardName)">
+				and boardName=#{boardName}
+			</if>
+			<if test="@org.springframework.util.StringUtils@hasLength(searchValue)">
+				<choose>
+					<when test="searchField.ieq(searchField, 'subject')">
+						and subject like concat('%',#{searchValue}, '%')
+					</when>
+					<when test="searchField.ieq(searchField, 'content')">
+						and content like concat('%',#{searchValue}, '%')
+					</when>
+					<when test="searchField.ieq(searchField, 'regdate')">
+						and regdate like concat('%',#{searchValue}, '%')
+					</when>
+				</choose>
+			</if>
+		</trim>
 	</select>
-	
+
 	<select id="getFirstBoard" resultType="BoardModel">
-	   select * from board where boardOrder=(select min(boardOrder) from board)
+		select * from board where
+		boardOrder=(select min(boardOrder) from board)
 	</select>
+
+	<update id="doModify" parameterType="BoardDataModel">
+		update board_data set
+		subject=#{subject}, content=#{content} where
+		bSeq=#{bSeq}
+	</update>
+
+    <update id="doDelete" parameterType="int">
+        update board_data set isEnabled=1 where bSeq=#{bSeq}
+    </update>
 </mapper>
