@@ -12,14 +12,15 @@
 			<when test="bSeq != 0">
 				select #{boardName}, #{register}, #{subject},
 				#{content}, reStep-1, reLevel+1
+				from board_data
+                where bSeq=#{bSeq}
 			</when>
 			<otherwise>
 				select #{boardName}, #{register}, #{subject}, #{content},
 				ifnull(((floor(max(reStep)/100))+1)*100+99, 199), 0
+				from board_data
 			</otherwise>
 		</choose>
-		from board_data
-		where bSeq=#{bSeq}
 	</insert>
 
 	<update id="doReStepUpdate" parameterType="int">

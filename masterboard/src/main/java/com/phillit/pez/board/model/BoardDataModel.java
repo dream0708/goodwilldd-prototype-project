@@ -38,7 +38,7 @@ public class BoardDataModel extends BoardParentModel {
 
 	private int readNum;
 	private int reLevel;
-	private int reStep;
+	private long reStep;
 	private int isEnabled;
 
 	public int getbSeq() {
@@ -105,11 +105,11 @@ public class BoardDataModel extends BoardParentModel {
 		this.reLevel = reLevel;
 	}
 
-	public int getReStep() {
+	public long getReStep() {
 		return reStep;
 	}
 
-	public void setReStep(int reStep) {
+	public void setReStep(long reStep) {
 		this.reStep = reStep;
 	}
 }
