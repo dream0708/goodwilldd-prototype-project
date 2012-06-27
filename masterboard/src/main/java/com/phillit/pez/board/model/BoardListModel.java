@@ -74,4 +74,5 @@ public class BoardListModel extends BoardParentModel {
 	public int getPagePerSize() {
 		return paging.getPagePerSize();
 	}
+
 }

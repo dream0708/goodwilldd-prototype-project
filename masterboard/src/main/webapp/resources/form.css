@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+div#form-content {
+	border: 1px solid;
+	padding: 5px;
+	margin: 3px;
+}
+
+div#form-content label {
+	font-weight: bold;
+}
+
+div#form-content.editable input {
+	border: 1px solid;
+}
+
+div#form-content.editable textarea {
+	border: 1px solid;
+}
+
+div#form-content.non-editable input {
+	border: 0px;
+}
+
+div#form-content.non-editable textarea {
+	border: 0px;
+}

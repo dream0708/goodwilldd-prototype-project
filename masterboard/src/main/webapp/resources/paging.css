@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+div#paging {
+    width: 100%;
+    margin: 0 auto;
+}
+
+div#paging ul {
+    list-style-type: none;
+    margin: 0 auto;
+}
+
+div#paging ul li {
+    float: left;
+    margin: 3px;
+    padding: 5px;
+    border: 1px solid;
+    background: silver;
+}
+
+div#paging ul li#current {
+    background: green;
+}
+
+div#paging ul li#pre {
+    background: green;
+}
+
+div#paging ul li#next {
+    background: green;
+}
+
+div#paging ul a:hover {
+    color: RED;
+}
+
+div#paging ul li:AFTER {
+    clear: both;
+}
