@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
+
 public enum BoardSearchParam {
 	subject("subject", "search.field.subject"), content("content",
 			"search.field.content"), regdate("regdate", "search.field.regdate");
 
 	private String item;
 	private String localizationKey;
-
+	
 	BoardSearchParam(String item, String localizationKey) {
 		this.item = item;
 		this.localizationKey = localizationKey;

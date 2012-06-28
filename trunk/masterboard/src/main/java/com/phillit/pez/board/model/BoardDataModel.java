@@ -5,9 +5,12 @@ import java.util.Date;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+@XmlRootElement
 public class BoardDataModel extends BoardParentModel {
 
 	public BoardDataModel() {
@@ -37,14 +40,18 @@ public class BoardDataModel extends BoardParentModel {
 	private String register;
 
 	private int readNum;
+
 	private int reLevel;
+
 	private long reStep;
+
 	private int isEnabled;
 
 	public int getbSeq() {
 		return bSeq;
 	}
 
+	@XmlElement
 	public void setbSeq(int bSeq) {
 		this.bSeq = bSeq;
 	}
@@ -53,6 +60,7 @@ public class BoardDataModel extends BoardParentModel {
 		return subject;
 	}
 
+	@XmlElement
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
@@ -61,6 +69,7 @@ public class BoardDataModel extends BoardParentModel {
 		return content;
 	}
 
+	@XmlElement
 	public void setContent(String content) {
 		this.content = content;
 	}
@@ -69,6 +78,7 @@ public class BoardDataModel extends BoardParentModel {
 		return regdate;
 	}
 
+	@XmlElement
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
@@ -77,6 +87,7 @@ public class BoardDataModel extends BoardParentModel {
 		return register;
 	}
 
+	@XmlElement
 	public void setRegister(String register) {
 		this.register = register;
 	}
@@ -85,6 +96,7 @@ public class BoardDataModel extends BoardParentModel {
 		return readNum;
 	}
 
+	@XmlElement
 	public void setReadNum(int readNum) {
 		this.readNum = readNum;
 	}
@@ -93,6 +105,7 @@ public class BoardDataModel extends BoardParentModel {
 		return isEnabled;
 	}
 
+	@XmlElement
 	public void setIsEnabled(int isEnabled) {
 		this.isEnabled = isEnabled;
 	}
@@ -101,6 +114,7 @@ public class BoardDataModel extends BoardParentModel {
 		return reLevel;
 	}
 
+	@XmlElement
 	public void setReLevel(int reLevel) {
 		this.reLevel = reLevel;
 	}
@@ -109,6 +123,7 @@ public class BoardDataModel extends BoardParentModel {
 		return reStep;
 	}
 
+	@XmlElement
 	public void setReStep(long reStep) {
 		this.reStep = reStep;
 	}
