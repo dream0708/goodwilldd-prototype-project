@@ -97,8 +97,12 @@ public class BoardController implements ICommonExceptionHandler {
 	 */
 	@RequestMapping(value = "{boardName}/list", method = { RequestMethod.GET })
 	public String boardListProcessGet(Model model,
-			@PathVariable("boardName") String boardName) throws Exception {
+			@PathVariable("boardName") String boardName,
+			@RequestParam(value="p", required=false, defaultValue="1") String pages) throws Exception {
 		BoardListModel data = new BoardListModel();
+		if ( !pages.equals("1") )
+			data.setCurrentPageNum(Integer.parseInt(pages));
+		
 		data.setBoardName(boardName);
 		boardService.getList(data);
 		model.addAttribute("boardListModel", data);

@@ -2,6 +2,8 @@ package com.phillit.pez.common.util;
 
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlElement;
+
 import com.phillit.pez.common.model.CommonModel;
 
 public class PagingUtil extends CommonModel {
@@ -31,6 +33,10 @@ public class PagingUtil extends CommonModel {
 
 	private ArrayList<Integer> pages;
 
+	public PagingUtil() {
+		
+	}
+	
 	/**
 	 * 전체 카운터, 현재 페이지 번호, 페이지 별 글목록 수, 블럭 사이즈
 	 * 
@@ -151,6 +157,86 @@ public class PagingUtil extends CommonModel {
 
 	public int getStartPageBoard() {
 		return startPageBoard;
+	}
+
+	@XmlElement
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
+
+	@XmlElement
+	public void setCurrentPageNum(int currentPageNum) {
+		this.currentPageNum = currentPageNum;
+	}
+
+	@XmlElement
+	public void setPagePerSize(int pagePerSize) {
+		this.pagePerSize = pagePerSize;
+	}
+
+	@XmlElement
+	public void setBlockSize(int blockSize) {
+		this.blockSize = blockSize;
+	}
+
+	@XmlElement
+	public void setNextPage(int nextPage) {
+		this.nextPage = nextPage;
+	}
+
+	@XmlElement
+	public void setPrePage(int prePage) {
+		this.prePage = prePage;
+	}
+
+	@XmlElement
+	public void setCurrentBlock(int currentBlock) {
+		this.currentBlock = currentBlock;
+	}
+
+	@XmlElement
+	public void setStartBlock(int startBlock) {
+		this.startBlock = startBlock;
+	}
+
+	@XmlElement
+	public void setEndBlock(int endBlock) {
+		this.endBlock = endBlock;
+	}
+
+	@XmlElement
+	public void setStartPageBoard(int startPageBoard) {
+		this.startPageBoard = startPageBoard;
+	}
+
+	@XmlElement
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+
+	@XmlElement
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+
+	@XmlElement
+	public void setNextBlock(int nextBlock) {
+		this.nextBlock = nextBlock;
+	}
+
+	@XmlElement
+	public void setPreBlock(int preBlock) {
+		this.preBlock = preBlock;
+	}
+
+	@XmlElement
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+
+	@XmlElement
+	public void setPages(ArrayList<Integer> pages) {
+		this.pages = pages;
 	}
 
 }
