@@ -84,11 +84,6 @@
 		</trim>
 	</select>
 
-	<select id="getFirstBoard" resultType="BoardModel">
-		select * from board where
-		boardOrder=(select min(boardOrder) from board)
-	</select>
-
 	<update id="doModify" parameterType="BoardDataModel">
 		update board_data set
 		subject=#{subject}, content=#{content} where
@@ -98,4 +93,9 @@
     <update id="doDelete" parameterType="int">
         update board_data set isEnabled=1 where bSeq=#{bSeq}
     </update>
+    
+    <select id="getFirstBoard" resultType="BoardModel">
+        select * from board where
+        boardOrder=(select min(boardOrder) from board)
+    </select>
 </mapper>
