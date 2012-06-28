@@ -12,33 +12,40 @@
 			    <c:when test="${type eq 'top' }">
 			        <ul>
 						<li>${paging.totalCount } 개  중${paging.startPage } ~ ${paging.endPage }</li>
-						<li id="pre">${paging.prePage }</li>
-						<li id="next">${paging.nextPage }</li> 
+						<li id="pre"><a href="javascript:movePage('${paging.prePage }');">${paging.prePage }</a></li>
+						<li id="next"><a href="javascript:movePage('${paging.nextPage }');">${paging.nextPage }</a></li> 
 			        </ul>
 			    </c:when>
 			    <c:when test="${type eq 'normal' }">
 			       <ul>
-		                <li>${paging.preBlock}</li>
-		                <li>${paging.prePage }</li>
+		                <li><a href="javascript:movePage('${paging.preBlock }');">${paging.preBlock}</a></li>
+		                <li><a href="javascript:movePage('${paging.prePage }');">${paging.prePage }</a></li>
 		                <c:forEach items="${paging.pages }" var="pages">
 		                    <c:choose>
-		                        <c:when test="${paging.currentPageNum eq pages}"><li id="current">${pages }</li></c:when>
-		                        <c:otherwise><li>${pages }</li></c:otherwise>
+		                        <c:when test="${paging.currentPageNum eq pages}">
+		                          <li id="current"><a href="javascript:movePage('${pages }');">${pages }</a></li>
+		                        </c:when>
+		                        <c:otherwise><li><a href="javascript:movePage('${pages }');">${pages }</a></li></c:otherwise>
 		                    </c:choose>
 		                </c:forEach>
-		                <li>${paging.nextPage }</li>
-		                <li>${paging.nextBlock }</li>
+		                <li><a href="javascript:movePage('${paging.nextPage }');">${paging.nextPage }</a></li>
+		                <li><a href="javascript:movePage('${paging.nextBlock }');">${paging.nextBlock }</a></li>
 		            </ul>
 			    </c:when>
 			    <c:otherwise>
 		            <ul>
-		                <li>${paging.preBlock}</li>
-		                <li>${paging.prePage }</li>
-		                <c:forEach items="${paging.pages }" var="pages">
-			            <li>${pages }</li>
-			            </c:forEach>
-		                <li>${paging.nextPage }</li>
-		                <li>${paging.nextBlock }</li>
+		                <li><a href="javascript:movePage('${paging.preBlock }');">${paging.preBlock}</a></li>
+                        <li><a href="javascript:movePage('${paging.prePage }');">${paging.prePage }</a></li>
+                        <c:forEach items="${paging.pages }" var="pages">
+                            <c:choose>
+                                <c:when test="${paging.currentPageNum eq pages}">
+                                  <li id="current"><a href="javascript:movePage('${pages }');">${pages }</a></li>
+                                </c:when>
+                                <c:otherwise><li><a href="javascript:movePage('${pages }');">${pages }</a></li></c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        <li><a href="javascript:movePage('${paging.nextPage }');">${paging.nextPage }</a></li>
+                        <li><a href="javascript:movePage('${paging.nextBlock }');">${paging.nextBlock }</a></li>
 		            </ul>
 			    </c:otherwise>
 			</c:choose>

@@ -69,5 +69,11 @@
     </tbody>
 </table>
 </form:form>
+<script type="text/javascript">
+function movePage(pages) {
+	$("#currentPageNum").val(pages);
+	$("#boardListModel").submit();
+}
+</script>
 </body>
 </html>
