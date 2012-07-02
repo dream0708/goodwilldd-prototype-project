@@ -16,4 +16,8 @@ public abstract class CommonUtil {
 		}
 		return result.toString();
 	}
+	
+	public static String formatString(String target, Object...args) {
+		return String.format(target, args);
+	}
 }
