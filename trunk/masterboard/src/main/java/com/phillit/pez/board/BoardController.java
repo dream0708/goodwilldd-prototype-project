@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.phillit.pez.board.model.BoardDataModel;
@@ -22,6 +24,8 @@ import com.phillit.pez.board.model.BoardListModel;
 import com.phillit.pez.board.service.IBoardService;
 import com.phillit.pez.common.exception.CommonException;
 import com.phillit.pez.common.exception.ICommonExceptionHandler;
+
+import dw.spring3.rest.bean.Employee;
 
 @Controller
 @RequestMapping(value = "b")
@@ -48,7 +52,7 @@ public class BoardController implements ICommonExceptionHandler {
 			@PathVariable("boardName") String boardName,
 			@PathVariable("action") String action,
 			@RequestParam(value = "bSeq", required = false, defaultValue = "0") String bSeq) {
-		switch(COMMAND.valueOf(action)) {
+		switch (COMMAND.valueOf(action)) {
 		default:
 		case write:
 			model.addAttribute("boardDataModel", new BoardDataModel(boardName,
@@ -69,13 +73,15 @@ public class BoardController implements ICommonExceptionHandler {
 	 * @param data
 	 * @return
 	 */
-	@RequestMapping(value = "{boardName}/{action}/save", method = RequestMethod.POST)
+	@RequestMapping(value = "{boardName}/{action}/save", method = {
+			RequestMethod.POST, RequestMethod.DELETE })
 	public String boardActionProcess(Model model,
 			@PathVariable("boardName") String boardName,
 			@PathVariable("action") String action,
 			@ModelAttribute("boardDataModel") @Valid BoardDataModel data,
 			BindingResult result, SessionStatus status,
 			HttpServletRequest request) throws Exception {
+		log.debug(data.toString());
 		if (result.hasErrors()) {
 			model.addAttribute("boardDataModel", data);
 			return "/board/form";
@@ -96,13 +102,15 @@ public class BoardController implements ICommonExceptionHandler {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "{boardName}/list", method = { RequestMethod.GET })
-	public String boardListProcessGet(Model model,
+	public String boardListProcessGet(
+			Model model,
 			@PathVariable("boardName") String boardName,
-			@RequestParam(value="p", required=false, defaultValue="1") String pages) throws Exception {
+			@RequestParam(value = "p", required = false, defaultValue = "1") String pages)
+			throws Exception {
 		BoardListModel data = new BoardListModel();
-		if ( !pages.equals("1") )
+		if (!pages.equals("1"))
 			data.setCurrentPageNum(Integer.parseInt(pages));
-		
+
 		data.setBoardName(boardName);
 		boardService.getList(data);
 		model.addAttribute("boardListModel", data);
@@ -121,8 +129,8 @@ public class BoardController implements ICommonExceptionHandler {
 	@RequestMapping(value = "{boardName}/list", method = { RequestMethod.POST })
 	public String boardListProcessPost(Model model,
 			@ModelAttribute("boardListModel") BoardListModel data,
-			@PathVariable("boardName") String boardName,
-			BindingResult result, SessionStatus status) throws Exception {
+			@PathVariable("boardName") String boardName, BindingResult result,
+			SessionStatus status) throws Exception {
 		data.setBoardName(boardName);
 		if (result.hasErrors()) {
 			throw new Exception("alert.list.error");
@@ -130,6 +138,15 @@ public class BoardController implements ICommonExceptionHandler {
 			boardService.getList(data);
 		}
 		return "/board/list";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "{boardName}/list", headers = "Accept=application/xml")
+	public @ResponseBody
+	BoardListModel getBoardList(@PathVariable("boardName") String boardName) {
+		BoardListModel data = new BoardListModel();
+		data.setBoardName(boardName);
+		boardService.getList(data);
+		return data;
 	}
 
 	@Override
