@@ -12,7 +12,7 @@
 
 	<!-- Application Loggers -->
 	<logger name="net.ujin.recruit">
-		<level value="debuf" />
+		<level value="debug" />
 	</logger>
 
 	<!-- 3rdparty Loggers -->
@@ -34,15 +34,15 @@
 
 	<!-- query -->
 	<logger name="org.apache.ibatis">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 
 	<logger name="java.sql">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 
 	<logger name="java.sql.Statement">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 	<!-- Root Logger -->
 	<root>
