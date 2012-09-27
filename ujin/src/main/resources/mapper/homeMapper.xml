@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.ujin.recruit.mapper.IHomeMapper">
+	<select id="getFinancesList" resultType="UjinFinancesDataModel" parameterType="Tuple4">
+	select fyear, fmonth, fday, fname, fmoney, fetc from ujin_finances_data 
+	where fyear=#{v1} and fmonth=#{v2} and fday=#{v3} and customerIdx=#{v4}
+	order by _idx asc
+	</select>
+	
+	<insert id="doFinancesInsert" parameterType="UjinFinancesDataModel">
+	insert into ujin_finances_data(fyear, fmonth, fday, fname, fmoney, fetc, customerIdx)
+	values(#{fyear}, #{fmonth}, #{fday}, #{fName}, #{fMoney}, #{fEtc}, #{customerIdx})
+	</insert>
+	
+	<delete id="doDeleteAllCurrentDateData" parameterType="int">
+	delete from ujin_finances_data where fyear=#{fyear} and fmonth=#{fmonth} and fday=#{fday}
+	</delete>
+	
+	<select id="getCustomerList" resultType="UjinCustomerDataModel">
+	select * from ujin_customer order by _idx asc
+	</select>
+	
+	<insert id="doInsertCustomerData" parameterType="UjinCustomerDataModel">
+	insert into ujin_customer(customerName, customerEmail, customerTel, customerAddr, customerBigo)
+	values(#{customerName}, #{customerEmail}, #{customerTel}, #{customerAddr}, #{customerBigo})
+	</insert>
+	
+	<select id="getCustomer" parameterType="int" resultType="UjinCustomerDataModel">
+	select * from ujin_customer where _idx=#{_idx}
+	</select>
+	
+	<select id="getSummeryMoney" resultType="String" parameterType="Tuple4">
+	select FORMAT(sum(fmoney),0) from ujin_finances_data where fyear=#{v1} and fmonth=#{v2} and fday=#{v3} and customerIdx=#{v4}
+	</select>
+	
+	<select id="getSummeryMoneyMonth" resultType="HashMap" parameterType="Tuple2">
+	select fmonth, FORMAT(sum(fmoney),0) as summoney from ujin_finances_data where fyear=#{v1} and customerIdx=#{v2} group by fyear, fmonth
+	</select>
+</mapper>

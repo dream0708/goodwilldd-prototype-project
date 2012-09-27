@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <entry key="site.title">GoodwillDD's Works</entry>
+    
+	<entry key="alter.using.exception">exception in using</entry>
+	<entry key="alert.common.not_found_tags">No found Tags. ask web admin</entry>
+	
+	<entry key="field.isnull">Field is Null</entry>
+	<entry key="field.min1">This Field min 1 length</entry>
+	
+	<entry key="search.field.subject">subject</entry>
+    <entry key="search.field.content">content</entry>
+    <entry key="search.field.regdate">regdate</entry>
+</properties>
