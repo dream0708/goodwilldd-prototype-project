@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+/* 공통설정 */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td { margin:0; padding:0;}
+h1,h2,h3,h4,h5,h6 { font-size : 100%; }
+ol,ul { list-style : none; }
+address, caption, cite, code, dfn, em, strong, th, var { font-style : normal; font-weight : normal; }
+table { border-spacing:0; }
+fieldset, img, input { border : 0 none; }
+hr, caption, legend { height: 0; width: 0; line-height: 0; visibility: hidden; overflow: hidden; }
+
+/* body */
+html, body { height:100%;}
+body, * { -webkit-text-size-adjust: none; font-size: 14px;}
+a { text-decoration: none;}
+a:hover { cursor:pointer; }
+strong, em { font-weight:bold; }
+select { height:20px; border:1px solid #ccc; }
+textarea { padding:3px; border:1px solid #ccc; }
+
+input.chk_rdo { width:16px; height:16px; vertical-align:middle; margin-top:-2px}
+input {}
+
+body { background: #f5f4f1;}

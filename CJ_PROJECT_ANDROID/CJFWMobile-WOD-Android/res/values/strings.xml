@@ -1,0 +1,18 @@
+<resources>
+
+    <string name="app_name">푸드넷</string>
+    <string name="default_title">ONLYONE Foodnet</string>
+    <string name="calling_ment">전화를 거시겠습니까?</string>
+	<string name="calling_btn">통화</string>
+	<string name="not_exist_call_ment">통화기능이 지원되지 않는 기기입니다.</string>
+	<string name="endApplication">종료하시겠습니까?</string>
+    <string name="menu_settings">설정</string>
+    <string name="floating">floating</string>
+    <string name="dialog_menu_title">기본정보 업데이트</string>
+    <string name="dialog_menu_content"><![CDATA[메뉴 및 기본 정보를 업데이트 중입니다.\n잠시 기다리주시기 바랍니다.]]></string>
+    <string name="dialog_http_status_check_title">로딩중입니다</string>
+    <string name="dialog_http_status_check_content"><![CDATA[페이지를 로딩하고있습니다.]]></string>
+    <string name="dialog_http_status_check_failure_msg"><![CDATA[통신상태가 원할하지 않습니다.\n잠시 후 다시 시도하시기 바랍니다]]></string>
+	<string name="prev_btn_text">이전</string>
+	<string name="save_btn_text">저장</string>
+</resources>
