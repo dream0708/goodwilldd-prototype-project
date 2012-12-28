@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko" class="heo">
+
+<head>
+	<title>cj 프레시웨이</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta name="viewport" class="meta" content="width=device-width, initial-scale=0.7, maximum-scale=0.7, minimum-scale=0.7, user-scalable=no, target-densitydpi=high-dpi" />
+	<meta name="format-detection" content="telephone=no" />
+	<link href="../css/common.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="../js/jquery-1.7.2.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		var UserAgent = navigator.userAgent;
+		if(UserAgent.match(/iPad/i) != null){
+			var metaView = $(".meta");
+			metaView.remove();
+			$('head').append('<meta id ="#meta_viewport" name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0, minimum-scale=1.0; user-scalable=0;">');
+		}
+	});
+	</script>
+
+<style type="text/css">
+.tamp1 { background: url("../images/common/temp1.jpg") no-repeat right -35px;}
+#container { width:100%; height:auto !important; height:100%;}
+#wrapper { position: absolute; top: 60px; left: 0; bottom: 0; width: 100%; overflow: auto\9 !important;}
+.bg_fff .logo { margin-top:360px; }
+.logo { margin-top: 105px; width: 100%; text-align: center; z-index: 10;}
+</style>
+
+</head>
+<body class="bg_fff tamp1">
+
+<div id="wrapper" style="top: 0;">
+
+<!-- (container) -->
+<div id="container" class="heo">
+
+	<div class="logo">
+		<p style="font-size: x-large;">
+		처리중 문제가 발생하였습니다<br />
+		잠시 후, 다시 시도해주세요.
+		</p>
+	</div>
+</div>
+<!-- //(container) -->
+
+</div>
+
+</body>
+</html>

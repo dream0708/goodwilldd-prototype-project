@@ -1,0 +1,25 @@
+<resources>
+
+    <string name="app_name">CJ PRO MA</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="introDescription">Intro</string>
+    <string name="application_end_confirm_title">종료</string>
+    <string name="application_end_confirm_text">종료하시겠습니까?</string>
+    <string name="logout_confirm_title">로그아웃</string>
+    <string name="logout_end_confirm_text">로그아웃하시겠습니까?</string>
+    <string name="application_version_warming_title">OS 버전이 낮습니다.</string>
+    <string name="application_version_warming_text">OS 버전이 낮습니다</string>
+	<string name="save_btn">저장</string>
+	<string name="pre_btn">이전</string>
+	<string name="menu1">HOME</string>
+	<string name="menu2">신규개척방문통계</string>
+	<string name="menu3">시황등록통계</string>
+	<string name="menu4">설정</string>
+	<string name="floating"><![CDATA[+]]></string>
+	<string name="retry_ment">처리중 장애가 발생하였습니다. 다시 시도하시겠습니까?</string>
+	<string name="calling_ment">전화를 거시겠습니까?</string>
+	<string name="calling_btn">통화</string>
+	<string name="not_exist_call_ment">통화기능이 지원되지 않는 기기입니다.</string>
+	<string name="registerNumberHint">사업자 번호를 등록하세요.</string>
+</resources>

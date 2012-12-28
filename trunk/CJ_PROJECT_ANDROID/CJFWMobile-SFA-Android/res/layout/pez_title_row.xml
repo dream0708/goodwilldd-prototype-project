@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="36dp"
+    android:gravity="top"
+    android:layout_gravity="top">
+
+    <Button
+        android:id="@+id/top_left_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/pez_yellow_button"
+        android:text="@string/pre_btn" />
+
+    <TextView 
+        android:id="@+id/top_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:text="@string/app_name"
+        />
+    
+    <Button
+        android:id="@+id/top_right_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/pez_yellow_button"
+        android:text="@string/save_btn" />
+
+</RelativeLayout>
