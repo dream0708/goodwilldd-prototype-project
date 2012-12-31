@@ -6,7 +6,7 @@ public interface FreshConfig {
 	/**
 	 * 개발 모드 설정
 	 */
-	public static final boolean DEVELOPER_MODE = true;
+	public static final boolean DEVELOPER_MODE = false;
 
 	/**
 	 * 전체 charset
@@ -26,7 +26,7 @@ public interface FreshConfig {
 	/**
 	 * 서버 URL
 	 */
-	// public static final String HOST_URL = "http://52.90.235.39";
+	// public static final String HOST_URL = "http://52.90.235.32";
 	public static final String HOST_URL = "http://devm.onlyonefood.net";
 
 	/**

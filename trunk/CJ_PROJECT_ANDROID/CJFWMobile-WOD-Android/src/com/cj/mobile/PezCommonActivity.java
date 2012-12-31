@@ -910,8 +910,8 @@ public abstract class PezCommonActivity extends Activity implements
 						break;
 					}
 
-					if (FreshConfig.DEVELOPER_MODE)
-						isUpdate = true;
+					// if (FreshConfig.DEVELOPER_MODE)
+					isUpdate = true;
 
 					if (isUpdate || defaultMenus.size() == 0) {
 						// 전체 삭제 후, 데이터 입력
