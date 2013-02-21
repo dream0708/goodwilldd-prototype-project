@@ -13,6 +13,12 @@
 		<property name="sqlSessionTemplate" ref="sqlSessionReuseTemplate" />
 	</bean>
 	
+	<bean id="securityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="kr.co.insoft.security.mapper.SecurityMapper" />
+		<property name="sqlSessionTemplate" ref="sqlSessionReuseTemplate" />
+	</bean>
+	
 	<!-- Service -->
 	<bean id="exampleService" class="kr.co.insoft.mybatis.example.service.ExampleService">
 		<constructor-arg ref="exampleMapper" />
