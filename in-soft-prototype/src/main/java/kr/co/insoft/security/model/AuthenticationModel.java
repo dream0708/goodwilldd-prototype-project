@@ -18,17 +18,35 @@ public class AuthenticationModel implements UserDetails {
 	private boolean accountExpired;
 	private boolean credentialExpried;
 	private boolean use;
+	private Collection<? extends GrantedAuthority> authorities;
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6566746604750997139L;
 
+	public AuthenticationModel() {
+
+	}
+
+	public AuthenticationModel(String username, String password, boolean lock,
+			boolean accountExpired, boolean credentialExpried, boolean use,
+			Collection<? extends GrantedAuthority> authrity) {
+		this.username = username;
+		this.password = password;
+		this.lock = lock;
+		this.accountExpired = accountExpired;
+		this.credentialExpried = credentialExpried;
+		this.use = use;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		authorities.add(new SimpleGrantedAuthority(ROLES.USER.getRoleName()));
-		return authorities;
+		return this.authorities;
+	}
+	
+	public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
+		this.authorities = authorities;
 	}
 
 	public void setPassword(String password) {
