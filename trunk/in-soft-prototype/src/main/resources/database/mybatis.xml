@@ -19,7 +19,7 @@
 	<!-- ==== mybatis sessionFactory ==== -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="mysql_datasource" />
-		<property name="typeAliasesPackage" value="**.model.*" />
+		<property name="typeAliasesPackage" value="kr.co.insoft.security.model"/>
 		<property name="mapperLocations" value="classpath:common/mapper/*.xml" />
 	</bean>
 

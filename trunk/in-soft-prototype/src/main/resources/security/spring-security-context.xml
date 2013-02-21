@@ -44,6 +44,8 @@
 	<beans:bean id="MD5" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
 	
 	<beans:bean id="insoftAuthenticationService"
-		class="kr.co.insoft.security.service.InsoftUserDetailService" />
+		class="kr.co.insoft.security.service.InsoftUserDetailService">
+		<beans:constructor-arg ref="securityMapper" />
+	</beans:bean>
 	
 </beans:beans>
