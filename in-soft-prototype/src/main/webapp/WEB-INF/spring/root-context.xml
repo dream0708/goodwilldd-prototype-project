@@ -8,5 +8,4 @@
 	<!-- <import resource="classpath:security/spring-security-context.xml" /> -->
 	<import resource="classpath:database/datasource.xml"/>
 	<import resource="classpath:database/mybatis.xml"/>
-	<import resource="classpath:beans/bean.xml"/>
 </beans>

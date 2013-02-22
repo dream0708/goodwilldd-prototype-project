@@ -16,10 +16,12 @@
 	<!-- transaction annotation -->
 	<tx:annotation-driven />
 
-	<!-- ==== mybatis sessionFactory ==== -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- ==== mybatis sessionFactory by edit sylee@in-soft.co.kr ==== -->
+	<bean id="sqlSessionFactory" class="kr.co.insoft.util.mybatis.CustomSqlSessionFactoryBean">
 		<property name="dataSource" ref="mysql_datasource" />
-		<property name="typeAliasesPackage" value="kr.co.insoft.security.model"/>
+		<!-- typeAlias Object Auto Scannig -->
+		<property name="typeAliasesPackage" value="kr.co.insoft.**.model"></property>
+		<!-- query files -->
 		<property name="mapperLocations" value="classpath:common/mapper/*.xml" />
 	</bean>
 
@@ -30,8 +32,21 @@
 		<constructor-arg index="1" value="REUSE" />
 	</bean>
 	<!-- Execute Type REUSE (default) -->
-	<bean id="sqlSessionBatchTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	<!-- <bean id="sqlSessionBatchTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 		<constructor-arg index="1" value="BATCH" />
+	</bean> -->
+	
+	<!-- mapper auto scanning -->
+	<bean id="myBatisMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="kr.co.insoft.**"></property>
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="sqlSessionTemplateBeanName" value="sqlSessionReuseTemplate" />
 	</bean>
+	
+	<!-- <bean id="myBatisBatchMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="kr.co.insoft.batch.**"></property>
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="sqlSessionTemplateBeanName" value="sqlSessionReuseTemplate" />
+	</bean> -->
 </beans>

@@ -21,15 +21,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="kr.co.insoft" />
-	
 	<!-- <context:component-scan base-package="kr.co.insoft">
-      <context:include-filter type="regex" expression=".*.*Mapper"/>
-      <context:include-filter type="regex" expression=".*.*.*Mapper"/>
-      <context:exclude-filter type="annotation"
-                              expression="org.springframework.stereotype.Repository"/>
-   </context:component-scan> -->
-	
-	
-	
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+	</context:component-scan> -->
+	<context:component-scan base-package="kr.co.insoft" />
 </beans:beans>
