@@ -18,17 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class InsoftUserDetailService implements UserDetailsService {
-	/*
-	 * 참고 하여 수정
-	 * http://stackoverflow.com/questions/11844446/spring-security-autowired
-	 * -userdetailsservice
-	 */
-	SecurityMapper securityMapper;
 
 	@Autowired
-	public InsoftUserDetailService(SecurityMapper securityMapper) {
-		this.securityMapper = securityMapper;
-	}
+	SecurityMapper securityMapper;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -47,7 +39,9 @@ public class InsoftUserDetailService implements UserDetailsService {
 			authorities.add(new SimpleGrantedAuthority(auth.getAuthority()));
 		}
 
-		return new User(user.getUsername(), user.getPassword(), user.isEnabled(), user.isAccountNonExpired(),
-				user.isCredentialsNonExpired(), user.isAccountNonLocked(), authorities);
+		return new User(user.getUsername(), user.getPassword(),
+				user.isEnabled(), user.isAccountNonExpired(),
+				user.isCredentialsNonExpired(), user.isAccountNonLocked(),
+				authorities);
 	}
 }

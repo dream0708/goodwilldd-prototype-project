@@ -8,12 +8,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExampleService implements ExampleServiceIF {
 
-	private ExampleMapper exampleMapper;
-
 	@Autowired
-	public ExampleService(ExampleMapper exampleMapper) {
-		this.exampleMapper = exampleMapper;
-	}
+	private ExampleMapper exampleMapper;
 
 	@Override
 	public String getUserName(String user_id) {
