@@ -575,16 +575,16 @@
             Tomcat Version 7.x : http://127.0.0.1:8080/manager/html
             Tomcat Version 6.x : http://127.0.0.1:8080/manager
              -->
-            <!-- <plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>tomcat-maven-plugin</artifactId>
                 <version>1.1</version>
                 <configuration>
-                    <url>대상서버</url>
-                    <path>배포ContextPath</path>
-                    <server>TomcatServer</server>
+                    <url>http://localhost:10001/manager</url>
+                    <path>/insoft</path>
+                    <server>dis_admin</server>
                 </configuration>
-            </plugin> -->
+            </plugin>
 		</plugins>
 	</build>
 	<profiles>
