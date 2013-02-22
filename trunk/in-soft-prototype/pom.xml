@@ -580,7 +580,7 @@
                 <artifactId>tomcat-maven-plugin</artifactId>
                 <version>1.1</version>
                 <configuration>
-                    <url>http://localhost:10001/manager</url>
+                    <url>http://localhost:10001/manager/html</url>
                     <path>/insoft</path>
                     <server>dis_admin</server>
                 </configuration>
