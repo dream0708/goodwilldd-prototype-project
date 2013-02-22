@@ -5,7 +5,47 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
+	<http pattern="/resources/**" security="none" />
 	<http auto-config='true'>
+		<port-mappings>
+			<port-mapping http="10001" https="10101" />
+		</port-mappings>
+		<session-management session-fixation-protection="migrateSession">
+			<concurrency-control max-sessions="1"
+				error-if-maximum-exceeded="true" />
+		</session-management>
 		<intercept-url pattern="/**" access="ROLE_USER" />
 	</http>
+
+	<!-- global point cut method security -->
+	<!-- <global-method-security>
+		<protect-pointcut expression="execution(* kr.co.insoft.**.*Service.*(..))"
+			access="ROLE_USER" />
+	</global-method-security> -->
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="insoftAuthenticationService">
+			<password-encoder ref="shaPasswordEncoder" />
+			<!-- <user-service>
+				<user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
+				<user name="bob" password="bobspassword" authorities="ROLE_USER" />
+			</user-service> -->
+		</authentication-provider>
+	</authentication-manager>
+
+	<!-- 암호화 SHA -->
+	<beans:bean id="shaPasswordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+		<beans:constructor-arg value="256" />
+	</beans:bean>
+	<!-- Spring Encoder -->
+	<beans:bean id="standardEncoder"
+	class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+	<!-- MD5 -->
+	<beans:bean id="MD5" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+	
+	<beans:bean id="insoftAuthenticationService"
+		class="kr.co.insoft.security.service.InsoftUserDetailService">
+		<beans:constructor-arg ref="securityMapper" />
+	</beans:bean>
+	
 </beans:beans>
