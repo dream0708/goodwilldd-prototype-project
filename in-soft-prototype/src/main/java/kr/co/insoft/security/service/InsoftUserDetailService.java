@@ -32,7 +32,7 @@ public class InsoftUserDetailService implements UserDetailsService {
 
 		return prepare(auth);
 	}
-
+	
 	private User prepare(AuthenticationModel user) {
 		Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		for (GrantedAuthority auth : user.getAuthorities()) {
