@@ -29,7 +29,7 @@ public class CallFutureTest {
 
 		completionService.submit(new WorkThread(1));
 		completionService.submit(new WorkThread(2));
-		completionService.submit(new WorkThread(3));
+		completionService.submit(new WorkThread(100));
 		completionService.submit(new WorkThread(4));
 		completionService.submit(new WorkThread(5));
 		completionService.submit(new WorkThread(6));
@@ -51,7 +51,7 @@ public class CallFutureTest {
 		ExecutorService executorService = Executors.newFixedThreadPool(3);
 		Future<Integer> f1 = executorService.submit(new WorkThread(1));
 		Future<Integer> f2 = executorService.submit(new WorkThread());
-		Future<Integer> f3 = executorService.submit(new WorkThread());
+		Future<Integer> f3 = executorService.submit(new WorkThread(100));
 		Future<Integer> f4 = executorService.submit(new WorkThread());
 		Future<Integer> f5 = executorService.submit(new WorkThread());
 		Future<Integer> f6 = executorService.submit(new WorkThread());
