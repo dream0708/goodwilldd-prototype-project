@@ -39,14 +39,14 @@
 	
 	<!-- mapper auto scanning -->
 	<bean id="myBatisMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="kr.co.insoft.**"></property>
+		<property name="basePackage" value="kr.co.insoft.**.normal.**"></property>
 		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
 		<property name="sqlSessionTemplateBeanName" value="sqlSessionReuseTemplate" />
 	</bean>
 	
-	<!-- <bean id="myBatisBatchMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="kr.co.insoft.batch.**"></property>
+	<bean id="myBatisBatchMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="kr.co.insoft.**.batch.**"></property>
 		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
 		<property name="sqlSessionTemplateBeanName" value="sqlSessionReuseTemplate" />
-	</bean> -->
+	</bean>
 </beans>

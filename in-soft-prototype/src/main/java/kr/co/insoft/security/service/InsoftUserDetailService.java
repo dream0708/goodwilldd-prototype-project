@@ -3,8 +3,8 @@ package kr.co.insoft.security.service;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import kr.co.insoft.security.mapper.SecurityMapper;
 import kr.co.insoft.security.model.AuthenticationModel;
+import kr.co.insoft.security.normal.mapper.SecurityMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

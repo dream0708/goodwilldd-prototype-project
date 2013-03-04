@@ -48,4 +48,6 @@
 
 	<context:component-scan base-package="kr.co.insoft" />
 	
+	<beans:bean id="exceptionResolver" class="kr.co.insoft.core.exception.InsoftExceptionResolver" />
+	
 </beans:beans>
