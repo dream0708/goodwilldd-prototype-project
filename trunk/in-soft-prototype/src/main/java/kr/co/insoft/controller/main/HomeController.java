@@ -4,8 +4,10 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import kr.co.insoft.core.exception.GenericException;
 import kr.co.insoft.mybatis.example.model.ExampleModel;
 import kr.co.insoft.mybatis.example.service.ExampleServiceIF;
 
@@ -49,6 +51,12 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping("/exp")
+	public void testException(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		throw new GenericException("GenericException Test!!!!!");
+	}
+	
 	/**
 	 * json 이나 xml로 값을 반환하기 위해서는 반드시 ResponseBody Annotation을 선언하고
 	 * 변환하여 반환할 대상 객체에 XmlRootElement, JsonAutoDetect Annotation을 선언하여야 한다.
@@ -65,5 +73,4 @@ public class HomeController {
 	public String login(Locale locale, Model model) {
 		return "home";
 	}
-
 }

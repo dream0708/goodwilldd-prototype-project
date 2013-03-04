@@ -1,4 +1,4 @@
-package kr.co.insoft.security.mapper;
+package kr.co.insoft.security.normal.mapper;
 
 import kr.co.insoft.security.model.AuthenticationModel;
 

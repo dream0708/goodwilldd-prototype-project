@@ -25,16 +25,10 @@
 	<listener>
 		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
 	</listener>
-	
-	<!-- <filter>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
 
-	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
+	<!-- <filter> <filter-name>springSecurityFilterChain</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
+		</filter> <filter-mapping> <filter-name>springSecurityFilterChain</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
 	<!-- security -->
 
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -53,11 +47,22 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
+	<!-- 해다 파일들은 Spring을 거치지 않고 출력됨 / 추가적인 확장자 등록 -->
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.js</url-pattern>
+		<url-pattern>*.gif</url-pattern>
+		<url-pattern>*.jpg</url-pattern>
+		<url-pattern>*.png</url-pattern>
+		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.ico</url-pattern>
+	</servlet-mapping>
+
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
+
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>
@@ -66,4 +71,11 @@
 			<include-prelude>/WEB-INF/views/includes/commonDefinition.jspf</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
+	
+	<!-- exception-context.xml에 설정 참고 -->
+	<!-- http://www.mkyong.com/spring-mvc/spring-mvc-exception-handling-example/ -->
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/WEB-INF/views/error.jsp</location>
+	</error-page>
 </web-app>

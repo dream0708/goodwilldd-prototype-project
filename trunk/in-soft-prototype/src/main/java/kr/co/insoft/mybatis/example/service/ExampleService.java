@@ -1,6 +1,6 @@
 package kr.co.insoft.mybatis.example.service;
 
-import kr.co.insoft.mybatis.example.mapper.ExampleMapper;
+import kr.co.insoft.mybatis.example.normal.mapper.ExampleMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
