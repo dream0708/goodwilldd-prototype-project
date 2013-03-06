@@ -47,7 +47,7 @@
 	</beans:bean> -->
 
 	<context:component-scan base-package="kr.co.insoft" />
-	
+	<!-- Exception 관련 처리 -->
 	<beans:bean id="exceptionResolver" class="kr.co.insoft.core.exception.InsoftExceptionResolver" />
 	
 </beans:beans>
