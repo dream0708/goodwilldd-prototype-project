@@ -74,8 +74,8 @@
 	
 	<!-- exception-context.xml에 설정 참고 -->
 	<!-- http://www.mkyong.com/spring-mvc/spring-mvc-exception-handling-example/ -->
-	<error-page>
+	<!-- <error-page>
 		<exception-type>java.lang.Exception</exception-type>
-		<location>/WEB-INF/views/error.jsp</location>
-	</error-page>
+		<location>/WEB-INF/views/exceptions/error.jsp</location>
+	</error-page> -->
 </web-app>

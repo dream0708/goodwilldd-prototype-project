@@ -57,6 +57,12 @@ public class HomeController {
 		throw new GenericException("GenericException Test!!!!!");
 	}
 	
+	@RequestMapping("/exp2")
+	public void test2Exception(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		int res = 1 / 0;
+	}
+	
 	/**
 	 * json 이나 xml로 값을 반환하기 위해서는 반드시 ResponseBody Annotation을 선언하고
 	 * 변환하여 반환할 대상 객체에 XmlRootElement, JsonAutoDetect Annotation을 선언하여야 한다.
