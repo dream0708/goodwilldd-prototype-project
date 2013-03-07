@@ -9,6 +9,12 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml</param-value>
 	</context-param>
+	
+	<!--  -->
+	<context-param>
+		<param-name>spring.profiles.active</param-name>
+		<param-value>tiles3</param-value>
+	</context-param>
 
 	<!-- log4j -->
 	<context-param>
@@ -48,17 +54,33 @@
 	</servlet>
 
 	<!-- 해다 파일들은 Spring을 거치지 않고 출력됨 / 추가적인 확장자 등록 -->
-	<servlet-mapping>
+	<!-- <servlet-mapping>
 		<servlet-name>default</servlet-name>
-		<url-pattern>*.js</url-pattern>
 		<url-pattern>*.gif</url-pattern>
 		<url-pattern>*.jpg</url-pattern>
 		<url-pattern>*.png</url-pattern>
 		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.js</url-pattern>
 		<url-pattern>*.ico</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 
-	<servlet-mapping>
+	<!-- <servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping> -->
+	<servlet-mapping><!-- thymlef -->
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping><!-- json -->
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>*.json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping><!-- xml -->
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>*.xml</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping><!-- 일반 -->
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
