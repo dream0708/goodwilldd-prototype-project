@@ -1,12 +1,15 @@
 package kr.co.insoft.controller.main;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.co.insoft.controller.main.model.User;
 import kr.co.insoft.core.exception.GenericException;
 import kr.co.insoft.mybatis.example.model.ExampleModel;
 import kr.co.insoft.mybatis.example.service.ExampleServiceIF;
@@ -78,5 +81,26 @@ public class HomeController {
 	@RequestMapping(value = "/login")
 	public String login(Locale locale, Model model) {
 		return "home";
+	}
+	
+	/**
+	 * JSP with ThymeLeaf
+	 */
+	@RequestMapping(value="/users/all/thymeleaf",method=RequestMethod.GET)
+	public String findUsersThymeLeaf(Model model){
+		buildUserList(model);
+		model.addAttribute("title", "Users List - Thymeleaf");
+		return "thymeleaf/users";
+	}
+
+	private void buildUserList(Model model) {
+		List<User> users = new ArrayList<User>();
+		users.add(new User("Paul", "Chapman"));
+		users.add(new User("Mike", "Wiesner"));
+		users.add(new User("Mark", "Secrist"));
+		users.add(new User("Ken", "Krueger"));
+		users.add(new User("Wes", "Gruver"));
+		users.add(new User("Kevin", "Crocker"));
+		model.addAttribute("users", users);
 	}
 }
