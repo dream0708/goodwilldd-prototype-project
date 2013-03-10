@@ -15,10 +15,9 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
 	<!-- <resources mapping="/resources/**" location="/resources/" /> -->
-	<!-- 반드시 web.xml에서 일반 매핑이 설정되어있어야한다. -->
 	<resources location="/resources/style/" mapping="/css/**" />
 	<resources location="/resources/javascript/" mapping="/js/**" />
-	<resources location="/resources/images/" mapping="/img/**" />
+	<!-- <resources location="/resources/images/" mapping="/img/**" /> -->
 	
 	<context:component-scan base-package="kr.co.insoft" />
 	<!-- Exception 관련 처리 -->

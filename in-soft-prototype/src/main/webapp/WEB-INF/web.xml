@@ -68,7 +68,7 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping> -->
-	<servlet-mapping><!-- thymlef -->
+	<servlet-mapping><!-- thymlef / tiles -->
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
@@ -80,9 +80,13 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>*.xml</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping><!-- 일반 -->
+	<servlet-mapping><!-- css 숨김 -->
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.css</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping><!-- javascript 숨김-->
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>*.js</url-pattern>
 	</servlet-mapping>
 
 	<jsp-config>
