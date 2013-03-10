@@ -274,6 +274,13 @@
 			<version>${mybatis-spring.version}</version>
 		</dependency>
 
+		<!-- log4jdbc / 쿼리 로그 -->
+		<dependency>
+			<groupId>org.lazyluke</groupId>
+			<artifactId>log4jdbc-remix</artifactId>
+			<version>0.2.7</version>
+		</dependency>
+
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -516,8 +523,8 @@
 			<version>2.0.16</version>
 		</dependency>
 
-		<!-- Tiles 2 -->
-		<!-- <dependency>
+		<!-- Tiles 3 -->
+		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
 			<version>${tiles-version}</version>
@@ -536,8 +543,8 @@
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-jsp</artifactId>
 			<version>${tiles-version}</version>
-		</dependency> -->
-		
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

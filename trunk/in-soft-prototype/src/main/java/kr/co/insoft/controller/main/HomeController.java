@@ -34,10 +34,11 @@ public class HomeController {
 
 	@Autowired
 	ExampleServiceIF exampleService;
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		logger.info(exampleService.getUserName("svary"));
@@ -48,27 +49,27 @@ public class HomeController {
 
 		String formattedDate = dateFormat.format(date);
 
-		//model.addAttribute("serverTime", formattedDate);
+		// model.addAttribute("serverTime", formattedDate);
 		model.addAttribute("example", new ExampleModel(1, "goodwilldd hello!"));
 
 		return "home";
 	}
-	
+
 	@RequestMapping("/exp")
 	public void testException(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		throw new GenericException("GenericException Test!!!!!");
 	}
-	
+
 	@RequestMapping("/exp2")
 	public void test2Exception(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		int res = 1 / 0;
 	}
-	
+
 	/**
-	 * json 이나 xml로 값을 반환하기 위해서는 반드시 ResponseBody Annotation을 선언하고
-	 * 변환하여 반환할 대상 객체에 XmlRootElement, JsonAutoDetect Annotation을 선언하여야 한다.
+	 * json 이나 xml로 값을 반환하기 위해서는 반드시 ResponseBody Annotation을 선언하고 변환하여 반환할 대상
+	 * 객체에 XmlRootElement, JsonAutoDetect Annotation을 선언하여야 한다.
 	 * 
 	 * @return
 	 */
@@ -77,17 +78,54 @@ public class HomeController {
 	public ExampleModel doTest() {
 		return new ExampleModel(1, "goodwilldd hello!");
 	}
-	
+
 	@RequestMapping(value = "/login")
 	public String login(Locale locale, Model model) {
 		return "home";
 	}
-	
+
+	/**
+	 * Plain JSP
+	 */
+	@RequestMapping(value = "/users/all/jsp-plain", method = RequestMethod.GET)
+	public String findUsersPlain(Model model) {
+		buildUserList(model);
+		model.addAttribute("title", "Users List - Plain JSP");
+		return "01-plain/users";
+	}
+
+	/**
+	 * JSP with custom tags
+	 */
+	@RequestMapping(value = "/users/all/jsp-custom-1", method = RequestMethod.GET)
+	public String findUsersTags(Model model) {
+		buildUserList(model);
+		model.addAttribute("title", "Users List - Custom tags");
+		return "02-custom-tags/users";
+	}
+
+	@RequestMapping(value = "/users/all/jsp-custom-2", method = RequestMethod.GET)
+	public String findUsersTableTag(Model model) {
+		buildUserList(model);
+		model.addAttribute("title", "Users List - Custom tags");
+		return "02-custom-tags/usersWithTableTag";
+	}
+
+	/**
+	 * JSP with Tiles
+	 */
+	@RequestMapping(value = "/users/all/jsp-tiles", method = RequestMethod.GET)
+	public String findUsersTiles(Model model) {
+		buildUserList(model);
+		model.addAttribute("title", "Users List - Tiles");
+		return "tiles/users";
+	}
+
 	/**
 	 * JSP with ThymeLeaf
 	 */
-	@RequestMapping(value="/users/all/thymeleaf",method=RequestMethod.GET)
-	public String findUsersThymeLeaf(Model model){
+	@RequestMapping(value = "/users/all/thymeleaf", method = RequestMethod.GET)
+	public String findUsersThymeLeaf(Model model) {
 		buildUserList(model);
 		model.addAttribute("title", "Users List - Thymeleaf");
 		return "thymeleaf/users";
