@@ -54,15 +54,13 @@
 	</servlet>
 
 	<!-- 해다 파일들은 Spring을 거치지 않고 출력됨 / 추가적인 확장자 등록 -->
-	<!-- <servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.gif</url-pattern>
 		<url-pattern>*.jpg</url-pattern>
 		<url-pattern>*.png</url-pattern>
-		<url-pattern>*.css</url-pattern>
-		<url-pattern>*.js</url-pattern>
 		<url-pattern>*.ico</url-pattern>
-	</servlet-mapping> -->
+	</servlet-mapping>
 
 	<!-- <servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
@@ -89,14 +87,14 @@
 		<url-pattern>*.js</url-pattern>
 	</servlet-mapping>
 
-	<jsp-config>
+	<!-- <jsp-config>
 		<jsp-property-group>
-			<url-pattern>*.jsp</url-pattern>
+			<url-pattern>*.jspx</url-pattern>
 			<page-encoding>UTF-8</page-encoding>
 			<scripting-invalid>true</scripting-invalid>
-			<include-prelude>/WEB-INF/views/includes/commonDefinition.jspf</include-prelude>
+			<include-prelude>/WEB-INF/views/includes/commonDefinition.jspx</include-prelude>
 		</jsp-property-group>
-	</jsp-config>
+	</jsp-config> -->
 	
 	<!-- exception-context.xml에 설정 참고 -->
 	<!-- http://www.mkyong.com/spring-mvc/spring-mvc-exception-handling-example/ -->

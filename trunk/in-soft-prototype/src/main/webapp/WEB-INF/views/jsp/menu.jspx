@@ -5,7 +5,7 @@
 	<c:url value="/users/all/jsp-custom-2.htm" var="usersCustomTagsNotEmpty" />
 	<c:url value="/users/all/jsp-tiles.htm" var="usersTiles" />
 	<c:url value="/users/all/thymeleaf.htm" var="usersThymeleaf" />
-	<c:url value="/img/springsource_banner_green.png" var="headerImage" />
+	<c:url value="/resources/images/springsource_banner_green.png" var="headerImage" />
 	<div class="header well">
 		<img src="${headerImage}"/>
 		<div class="page-header">

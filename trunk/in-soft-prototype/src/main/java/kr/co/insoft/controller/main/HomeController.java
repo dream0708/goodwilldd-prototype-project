@@ -130,7 +130,18 @@ public class HomeController {
 		model.addAttribute("title", "Users List - Thymeleaf");
 		return "thymeleaf/users";
 	}
-
+	
+	/**
+	 * 
+	 * @param model
+	 */
+	@RequestMapping(value = "/ttt")
+	public String findUsersTilesWithThymeLeaf(Model model) {
+		buildUserList(model);
+		model.addAttribute("title", "Users List - Thymeleaf");
+		return "tt/users";
+	}
+	
 	private void buildUserList(Model model) {
 		List<User> users = new ArrayList<User>();
 		users.add(new User("Paul", "Chapman"));
