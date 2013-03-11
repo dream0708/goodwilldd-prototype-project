@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.pe.goodwilldd.core.exception.GenericException;
+import kr.pe.goodwilldd.core.util.UtilFactory;
 import kr.pe.goodwilldd.example.model.ExampleModel;
 import kr.pe.goodwilldd.example.model.User;
 import kr.pe.goodwilldd.example.service.ExampleServiceIF;
@@ -31,6 +32,9 @@ public class HomeController {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
+
+	@Autowired
+	private UtilFactory utilFactory;
 
 	@Autowired
 	ExampleServiceIF exampleService;
@@ -96,6 +100,8 @@ public class HomeController {
 	public String findUsersTiles(Model model) {
 		buildUserList(model);
 		model.addAttribute("title", "Users List - Tiles");
+		model.addAttribute("nownow", utilFactory.getDateUtil().now());
+		exampleService.getUserName("svary");
 		return "tiles/users";
 	}
 

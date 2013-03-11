@@ -18,10 +18,11 @@
 	<resources location="/resources/style/" mapping="/css/**" />
 	<resources location="/resources/javascript/" mapping="/js/**" />
 	<!-- <resources location="/resources/images/" mapping="/img/**" /> -->
-	
+
 	<context:component-scan base-package="kr.pe.goodwilldd" />
-	
+
 	<!-- Exception 관련 처리 -->
-	<beans:bean id="exceptionResolver" class="kr.pe.goodwilldd.core.exception.InsoftExceptionResolver" />
-	
+	<beans:bean id="exceptionResolver"
+		class="kr.pe.goodwilldd.core.exception.InsoftExceptionResolver" />
+
 </beans:beans>
