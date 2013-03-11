@@ -9,16 +9,16 @@ xmlns:jsp="http://java.sun.com/JSP/Page">
 
 	<head>
 		<meta charset="utf-8"/>
-		<spring:url value="/style" var="styleUrl" />
+		<spring:url value="/css" var="styleUrl" />
 		<link href="${styleUrl}/app.css" rel="stylesheet"/>
 		<title><c:out value="${title}"/></title>
 	</head>
 	
 	<body>
 		<div class="container" style="padding-top: 50px;">
-			<jsp:include page="/WEB-INF/view/jsp/menu.jspx"/>	
+			<jsp:include page="/WEB-INF/views/jsp/menu.jspx"/>	
 			<tiles:insertAttribute name="main" />
-			<jsp:include page="/WEB-INF/view/jsp/footer.jspx"/>	
+			<jsp:include page="/WEB-INF/views/jsp/footer.jspx"/>	
 		</div>
 	</body>
 </html>
