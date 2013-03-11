@@ -1,4 +1,4 @@
-package kr.co.insoft;
+package kr.pe.goodwilldd;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletionService;
