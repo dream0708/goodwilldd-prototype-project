@@ -588,11 +588,18 @@
 		</plugins>
 	</build>
 	<profiles>
+		<!-- mvn clean install -Pproduction -X -->
 		<!-- maven 배포용 설정 운영서버 운영서버에 필요한 환경 설정 파일은 아래 development에 생성한다. -->
 		<profile>
 			<id>production</id>
 			<build>
 				<resources>
+					<resource>
+						<directory>${basedir}</directory>
+						<excludes>
+							<exclude>.classpath</exclude>
+						</excludes>
+					</resource>
 					<resource>
 						<directory>${basedir}/src/main/webapp/WEB-INF/spring/production</directory>
 						<excludes>
@@ -609,11 +616,18 @@
 				</resources>
 			</build>
 		</profile>
+		<!-- mvn clean install -Pdevelopment -X  -->
 		<!-- maven 배포용 개발 서버 개발서버에 필요한 환경 설정 파일은 아래 development에 생성한다. -->
 		<profile>
 			<id>development</id>
 			<build>
 				<resources>
+					<resource>
+						<directory>${basedir}</directory>
+						<excludes>
+							<exclude>.classpath</exclude>
+						</excludes>
+					</resource>
 					<resource>
 						<directory>${basedir}/src/main/webapp/WEB-INF/spring/development</directory>
 						<excludes>
