@@ -9,6 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import kr.pe.goodwilldd.repository.ChatRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +28,7 @@ public class ChatController {
 		this.chatRepository = chatRepository;
 	}
 
+	@Async
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public DeferredResult<List<String>> getMessages(
@@ -51,6 +53,7 @@ public class ChatController {
 		return deferredResult;
 	}
 
+	@Async
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseBody
 	public void postMessage(@RequestParam String message) {
