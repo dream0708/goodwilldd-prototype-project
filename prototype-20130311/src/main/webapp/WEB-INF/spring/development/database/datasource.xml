@@ -24,4 +24,16 @@
 		<property name="defaultAutoCommit" value="false" />
 		<property name="validationQuery" value="select 1 from dual" />
 	</bean>
+	
+	<!-- 로그 출력용 datasource -->
+	<bean id="logDataSource_pos" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="mysql_datasource" />
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE" />
+				<property name="sqlPrefix" value="#####  " />
+				<!-- <property name="margin" value="1" /> -->
+			</bean>
+		</property>
+	</bean>
 </beans>
