@@ -598,6 +598,8 @@
 						<directory>${basedir}</directory>
 						<excludes>
 							<exclude>.classpath</exclude>
+							<exclude>.project</exclude>
+							<exclude>.springBeans</exclude>
 						</excludes>
 					</resource>
 					<resource>
@@ -626,6 +628,8 @@
 						<directory>${basedir}</directory>
 						<excludes>
 							<exclude>.classpath</exclude>
+							<exclude>.project</exclude>
+							<exclude>.springBeans</exclude>
 						</excludes>
 					</resource>
 					<resource>
