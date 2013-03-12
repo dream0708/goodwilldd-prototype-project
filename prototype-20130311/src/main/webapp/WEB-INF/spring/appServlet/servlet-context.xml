@@ -19,7 +19,10 @@
 	<resources location="/resources/javascript/" mapping="/js/**" />
 	<!-- <resources location="/resources/images/" mapping="/img/**" /> -->
 
+	<!-- default core package don't delete -->
 	<context:component-scan base-package="kr.pe.goodwilldd" />
+	<!-- add user package -->
+	<context:component-scan base-package="kr.co.insoft" />
 
 	<!-- Exception 관련 처리 -->
 	<beans:bean id="exceptionResolver"

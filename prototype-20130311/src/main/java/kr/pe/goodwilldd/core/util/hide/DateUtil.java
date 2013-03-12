@@ -1,6 +1,8 @@
 package kr.pe.goodwilldd.core.util.hide;
 
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -16,6 +18,11 @@ public class DateUtil {
 	private static final Log log = LogFactory.getLog(DateUtil.class);
 
 	public Date now() {
-		return new Date();
+		GregorianCalendar calendar = new GregorianCalendar(Locale.KOREA);
+		return calendar.getTime();
+	}
+
+	public String getFormattedDate(String pattern) {
+		return "";
 	}
 }

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author sylee
  *
  */
-public interface InsoftController {
+public interface CoreController {
 
 	@ExceptionHandler(InsoftExceptionResolver.class)
 	public @ResponseBody String handleException(Exception e, HttpServletResponse response);
