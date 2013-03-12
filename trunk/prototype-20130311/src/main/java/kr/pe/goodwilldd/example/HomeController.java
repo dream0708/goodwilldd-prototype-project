@@ -105,6 +105,16 @@ public class HomeController {
 		return "tiles/users";
 	}
 
+	/**
+	 * JSP with ThymeLeaf
+	 */
+	@RequestMapping(value = "/thymeleaf", method = RequestMethod.GET)
+	public String findUsersThymeLeaf(Model model) {
+		buildUserList(model);
+		model.addAttribute("title", "Users List - Thymeleaf");
+		return "thymeleaf/users";
+	}
+
 	private void buildUserList(Model model) {
 		List<User> users = new ArrayList<User>();
 		users.add(new User("Paul", "Chapman"));

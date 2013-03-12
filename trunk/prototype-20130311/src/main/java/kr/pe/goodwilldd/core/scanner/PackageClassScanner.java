@@ -18,6 +18,9 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.SystemPropertyUtils;
 
+/**
+ * Package Class Scan
+ */
 public class PackageClassScanner {
 	private static final Logger logger = LoggerFactory
 			.getLogger(PackageClassScanner.class);
