@@ -18,34 +18,26 @@
 	</http>
 
 	<!-- global point cut method security -->
-	<!-- <global-method-security>
-		<protect-pointcut expression="execution(* kr.co.insoft.**.*Service.*(..))"
-			access="ROLE_USER" />
-	</global-method-security> -->
+	<!-- <global-method-security> <protect-pointcut expression="execution(* 
+		kr.co.insoft.**.*Service.*(..))" access="ROLE_USER" /> </global-method-security> -->
 
 	<authentication-manager>
-		<authentication-provider user-service-ref="insoftAuthenticationService">
+		<authentication-provider user-service-ref="insoftUserDetailService">
 			<password-encoder ref="shaPasswordEncoder" />
-			<!-- <user-service>
-				<user name="jimi" password="jimispassword" authorities="ROLE_USER, ROLE_ADMIN" />
-				<user name="bob" password="bobspassword" authorities="ROLE_USER" />
-			</user-service> -->
 		</authentication-provider>
 	</authentication-manager>
 
+	<!-- 사용자 provider -->
 	<!-- 암호화 SHA -->
-	<beans:bean id="shaPasswordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+	<beans:bean id="shaPasswordEncoder"
+		class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
 		<beans:constructor-arg value="256" />
 	</beans:bean>
 	<!-- Spring Encoder -->
 	<beans:bean id="standardEncoder"
-	class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+		class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
 	<!-- MD5 -->
-	<beans:bean id="MD5" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
-	
-	<beans:bean id="insoftAuthenticationService"
-		class="kr.co.insoft.security.service.InsoftUserDetailService">
-		<beans:constructor-arg ref="securityMapper" />
-	</beans:bean>
-	
+	<beans:bean id="MD5"
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
 </beans:beans>
