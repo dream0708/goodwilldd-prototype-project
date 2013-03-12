@@ -595,14 +595,6 @@
 			<build>
 				<resources>
 					<resource>
-						<directory>${basedir}</directory>
-						<excludes>
-							<exclude>.classpath</exclude>
-							<exclude>.project</exclude>
-							<exclude>.springBeans</exclude>
-						</excludes>
-					</resource>
-					<resource>
 						<directory>${basedir}/src/main/webapp/WEB-INF/spring/production</directory>
 						<excludes>
 							<exclude>**/*.java</exclude>
@@ -624,14 +616,6 @@
 			<id>development</id>
 			<build>
 				<resources>
-					<resource>
-						<directory>${basedir}</directory>
-						<excludes>
-							<exclude>.classpath</exclude>
-							<exclude>.project</exclude>
-							<exclude>.springBeans</exclude>
-						</excludes>
-					</resource>
 					<resource>
 						<directory>${basedir}/src/main/webapp/WEB-INF/spring/development</directory>
 						<excludes>
