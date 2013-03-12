@@ -8,6 +8,9 @@ xmlns:jsp="http://java.sun.com/JSP/Page">
 
 	<head>
 		<meta charset="utf-8"/>
+		<script type="text/javascript" src="${jsUrl }/jquery/jquery-1.9.1.js"><!-- --></script>
+		<script type="text/javascript" src="${jsUrl }/knockout/knockout-2.2.1.js"><!-- --></script>
+		<script type="text/javascript" src="${jsUrl }/common.js"><!-- --></script>
 		<link href="${styleUrl}/app.css" rel="stylesheet"/>
 		<title><c:out value="${title}"/></title>
 	</head>
