@@ -115,6 +115,12 @@ public class HomeController {
 		return "thymeleaf/users";
 	}
 
+	@RequestMapping(value = "/chatView", method = RequestMethod.GET)
+	public String getPage(Model model) {
+		model.addAttribute("title", "Chating!!");
+		return "thymeleaf/chat";
+	}
+
 	private void buildUserList(Model model) {
 		List<User> users = new ArrayList<User>();
 		users.add(new User("Paul", "Chapman"));
