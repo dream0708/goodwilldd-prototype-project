@@ -23,7 +23,7 @@
 	<context:component-scan base-package="kr.pe.goodwilldd" />
 	<!-- add user package -->
 	<context:component-scan base-package="kr.co.insoft" />
-
+	
 	<!-- Exception 관련 처리 -->
 	<beans:bean id="exceptionResolver"
 		class="kr.pe.goodwilldd.core.exception.InsoftExceptionResolver" />
