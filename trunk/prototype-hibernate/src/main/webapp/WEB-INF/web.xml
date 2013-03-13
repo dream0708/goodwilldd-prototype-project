@@ -113,4 +113,11 @@
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/WEB-INF/views/exceptions/error.jsp</location>
 	</error-page> -->
+	<!-- hibernate JNDI -->
+	<resource-ref>
+		<description>This is a PostgreSql database connection</description>
+		<res-ref-name>jdbc/prototype</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
 </web-app>
