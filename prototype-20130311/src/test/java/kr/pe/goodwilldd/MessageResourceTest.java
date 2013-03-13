@@ -13,9 +13,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:root-context.xml")
-public class HomeController {
+public class MessageResourceTest {
 
-	private static final Log log = LogFactory.getLog(HomeController.class);
+	private static final Log log = LogFactory.getLog(MessageResourceTest.class);
 	
 	@Autowired
 	private ReloadableResourceBundleMessageSource messageSource;

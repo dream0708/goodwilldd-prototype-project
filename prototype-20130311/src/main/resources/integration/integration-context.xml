@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-stream="http://www.springframework.org/schema/integration/stream"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-2.2.xsd
+  http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream-2.2.xsd
+  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<int:publish-subscribe-channel id="messagesChannel"/>
+
+	<int:gateway service-interface="kr.pe.goodwilldd.integration.Greeter"
+		default-request-channel="messagesChannel"></int:gateway>
+
+	<int-stream:stdout-channel-adapter
+		channel="messagesChannel" append-newline="true" />
+	<int-stream:stderr-channel-adapter
+		channel="messagesChannel" append-newline="true" />
+
+
+</beans>
