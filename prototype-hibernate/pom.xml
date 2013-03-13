@@ -44,7 +44,6 @@
 		<commons-fileupload-version>1.2.2</commons-fileupload-version>
 		<commons-io-version>2.1</commons-io-version>
 		<json-lib-version>2.4</json-lib-version>
-		<mysql-connector-java-version>5.1.23</mysql-connector-java-version>
 		<jdom-version>2.0.2</jdom-version>
 		<commons-beanutils-version>1.8.3</commons-beanutils-version>
 		<commons-collections-version>3.2.1</commons-collections-version>
@@ -297,17 +296,11 @@
 			<version>1.0.1.Final</version>
 		</dependency>
 
-		<!-- log4jdbc / 쿼리 로그 -->
+		<!-- mvn install:install-file -Dfile=C:\postgresql-9.2-1002.jdbc4.jar -DgroupId=postgresql -DartifactId=postgresql -Dversion=9.2.1002 -Dpackaging=jar -DgeneratePom=true -->
 		<dependency>
-			<groupId>org.lazyluke</groupId>
-			<artifactId>log4jdbc-remix</artifactId>
-			<version>0.2.7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql-connector-java-version}</version>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.2.1002</version>
 		</dependency>
 
 		<dependency>

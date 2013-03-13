@@ -9,29 +9,14 @@
 
 	<tx:annotation-driven />
 
-	<jdbc:embedded-database id="dataSource">
-		<jdbc:script location="classpath:database/hibernate/config/schema.sql" />
-	</jdbc:embedded-database>
-
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="mysql_datasource" />
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.format_sql">true</prop>
-				<prop key="hibernate.show_sql">true</prop>
-			</props>
-		</property>
-		<property name="annotatedClasses">
-			<list>
-				<value>kr.pe.goodwilldd.example.dto.Account</value>
-			</list>
-		</property>
+		<!-- <property name="configLocation" value="classpath:database/hibernate.cfg.xml"></property> -->
 	</bean>
 
-	<bean id="transactionManager"
+	<bean id="txManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
+		<property ref="sessionFactory" name="sessionFactory"></property>
 	</bean>
 
 </beans>

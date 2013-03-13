@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<context path="/DVDStore" antijarlocking="true">
+	<resource type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/postgres"
+		name="jdbc/prototype" password="xodbs4fkd" maxwait="10000" maxidle="10"
+		maxactive="30" username="postgres" driverclassname="org.postgresql.Driver"
+		auth="Container">
+	</resource>
+</context>
