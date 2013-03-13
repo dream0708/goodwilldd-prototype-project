@@ -11,4 +11,5 @@
 	<import resource="classpath:database/mybatis.xml"/>
 	<import resource="classpath:messages/messages-context.xml"/>
 	<import resource="classpath:exceptions/exception-context.xml"/>
+	<import resource="classpath:integration/integration-context.xml"/>
 </beans>

@@ -1,4 +1,4 @@
-package kr.pe.goodwilldd;
+package kr.pe.goodwilldd.util;
 
 import kr.pe.goodwilldd.core.util.UtilFactory;
 

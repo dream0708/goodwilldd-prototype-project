@@ -1,4 +1,4 @@
-package kr.pe.goodwilldd;
+package kr.pe.goodwilldd.example;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletionService;
