@@ -5,6 +5,9 @@
 <title>Home</title>
 </head>
 <body>
+	<c:if test="${!empty param.ir }">
+		<h1>로그인 실패</h1>
+	</c:if>
 	<form name='f' action='https://localhost:8443/goodwilldd/j_spring_security_check' method='POST'>
 		<table>
 			<tr>
