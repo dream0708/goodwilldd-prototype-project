@@ -10,9 +10,13 @@
 		<intercept-url pattern="/j_spring_security_check*" access="IS_AUTHENTICATED_ANONYMOUSLY,IS_AUTHENTICATED_REMEMBERED" requires-channel="https"/>
 		<intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY,IS_AUTHENTICATED_REMEMBERED"/>
 		<intercept-url pattern="/**" access="ROLE_USER" requires-channel="http"/>
+		<!-- <port-mappings>
+			<port-mapping http="8080" https="8443"/>
+		</port-mappings> -->
 		<logout invalidate-session="true" delete-cookies="LKEYS"/>
 		<remember-me key="LKEYS" use-secure-cookie="true"/>
-		<form-login login-page="/login" default-target-url="/" always-use-default-target="true"/>
+		<form-login login-page="/login" default-target-url="/" always-use-default-target="true"
+		authentication-failure-url="/login?ir=false" />
 		<session-management session-fixation-protection="none">
 		</session-management>
 	</http>
@@ -20,8 +24,8 @@
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="jimi" password="1" authorities="ROLE_USER, ROLE_ADMIN" />
-				<user name="bob" password="2" authorities="ROLE_USER" />
+				<user name="jimi" password="111111" authorities="ROLE_USER, ROLE_ADMIN" />
+				<user name="bob" password="222222" authorities="ROLE_USER" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
