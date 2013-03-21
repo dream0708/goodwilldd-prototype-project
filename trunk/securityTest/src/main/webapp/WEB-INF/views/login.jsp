@@ -7,7 +7,7 @@
 </head>
 <body>
 	<%-- <form name='f' action='<c:url value="/j_spring_security_check"/>' method='POST'> --%>
-	<form name='f' action='https://localhost:8443/goodwilldd/j_spring_security_check' method='POST'>
+	<form name='f' action='https://localhost:8080/goodwilldd/j_spring_security_check' method='POST'>
 		<table>
 			<tr>
 				<td>User:</td>
