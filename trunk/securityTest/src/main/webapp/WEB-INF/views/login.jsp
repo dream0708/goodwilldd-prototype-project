@@ -1,13 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
 <title>Home</title>
 </head>
 <body>
-	<c:if test="${!empty param.ir }">
-		<h1>로그인 실패</h1>
-	</c:if>
+	<%-- <form name='f' action='<c:url value="/j_spring_security_check"/>' method='POST'> --%>
 	<form name='f' action='https://localhost:8443/goodwilldd/j_spring_security_check' method='POST'>
 		<table>
 			<tr>

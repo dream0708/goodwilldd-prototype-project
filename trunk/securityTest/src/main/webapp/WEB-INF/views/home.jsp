@@ -7,8 +7,9 @@
 </head>
 <body>
 <h1>
-	<sec:authentication property="name"/> Hello world!  
+	<sec:authentication property="principal.username"/> Hello world!  
 </h1>
+<sec:authentication property="principal.authorities"/>
 
 <P>  The time on the server is ${serverTime}. </P>
 <a href="/goodwilldd/j_spring_security_logout">로그아웃</a>
