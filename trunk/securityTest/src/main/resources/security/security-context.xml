@@ -6,15 +6,23 @@
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
+	<!-- method security -->
+	<global-method-security jsr250-annotations="enabled"  pre-post-annotations="enabled">
+		<!-- use point cut!!  -->
+		<!-- <protect-pointcut expression="execution(* com.mycompany.*Service.*(..))" access="ROLE_USER"/> -->
+	</global-method-security>
+	
 	<http auto-config='true'>
-		<intercept-url pattern="/j_spring*" access="IS_AUTHENTICATED_ANONYMOUSLY" requires-channel="https"/>
+		<intercept-url pattern="/j_spring*" access="IS_AUTHENTICATED_ANONYMOUSLY" requires-channel="any"/>
 		<intercept-url pattern="/login*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-		<intercept-url pattern="/**" access="ROLE_USER" requires-channel="http"/>
+		<intercept-url pattern="/**" access="ROLE_USER" requires-channel="any"/>
 		<logout invalidate-session="true" delete-cookies="LKEYS"/>
 		<remember-me key="LKEYS" use-secure-cookie="true"/>
-		<form-login login-page="/login" default-target-url="/" always-use-default-target="true"/>
-		<session-management session-fixation-protection="none">
-		</session-management>
+		<session-management session-fixation-protection="none" />
+		<form-login login-page="/login" default-target-url="/"
+							always-use-default-target="true" 
+							authentication-success-handler-ref="successHandler" 
+							authentication-failure-url="/login"/>
 	</http>
 
 	<authentication-manager>
@@ -25,4 +33,9 @@
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
+	
+	<!-- successHandler -->
+	<beans:bean id="successHandler" class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">
+		<beans:property name="useReferer" value="true" />
+	</beans:bean>
 </beans:beans>
