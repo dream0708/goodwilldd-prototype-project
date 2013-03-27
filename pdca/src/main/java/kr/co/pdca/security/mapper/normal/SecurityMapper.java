@@ -12,12 +12,12 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SecurityMapper extends CoreMapper {
-	@Select(value = "SELECT * FROM TB_AUTH WHERE USERID=#{username}")
+	@Select(value = "SELECT * FROM TB_AUTH WHERE USERNAME=#{username}")
 	public AuthenticationEntity getUser(String username);
 
 	@Select(value = "SELECT * FROM TB_AUTH")
 	public List<Map<String, String>> getUserList();
 
-	@Select(value = "SELECT USERNAME, AUTHORITY FROM TB_AUTH_ROLE")
+	@Select(value = "SELECT USERNAME, AUTHORITY FROM TB_AUTH_ROLE WHERE USERNAME=#{username}")
 	public List<UserRole> getUserRole(String username);
 }
