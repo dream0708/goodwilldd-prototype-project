@@ -1,0 +1,7 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:jsp="http://java.sun.com/JSP/Page">
+	<form name="f" action="${CONTEXT }/sec/processing.htm" method="post">
+	<input type="text" id="sec_userid" name="sec_userid" value=""/>
+	<input type="text" id="sec_password" name="sec_password" value=""/>
+	<button>로그인</button>
+	</form>
+</div>
