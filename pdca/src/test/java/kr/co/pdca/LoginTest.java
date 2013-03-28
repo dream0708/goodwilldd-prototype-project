@@ -19,8 +19,9 @@ public class LoginTest {
 	Md5PasswordEncoder passwordEncoder;
 	
 	@Test
-	public void login() {
-		logger.info("***** Test *****");
+	public void passwordEncoderTest() {
+		logger.info("goodwilldd " + passwordEncoder.encodePassword("goodwilldd", null));
 		logger.info("ssamkj " + passwordEncoder.encodePassword("ssamkj", null));
 	}
+	
 }
