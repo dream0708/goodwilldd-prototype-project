@@ -8,7 +8,7 @@
 	<!-- global point cut method security -->
 	<!-- <global-method-security> <protect-pointcut expression="execution(* 
 		kr.co.insoft.**.*Service.*(..))" access="ROLE_USER" /> </global-method-security> -->
-	<global-method-security secured-annotations="enabled"/>
+	<global-method-security secured-annotations="enabled" />
 
 	<http pattern="/resources/**" security="none" />
 	<http pattern="/js/**" security="none" />
@@ -22,25 +22,29 @@
 		<remember-me use-secure-cookie="true" key="SECPDCA" />
 		<form-login login-page="/sec/login.htm"
 			login-processing-url="/sec/processing.htm" username-parameter="sec_userid"
-			password-parameter="sec_password" always-use-default-target="true"
-			default-target-url="/" />
+			password-parameter="sec_password" authentication-failure-handler-ref="customFailHandler"
+			authentication-success-handler-ref="customSuccessHandler" />
 		<logout delete-cookies="SECPDCA" invalidate-session="true"
 			logout-success-url="/" logout-url="/sec/logout.htm" />
-		<session-management session-fixation-protection="migrateSession" invalid-session-url="/">
+		<session-management session-fixation-protection="migrateSession"
+			invalid-session-url="/">
 			<concurrency-control max-sessions="1"
 				error-if-maximum-exceeded="true" />
 		</session-management>
 	</http>
 	<authentication-manager>
 		<authentication-provider user-service-ref='customUserDetailService'>
-			<password-encoder ref="MD5PasswordEncoder"/>
+			<password-encoder ref="MD5PasswordEncoder" />
 		</authentication-provider>
 	</authentication-manager>
-	
-	<!-- CustomUserDetailService -->
-	<beans:bean id="customUserDetailService" class="kr.co.pdca.security.service.CustomUserDetailService"></beans:bean>
 
-	<!-- 사용자 provider -->
+	<beans:bean id="customUserDetailService"
+		class="kr.co.pdca.security.service.CustomUserDetailService" />
+	<beans:bean id="customFailHandler"
+		class="kr.co.pdca.security.handler.CustomLoginFailureHandler" />
+	<beans:bean id="customSuccessHandler"
+		class="kr.co.pdca.security.handler.CustomLoginSuccessHandler" />
+
 	<!-- 암호화 SHA -->
 	<beans:bean id="shaPasswordEncoder"
 		class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">

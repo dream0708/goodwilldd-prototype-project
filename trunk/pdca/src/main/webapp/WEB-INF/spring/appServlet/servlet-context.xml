@@ -25,7 +25,4 @@
 	
 	<context:component-scan base-package="kr.co.pdca" />
 	
-	<!-- Exception 관련 처리 -->
-	<!-- <beans:bean id="exceptionResolver"
-		class="kr.pe.goodwilldd.core.exception.InsoftExceptionResolver" /> -->
 </beans:beans>
