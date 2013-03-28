@@ -11,9 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @ContextConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
-public class LoginTest {
+public class PDCATest {
 
-	private static final Log logger = LogFactory.getLog(LoginTest.class);
+	private static final Log logger = LogFactory.getLog(PDCATest.class);
 
 	@Autowired
 	Md5PasswordEncoder passwordEncoder;
@@ -22,6 +22,7 @@ public class LoginTest {
 	public void passwordEncoderTest() {
 		logger.info("goodwilldd " + passwordEncoder.encodePassword("goodwilldd", null));
 		logger.info("ssamkj " + passwordEncoder.encodePassword("ssamkj", null));
+//		logger.info("ssamkj " + passwordEncoder.encodePassword("ssamkj", "ssamkj"));
 	}
 	
 }
