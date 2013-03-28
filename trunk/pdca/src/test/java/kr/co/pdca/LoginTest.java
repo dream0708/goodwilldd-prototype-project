@@ -4,6 +4,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -13,8 +15,12 @@ public class LoginTest {
 
 	private static final Log logger = LogFactory.getLog(LoginTest.class);
 
+	@Autowired
+	Md5PasswordEncoder passwordEncoder;
+	
 	@Test
 	public void login() {
 		logger.info("***** Test *****");
+		logger.info("ssamkj " + passwordEncoder.encodePassword("ssamkj", null));
 	}
 }
