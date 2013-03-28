@@ -35,4 +35,10 @@ public class PDCATest {
 	public void UtilFactorySingletonTest() {
 		Assert.assertEquals(utilFactory.objectUtil(), utilFactory.objectUtil());
 	}
+	
+	@Test
+	public void CommonPropertiesTest() {
+		Assert.assertNotNull((utilFactory.commonPropertiesUtil()).getString("test"));
+		logger.info((utilFactory.commonPropertiesUtil()).getString("test"));
+	}
 }
