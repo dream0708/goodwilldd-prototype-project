@@ -10,9 +10,11 @@
 		</thead>
 		<tbody>
 			<tr>
+				<th><label for="sec_userid">사용자 ID</label></th>
 				<td><input type="text" id="sec_userid" name="sec_userid" value=""/></td>
 			</tr>
 			<tr>
+				<th><label for="sec_password">사용자 PASSWORD</label></th>
 				<td><input type="text" id="sec_password" name="sec_password" value=""/></td>
 			</tr>
 			<tr>
