@@ -37,7 +37,6 @@ public class CustomUserDetailService implements UserDetailsService {
 	@DependsOn(value = { "securityMapper" })
 	public UserDetails loadUserByUsername(String username)
 			throws UsernameNotFoundException {
-
 		Vector<GrantedAuthority> userAuthorities = new Vector<GrantedAuthority>();
 		List<UserRole> userRole = getUserRole(username);
 		ListIterator<UserRole> userRoleLiterator = userRole.listIterator();
