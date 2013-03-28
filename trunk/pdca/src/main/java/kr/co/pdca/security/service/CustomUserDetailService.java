@@ -4,13 +4,11 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Vector;
 
-import kr.co.pdca.core.util.UtilFactory;
+import kr.co.pdca.core.util.realize.ObjectUtil;
 import kr.co.pdca.security.entity.AuthenticationEntity;
 import kr.co.pdca.security.entity.UserRole;
 import kr.co.pdca.security.mapper.normal.SecurityMapper;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,13 +23,11 @@ import org.springframework.util.StringUtils;
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 
-	private static final Log logger = LogFactory
-			.getLog(CustomUserDetailService.class);
-
-	@Autowired(required = true)
+	@Autowired
 	SecurityMapper securityMapper;
 
-	UtilFactory utilFactory;
+	@Autowired
+	ObjectUtil objectUtil;
 
 	@Override
 	@DependsOn(value = { "securityMapper" })
@@ -43,12 +39,12 @@ public class CustomUserDetailService implements UserDetailsService {
 		while (userRoleLiterator.hasNext()) {
 			String tempRole = userRoleLiterator.next().getAuthority();
 			userAuthorities.add(new SimpleGrantedAuthority(tempRole));
-			logger.info("User's role has " + tempRole);
 		}
 
 		try {
 			AuthenticationEntity domainUser = getUser(username);
-			if (utilFactory.objectUtil().isEmpty(domainUser)) {
+
+			if (objectUtil.isEmpty(domainUser)) {
 				domainUser.setPassword("");
 				domainUser.setUsername("");
 			}
@@ -72,6 +68,7 @@ public class CustomUserDetailService implements UserDetailsService {
 					credentialsNonExpired, accountNonLocked, userAuthorities);
 			return user;
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}

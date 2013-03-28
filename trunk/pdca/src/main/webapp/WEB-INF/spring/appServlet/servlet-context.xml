@@ -28,12 +28,4 @@
 
 	<context:component-scan base-package="kr.co.pdca" />
 
-	<!-- <beans:bean id="commonProperties"
-		class="org.apache.commons.configuration.PropertiesConfiguration">
-		<beans:constructor-arg type="java.lang.String"
-			value="D:\\development\\goodwilldd\\pdca\\src\\main\\resources\\properties\\common-properties.xml" />
-		<beans:property name="reloadingStrategy" ref="reloadingStrategy" />
-	</beans:bean>
-	<beans:bean id="reloadingStrategy"
-		class="org.apache.commons.configuration.reloading.FileChangedReloadingStrategy" /> -->
 </beans:beans>

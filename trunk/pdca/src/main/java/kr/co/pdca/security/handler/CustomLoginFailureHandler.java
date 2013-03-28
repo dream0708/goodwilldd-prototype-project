@@ -31,18 +31,24 @@ public class CustomLoginFailureHandler implements AuthenticationFailureHandler {
 	public void onAuthenticationFailure(HttpServletRequest request,
 			HttpServletResponse response, AuthenticationException auth)
 			throws IOException, ServletException {
-		LoginFailureCause msg = LoginFailureCause.defaultFalse;
-		if (auth instanceof SessionAuthenticationException) {
-			msg = msg.maxsession;
-		} else if (auth instanceof BadCredentialsException) {
-			msg = msg.badcredentials;
-		} else if (auth instanceof LockedException) {
-			msg = msg.locked;
-		} else if (auth instanceof DisabledException) {
-			msg = msg.disabled;
+		try {
+			LoginFailureCause msg = LoginFailureCause.defaultFalse;
+			if (auth instanceof SessionAuthenticationException) {
+				msg = msg.maxsession;
+			} else if (auth instanceof BadCredentialsException) {
+				msg = msg.badcredentials;
+			} else if (auth instanceof LockedException) {
+				msg = msg.locked;
+			} else if (auth instanceof DisabledException) {
+				msg = msg.disabled;
+			}
+			logger.error(auth);
+			response.sendRedirect(request.getContextPath()
+					+ "/sec/login.htm?lr=" + msg.name());	
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		response.sendRedirect(request.getContextPath()
-				+ "/sec/login.htm?lr=" + msg.name());
+		
 	}
 
 }
