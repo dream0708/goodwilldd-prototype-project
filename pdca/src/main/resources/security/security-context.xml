@@ -32,7 +32,9 @@
 		</session-management>
 	</http>
 	<authentication-manager>
-		<authentication-provider user-service-ref='customUserDetailService' />
+		<authentication-provider user-service-ref='customUserDetailService'>
+			<password-encoder ref="MD5PasswordEncoder"/>
+		</authentication-provider>
 	</authentication-manager>
 	
 	<!-- CustomUserDetailService -->
