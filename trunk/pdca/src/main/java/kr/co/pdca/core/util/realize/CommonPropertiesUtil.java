@@ -1,11 +1,12 @@
 package kr.co.pdca.core.util.realize;
 
+import java.io.File;
+import java.net.URL;
+
 import javax.annotation.PostConstruct;
 
-import kr.co.pdca.core.util.properties.CustomReloadingStrategy;
-
 import org.apache.commons.configuration.XMLPropertiesConfiguration;
-import org.junit.Assert;
+import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
 
 public class CommonPropertiesUtil {
 
@@ -15,18 +16,20 @@ public class CommonPropertiesUtil {
 	public void init() {
 		try {
 			properties = new XMLPropertiesConfiguration();
-			properties.load(getClass().getResourceAsStream(
-					"/properties/common-properties.xml"));
-
-			properties.setReloadingStrategy(new CustomReloadingStrategy(
-					1000 * 60 * 60));
+			URL url = getClass().getResource(
+					"/properties/common-properties.xml");
+			File propertiesFile = new File(url.getPath());
+			properties.load(propertiesFile);
+			FileChangedReloadingStrategy reload = new FileChangedReloadingStrategy();
+			reload.setConfiguration(properties);
+			reload.setRefreshDelay(1000L*60L*60L);
+			properties.setReloadingStrategy(reload);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public String getString(String key) {
-		Assert.assertNotNull(properties);
 		return (String) properties.getProperty(key);
 	}
 }
