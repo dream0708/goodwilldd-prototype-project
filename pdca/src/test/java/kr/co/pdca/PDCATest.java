@@ -1,5 +1,8 @@
 package kr.co.pdca;
 
+import junit.framework.Assert;
+import kr.co.pdca.core.util.UtilFactory;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
@@ -17,12 +20,19 @@ public class PDCATest {
 
 	@Autowired
 	Md5PasswordEncoder passwordEncoder;
-	
+
+	@Autowired
+	UtilFactory utilFactory;
+
 	@Test
 	public void passwordEncoderTest() {
-		logger.info("goodwilldd " + passwordEncoder.encodePassword("goodwilldd", null));
+		logger.info("goodwilldd "
+				+ passwordEncoder.encodePassword("goodwilldd", null));
 		logger.info("ssamkj " + passwordEncoder.encodePassword("ssamkj", null));
-//		logger.info("ssamkj " + passwordEncoder.encodePassword("ssamkj", "ssamkj"));
 	}
-	
+
+	@Test
+	public void UtilFactorySingletonTest() {
+		Assert.assertEquals(utilFactory.objectUtil(), utilFactory.objectUtil());
+	}
 }

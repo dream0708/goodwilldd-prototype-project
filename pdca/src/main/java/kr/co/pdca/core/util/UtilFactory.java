@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class UtilFactory {
 
 	@Bean
-	public static ObjectUtil objectUtil() {
+	public ObjectUtil objectUtil() {
 		return new ObjectUtil();
 	}
 }
