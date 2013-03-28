@@ -1,4 +1,4 @@
-package kr.co.pdca.core.util.realize;
+package kr.co.pdca.core.util;
 
 import java.lang.reflect.Array;
 import java.util.Collection;

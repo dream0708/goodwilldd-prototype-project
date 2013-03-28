@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Vector;
 
-import kr.co.pdca.core.util.realize.ObjectUtil;
+import kr.co.pdca.core.util.ObjectUtil;
 import kr.co.pdca.security.entity.AuthenticationEntity;
 import kr.co.pdca.security.entity.UserRole;
 import kr.co.pdca.security.mapper.normal.SecurityMapper;
@@ -43,7 +43,6 @@ public class CustomUserDetailService implements UserDetailsService {
 
 		try {
 			AuthenticationEntity domainUser = getUser(username);
-
 			if (objectUtil.isEmpty(domainUser)) {
 				domainUser.setPassword("");
 				domainUser.setUsername("");
@@ -68,7 +67,6 @@ public class CustomUserDetailService implements UserDetailsService {
 					credentialsNonExpired, accountNonLocked, userAuthorities);
 			return user;
 		} catch (Exception e) {
-			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
 	}

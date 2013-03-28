@@ -1,8 +1,8 @@
 package kr.co.pdca;
 
 import junit.framework.Assert;
-import kr.co.pdca.core.util.realize.CommonPropertiesUtil;
-import kr.co.pdca.core.util.realize.ObjectUtil;
+import kr.co.pdca.core.util.CommonPropertiesUtil;
+import kr.co.pdca.core.util.ObjectUtil;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
