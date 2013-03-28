@@ -1,7 +1,8 @@
 package kr.co.pdca;
 
 import junit.framework.Assert;
-import kr.co.pdca.core.util.UtilFactory;
+import kr.co.pdca.core.util.realize.CommonPropertiesUtil;
+import kr.co.pdca.core.util.realize.ObjectUtil;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -22,7 +23,28 @@ public class PDCATest {
 	Md5PasswordEncoder passwordEncoder;
 
 	@Autowired
-	UtilFactory utilFactory;
+	ObjectUtil objectUtil;
+
+	@Autowired
+	ObjectUtil objectUtil2;
+
+	@Autowired
+	CommonPropertiesUtil commonPropertiesUtil;
+
+	@Autowired
+	CommonPropertiesUtil commonPropertiesUtil2;
+
+	@Test
+	public void objectUtiltest() {
+		Assert.assertNotNull(objectUtil);
+		logger.info(objectUtil.isEmpty(null));
+	}
+
+	@Test
+	public void singletonTest() {
+		Assert.assertEquals(objectUtil, objectUtil2);
+		Assert.assertEquals(commonPropertiesUtil, commonPropertiesUtil2);
+	}
 
 	@Test
 	public void passwordEncoderTest() {
@@ -32,13 +54,8 @@ public class PDCATest {
 	}
 
 	@Test
-	public void UtilFactorySingletonTest() {
-		Assert.assertEquals(utilFactory.objectUtil(), utilFactory.objectUtil());
-	}
-	
-	@Test
 	public void CommonPropertiesTest() {
-		Assert.assertNotNull((utilFactory.commonPropertiesUtil()).getString("test"));
-		logger.info((utilFactory.commonPropertiesUtil()).getString("test"));
+		Assert.assertNotNull(commonPropertiesUtil.getString("test"));
+		logger.info(commonPropertiesUtil.getString("test"));
 	}
 }

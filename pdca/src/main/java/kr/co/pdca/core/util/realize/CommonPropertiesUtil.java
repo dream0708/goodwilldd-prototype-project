@@ -22,7 +22,7 @@ public class CommonPropertiesUtil {
 			properties.load(propertiesFile);
 			FileChangedReloadingStrategy reload = new FileChangedReloadingStrategy();
 			reload.setConfiguration(properties);
-			reload.setRefreshDelay(1000L*60L*60L);
+			reload.setRefreshDelay(1000L * 60L * 60L);
 			properties.setReloadingStrategy(reload);
 		} catch (Exception e) {
 			e.printStackTrace();

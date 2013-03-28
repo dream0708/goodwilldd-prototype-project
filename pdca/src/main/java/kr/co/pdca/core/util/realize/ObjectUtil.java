@@ -3,7 +3,7 @@ package kr.co.pdca.core.util.realize;
 import java.lang.reflect.Array;
 import java.util.Collection;
 
-@SuppressWarnings({ "unchecked", "rawtypes" })
+@SuppressWarnings({ "rawtypes" })
 public class ObjectUtil {
 
 	public boolean isEmpty(Object object) {
