@@ -9,7 +9,10 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 		
 	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
-	<jdbc:embedded-database id="dataSource" type="H2" />
+	<jdbc:embedded-database id="dataSource" type="H2">
+		<jdbc:script location="classpath:database/create_table.sql"/>
+		<jdbc:script location="classpath:database/init_data.sql"/>
+	</jdbc:embedded-database>
 	<!-- 로그 출력용 datasource -->
 	<bean id="loggingDataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
 		<constructor-arg ref="dataSource" />

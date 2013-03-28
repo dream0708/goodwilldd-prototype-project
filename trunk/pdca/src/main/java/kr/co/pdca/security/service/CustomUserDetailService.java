@@ -9,6 +9,8 @@ import kr.co.pdca.security.entity.AuthenticationEntity;
 import kr.co.pdca.security.entity.UserRole;
 import kr.co.pdca.security.mapper.normal.SecurityMapper;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,10 +25,13 @@ import org.springframework.util.StringUtils;
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 
+	private static final Log logger = LogFactory
+			.getLog(CustomUserDetailService.class);
+
 	@Autowired(required = true)
 	SecurityMapper securityMapper;
 
-	UtilFactory utilFactory = new UtilFactory();
+	UtilFactory utilFactory;
 
 	@Override
 	@DependsOn(value = { "securityMapper" })
@@ -39,12 +44,14 @@ public class CustomUserDetailService implements UserDetailsService {
 		while (userRoleLiterator.hasNext()) {
 			String tempRole = userRoleLiterator.next().getAuthority();
 			userAuthorities.add(new SimpleGrantedAuthority(tempRole));
+			logger.info("User's role has " + tempRole);
 		}
 
 		try {
 			AuthenticationEntity domainUser = getUser(username);
 			if (utilFactory.objectUtil().isEmpty(domainUser)) {
-				domainUser = new AuthenticationEntity();
+				domainUser.setPassword("");
+				domainUser.setUsername("");
 			}
 
 			boolean enabled = true;
@@ -61,10 +68,9 @@ public class CustomUserDetailService implements UserDetailsService {
 			boolean credentialsNonExpired = true;
 			boolean accountNonLocked = true;
 
-			User user = new User(domainUser.getUsername(), domainUser
-					.getPassword().toLowerCase(), enabled, accountNonExpired,
+			User user = new User(domainUser.getUsername(),
+					domainUser.getPassword(), enabled, accountNonExpired,
 					credentialsNonExpired, accountNonLocked, userAuthorities);
-
 			return user;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
