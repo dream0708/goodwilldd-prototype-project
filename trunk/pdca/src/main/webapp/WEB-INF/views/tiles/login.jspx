@@ -15,7 +15,7 @@
 			</tr>
 			<tr>
 				<th><label for="sec_password">사용자 PASSWORD</label></th>
-				<td><input type="text" id="sec_password" name="sec_password" value=""/></td>
+				<td><input type="password" id="sec_password" name="sec_password" value=""/></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><button>로그인</button></td>
