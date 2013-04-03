@@ -1,0 +1,40 @@
+.error{
+	color: red;
+}
+
+.success{
+	color: green;
+}
+
+.pagination {
+	width: 600px;
+	text-align: center;
+}
+
+.pagination ul {
+	list-style-type: none;
+	margin: 5px;
+	padding: 0px;
+}
+
+.pagination li {
+	display: inline;
+	padding: 5px;
+}
+
+.contents {
+	width: 600px;
+}
+
+.leftArea {
+	width: 340px;
+}
+
+.rightArea {
+	width: 600px;
+}
+
+.calendarArea {
+	width: 340px;
+	text-align: center;
+}
