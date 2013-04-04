@@ -1,5 +1,13 @@
 package kr.co.pdca.core.util;
 
+/**
+ * <pre>
+ * 형태가 다른 클래스들을 묶음으로 전송하는 경우 사용
+ * </pre>
+ * 
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ *
+ */
 public class Tuples {
 	private Tuples() {
 	}

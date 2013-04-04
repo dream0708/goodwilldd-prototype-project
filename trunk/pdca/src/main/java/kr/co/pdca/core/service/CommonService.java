@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+ * <pre>
  * 공통으로 사용하는 모든 서비스를 총괄한다.
+ * </pre>
  * 
- * @author kr.goodwilldd@gmail.com
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
  * 
  */
 @Service

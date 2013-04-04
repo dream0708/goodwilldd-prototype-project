@@ -1,6 +1,6 @@
 package kr.co.pdca;
 
-import kr.co.pdca.example.mapper.normal.ExampleMapper;
+import kr.co.pdca.example.service.ExampleService;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,13 +10,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @ContextConfiguration(locations = { "classpath:/META-INF/spring/root-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
-public class MapperTest extends CommonLogging {
-
+public class ExampleServiceTest {
 	@Autowired
-	ExampleMapper exampleMapper;
+	ExampleService exampleService;
 
 	@Test
-	public void mapperTest() {
-		logging(exampleMapper.getExampleList());
+	public void serviceTest() {
+
 	}
 }

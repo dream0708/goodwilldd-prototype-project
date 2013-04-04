@@ -3,6 +3,13 @@ package kr.co.pdca.core.util;
 import java.lang.reflect.Array;
 import java.util.Collection;
 
+/**
+ * <pre>
+ * 객체 Util Class
+ * </pre>
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ *
+ */
 @SuppressWarnings({ "rawtypes" })
 public class ObjectUtil {
 

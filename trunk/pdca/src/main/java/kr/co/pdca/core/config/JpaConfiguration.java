@@ -14,7 +14,15 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
-
+/**
+ * <pre>
+ * JPA Configuration
+ * 
+ * 66: repository 를 자동으로 검색함. package 명 변경시 유의
+ * </pre>
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ *
+ */
 @Configuration
 public class JpaConfiguration {
 

@@ -1,12 +1,17 @@
 package kr.co.pdca.core.exception;
 
 /**
- * 일반적인 오류에 대한 Exception 처리 : 테스트
- * 
- * @author sylee
- * 
+ *  <pre>
+ *  일반적인 오류를 처리하는 클래스
+ *  </pre>
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ *
  */
 public class GenericException extends RuntimeException {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5467531161799157039L;
 	private String message;
 
 	public GenericException(String message) {

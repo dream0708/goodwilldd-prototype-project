@@ -12,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-@ContextConfiguration(locations = { "/root-context.xml" })
+@ContextConfiguration(locations = { "classpath:/META-INF/spring/root-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class RepositoryTest extends CommonLogging {
 

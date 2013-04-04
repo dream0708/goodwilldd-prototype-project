@@ -14,6 +14,14 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.BeforeClass;
 
+/**
+ * <pre>
+ * Validation 을 확인을 위한 최상위 클래스
+ * </pre>
+ * 
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ * @param <T>
+ */
 public class AbstractValidationTest<T> {
 
 	private static final Log logger = LogFactory

@@ -10,6 +10,13 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * <pre>
+ * View에서 공통적으로 사용하게 될 전역 변수를 설정
+ * </pre>
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ *
+ */
 public class CommonWebFilter implements Filter {
 
 	@Override

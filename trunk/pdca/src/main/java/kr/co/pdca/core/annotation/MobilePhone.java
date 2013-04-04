@@ -12,6 +12,13 @@ import kr.co.pdca.core.annotation.validator.MobilePhoneValidator;
 
 import org.springframework.integration.annotation.Payload;
 
+/**
+ * <pre>
+ * 핸드폰 번호 Annotation
+ * </pre>
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ * 
+ */
 @Target({ ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = MobilePhoneValidator.class)
