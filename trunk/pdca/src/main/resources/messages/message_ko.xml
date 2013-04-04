@@ -7,6 +7,6 @@
 	<entry key="loginFailureCause.locked">해당 계정은 잠겨있습니다.</entry>
 	<entry key="loginFailureCause.disabled">Email을 확인하시고 계정을 활성화하세요.</entry>
 	<entry key="loginFailureCause.defaultFalse">잘못된 접속 정보입니다.</entry>
-	
+	<entry key="validation.mobilephone.message">잘못된 핸드폰 형식입니다.</entry>
 	<entry key="myName">이상용</entry>
 </properties>

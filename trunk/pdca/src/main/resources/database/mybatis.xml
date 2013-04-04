@@ -8,13 +8,13 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 	<!-- 로그 출력을 하기위해서는 mysql_datasource => loggingDataSource 로 변경 -->
 	<!-- transaction manager -->
-	<bean id="transactionManager"
+	<bean id="myBatistransactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="loggingDataSource" />
 	</bean>
 
 	<!-- transaction annotation -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<tx:annotation-driven transaction-manager="myBatistransactionManager"/>
 
 	<!-- ==== mybatis sessionFactory by edit sylee@in-soft.co.kr ==== -->
 	<!-- 로그 출력을 하기위해서는 mysql_datasource => loggingDataSource 로 변경 -->
