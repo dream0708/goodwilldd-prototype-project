@@ -24,10 +24,12 @@ public class JpaConfiguration {
 	@Bean
 	public Map<String, Object> jpaProperties() {
 		Map<String, Object> props = new HashMap<String, Object>();
-//		props.put("hibernate.dialect", H2Dialect.class.getName());
-//		props.put("hibernate.cache.provider_class", HashtableCacheProvider.class.getName());
+		// props.put("hibernate.dialect", H2Dialect.class.getName());
+		// props.put("hibernate.cache.provider_class",
+		// HashtableCacheProvider.class.getName());
 		props.put("hibernate.dialect", PostgreSQLDialect.class.getName());
-		props.put("hibernate.cache.provider_class", HashtableCacheProvider.class.getName());
+		props.put("hibernate.cache.provider_class",
+				HashtableCacheProvider.class.getName());
 		return props;
 	}
 
@@ -42,7 +44,9 @@ public class JpaConfiguration {
 
 	@Bean
 	public PlatformTransactionManager transactionManager() {
-		return new JpaTransactionManager( localContainerEntityManagerFactoryBean().getObject() );
+		JpaTransactionManager transactionManager = new JpaTransactionManager(
+				localContainerEntityManagerFactoryBean().getObject());
+		return transactionManager;
 	}
 
 	@Bean
@@ -52,6 +56,7 @@ public class JpaConfiguration {
 		lef.setJpaPropertyMap(this.jpaProperties());
 		lef.setJpaVendorAdapter(this.jpaVendorAdapter());
 		lef.setPackagesToScan("kr.co.ujin");
+		lef.setPersistenceXmlLocation("classpath:META-INF/persistence.xml");
 		return lef;
 	}
 

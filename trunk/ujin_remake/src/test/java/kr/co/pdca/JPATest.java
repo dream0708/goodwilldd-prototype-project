@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 
 import kr.co.ujin.core.mapper.normal.CommonMapper;
 import kr.co.ujin.service.main.entity.Finance;
-import kr.co.ujin.service.main.service.FinanceService;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -18,7 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-@ContextConfiguration
+@ContextConfiguration(locations = { "/root-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class JPATest {
 
@@ -26,7 +25,7 @@ public class JPATest {
 
 	@PersistenceContext
 	EntityManager entityManager;
-	
+
 	@Test
 	@Transactional
 	public void insertTest() {
@@ -41,10 +40,10 @@ public class JPATest {
 		assertNotNull(f2);
 		logger.info(f2.getSeq());
 	}
-	
+
 	@Autowired
 	CommonMapper mapper;
-	
+
 	@Test
 	@Transactional
 	public void mybatisTest() {

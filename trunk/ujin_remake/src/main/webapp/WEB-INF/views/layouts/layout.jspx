@@ -9,9 +9,10 @@ xmlns:jsp="http://java.sun.com/JSP/Page">
 	<head>
 		<meta charset="utf-8"/>
 		<script type="text/javascript" src="${jsUrl }/jquery-1.9.1.min.js"><!-- --></script>
+		<script type="text/javascript" src="${jsUrl }/jquery.form.js"><!-- --></script>
+		<script type="text/javascript" src="${jsUrl }/ui/jquery-ui.js"><!-- --></script>
 		<script type="text/javascript" src="${jsUrl }/knockout-2.2.1.js"><!-- --></script>
 		<script type="text/javascript" src="${jsUrl }/common.js"><!-- --></script>
-		<script type="text/javascript" src="${jsUrl }/ui/jquery-ui.js"><!-- --></script>
 		<link href="${styleUrl}/app.css" rel="stylesheet"/>
 		<link href="${styleUrl}/main.css" rel="stylesheet"/>
 		<link href="${styleUrl}/themes/base/jquery-ui.css" rel="stylesheet"/>

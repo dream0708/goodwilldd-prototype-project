@@ -20,6 +20,8 @@
 .pagination li {
 	display: inline;
 	padding: 5px;
+	margin: 3px;
+	border: solid 1px orange;
 }
 
 .contents {
@@ -37,4 +39,8 @@
 .calendarArea {
 	width: 340px;
 	text-align: center;
+}
+
+.dialog {
+	display: none;
 }
