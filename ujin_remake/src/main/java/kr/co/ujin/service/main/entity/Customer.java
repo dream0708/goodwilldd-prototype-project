@@ -2,13 +2,18 @@ package kr.co.ujin.service.main.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import kr.co.ujin.core.annotation.MobilePhone;
+
 import org.codehaus.jackson.annotate.JsonAutoDetect;
 import org.hibernate.annotations.IndexColumn;
+import org.hibernate.validator.constraints.Email;
 
 @JsonAutoDetect
 @XmlRootElement
@@ -19,6 +24,7 @@ public class Customer {
 	@Id
 	@NotNull
 	@IndexColumn(name = "seq", nullable = false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	long seq;
 
 	@NotNull
@@ -31,10 +37,12 @@ public class Customer {
 
 	@NotNull
 	@Column(name = "mobile")
+	@MobilePhone
 	String mobile;
 
 	@NotNull
 	@Column(name = "email")
+	@Email
 	String email;
 
 	public long getSeq() {

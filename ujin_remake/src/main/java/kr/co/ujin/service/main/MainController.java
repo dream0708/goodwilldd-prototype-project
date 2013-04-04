@@ -1,5 +1,6 @@
 package kr.co.ujin.service.main;
 
+import kr.co.ujin.service.main.entity.Customer;
 import kr.co.ujin.service.main.entity.Finance;
 import kr.co.ujin.service.main.service.CustomerService;
 import kr.co.ujin.service.main.service.FinanceService;
@@ -39,6 +40,7 @@ public class MainController {
 	    model.addAttribute("currentIndex", current);
 	    
 	    model.addAttribute("customerList", customerService.findAll());
+	    model.addAttribute("customer", new Customer());
 	    
 		return "tiles/main";
 	}
@@ -48,5 +50,10 @@ public class MainController {
 	public Finance getData(Model model, @PathVariable String selectedDate) {
 		financeService.findAll();
 		return new Finance();
+	}
+	
+	@RequestMapping(value = "/saveCustomer")
+	public void saveCustomer(Customer customer) {
+		customerService.save(customer);
 	}
 }

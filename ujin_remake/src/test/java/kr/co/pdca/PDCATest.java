@@ -13,7 +13,7 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ContextConfiguration
+@ContextConfiguration(locations = { "/root-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class PDCATest {
 

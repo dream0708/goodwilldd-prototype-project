@@ -1,4 +1,4 @@
-<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:sec="http://www.springframework.org/security/tags">
+<div xmlns:form="http://www.springframework.org/tags/form" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:sec="http://www.springframework.org/security/tags">
 	
 	<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
@@ -13,10 +13,17 @@
 				<td class="leftArea">
 					<div id="calendarArea"></div>
 					<div id="customerListArea">
-						<button>고객사 등록</button>
+						<button data-bind="click: openDialog">고객사 등록</button>
+						<table>
 						<c:forEach items="${customerList }" var="list">
-						${list }
+							<tr>
+								<td>${list.customerName }</td>
+								<td>${list.tel }</td>
+								<td>${list.mobile }</td>
+								<td>${list.email }</td>
+							</tr>
 						</c:forEach>
+						</table>
 					</div>
 				</td>
 				<td class="rightArea">
@@ -86,10 +93,34 @@
 				$.post("${CONTEXT}/main/getData/"+dateText+".htm", null, doSelectCalendar);
 			}
 		});
+		
+		$("button").button();
+		
+		$("#dialogItem").dialog({
+			autoOpen: false,
+			show: {
+				effect: "blind",
+				duration: 500
+			},
+			hide: {
+				effect: "blind",
+				duration: 500
+			},
+			modal: true
+		});
+		
+		ko.applyBindings(new MainViewModel());
 	});
 	
 	function doSelectCalendar(res) {
 		console.log(res, res);
 	}
 	</script>
+	<div id="dialogItem" title="거래처 등록" class="dialog"><form:form modelAttribute="customer">
+		<form:label path="customerName">거래처 명</form:label><form:input path="customerName"/><br />
+		<form:label path="tel">거래처 전화번호</form:label><form:input path="tel"/><br />
+		<form:label path="mobile">거래처 핸드폰</form:label><form:input path="mobile"/><br />
+		<form:label path="email">거래처 이메일</form:label><form:input path="email"/><br />
+		<button data-bind="click: saveCustomer">등록</button></form:form>
+	</div>
 </div>
