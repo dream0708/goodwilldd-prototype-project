@@ -30,6 +30,10 @@ public class CommonPropertiesUtil {
 	}
 
 	public String getString(String key) {
-		return (String) properties.getProperty(key);
+		return properties.getString(key);
+	}
+
+	public int getInt(String key) {
+		return properties.getInt(key);
 	}
 }
