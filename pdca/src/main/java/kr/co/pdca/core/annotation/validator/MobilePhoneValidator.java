@@ -10,6 +10,14 @@ import kr.co.pdca.core.annotation.MobilePhone;
 
 import org.springframework.util.StringUtils;
 
+/**
+ * <pre>
+ * 핸드폰 번호가 지정된 형식이 맞는지 체크하는 Validator
+ * </pre>
+ * 
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ * 
+ */
 public class MobilePhoneValidator implements
 		ConstraintValidator<MobilePhone, String> {
 

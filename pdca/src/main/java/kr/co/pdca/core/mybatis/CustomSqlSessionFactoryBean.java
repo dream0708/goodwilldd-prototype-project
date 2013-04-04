@@ -41,11 +41,15 @@ import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
 /**
- * typeAliasesPackage 에 선언된 모든 class를 scan하여 MapAlias에 등록한다.
+ * <pre>
+ * Mybatis 3.2.1의 SqlSessionFactoryBean 클래스를 상속
+ * Package Scanner를 활용하여 type alias를 자동으로 등록한다. 
+ * </pre>
  * 
+ * @See {@link SqlSessionFactoryBean}
  * 
- * @author kr.goodwilldd@gmail.com
- * 
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ *
  */
 public class CustomSqlSessionFactoryBean extends SqlSessionFactoryBean {
 

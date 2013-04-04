@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import org.mybatis.spring.SqlSessionFactoryBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
@@ -19,7 +20,12 @@ import org.springframework.util.ClassUtils;
 import org.springframework.util.SystemPropertyUtils;
 
 /**
- * Package Class Scan
+ * <pre>
+ * 지정된 package로 부터 일치하는 패턴을 검색한다.
+ * </pre>
+ * 
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ * 
  */
 public class PackageClassScanner {
 	private static final Logger logger = LoggerFactory

@@ -1,6 +1,7 @@
 package kr.co.pdca;
 
 import junit.framework.Assert;
+import kr.co.pdca.core.config.CommonConstance;
 import kr.co.pdca.core.util.CommonPropertiesUtil;
 import kr.co.pdca.core.util.ObjectUtil;
 
@@ -13,7 +14,7 @@ import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@ContextConfiguration(locations = { "/root-context.xml" })
+@ContextConfiguration(locations = { "classpath:/META-INF/spring/root-context.xml" })
 @RunWith(SpringJUnit4ClassRunner.class)
 public class PDCATest {
 
@@ -55,7 +56,7 @@ public class PDCATest {
 
 	@Test
 	public void CommonPropertiesTest() {
-		Assert.assertNotNull(commonPropertiesUtil.getString("test"));
-		logger.info(commonPropertiesUtil.getString("test"));
+		Assert.assertNotNull(commonPropertiesUtil.getString(CommonConstance.PAGE_SIZE));
+		logger.info(commonPropertiesUtil.getString(CommonConstance.PAGE_SIZE));
 	}
 }
