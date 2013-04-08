@@ -10,7 +10,7 @@
 
 	<!-- transaction annotation -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
-
+	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="#{jdbc['jdbc.driverClass']}" />

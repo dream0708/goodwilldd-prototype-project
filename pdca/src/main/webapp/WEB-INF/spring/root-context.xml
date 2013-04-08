@@ -8,8 +8,8 @@
 	<import resource="classpath:properties/properties-context.xml" />
 	<import resource="classpath:beans/bean-context.xml" />
 	<import resource="classpath:database/database-context.xml" />
-	<import resource="classpath:viewResolver/view-context.xml" />
 	<import resource="classpath:database/mybatis.xml" />
+	<import resource="classpath:database/jpa.xml" />
 	<import resource="classpath:messages/messages-context.xml" />
 	<import resource="classpath:exceptions/exception-context.xml" />
 	<import resource="classpath:security/security-context.xml" />
