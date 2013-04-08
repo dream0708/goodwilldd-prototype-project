@@ -2,4 +2,8 @@
 <properties>
 	<entry key="application.version">1.0</entry>
 	<entry key="application.basePackage">kr.co.pdca</entry>
+	<entry key="application.mybatis.mapperLocations">classpath:common/mapper/*.xml</entry>
+	<entry key="application.mybatis.typeAliasesPackage">kr.co.pdca.**.entity</entry>
+	<entry key="application.mybatis.nomarl.basePackage">kr.co.pdca.**.mapper.normal.**</entry>
+	<entry key="application.mybatis.batch.basePackage">kr.co.pdca.**.mapper.batch.**</entry>
 </properties>
