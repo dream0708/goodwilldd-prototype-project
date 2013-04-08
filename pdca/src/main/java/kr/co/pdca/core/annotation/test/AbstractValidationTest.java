@@ -35,14 +35,27 @@ public class AbstractValidationTest<T> {
 		validator = factory.getValidator();
 	}
 
+	/**
+	 * Validataion 정상 수행 체크
+	 * @param t
+	 */
 	public void assertValid(T t) {
 		assertTrue(isValid(t));
 	}
 
+	/**
+	 * Validation 실패 수행 체크
+	 * @param t
+	 */
 	public void assertInValid(T t) {
 		assertFalse(isValid(t));
 	}
 
+	/**
+	 * Validation 성공 여부 반환
+	 * @param t
+	 * @return
+	 */
 	public boolean isValid(T t) {
 		Set<ConstraintViolation<T>> violations = validate(t);
 		for (ConstraintViolation<T> violation : violations) {

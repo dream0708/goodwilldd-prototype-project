@@ -1,6 +1,6 @@
 package kr.co.pdca.core.service;
 
-import kr.co.pdca.core.mapper.normal.CommonMapper;
+import kr.co.pdca.core.mapper.normal.CommonNormalMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,5 +16,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class CommonService {
 	@Autowired
-	CommonMapper mapper;
+	CommonNormalMapper mapper;
 }

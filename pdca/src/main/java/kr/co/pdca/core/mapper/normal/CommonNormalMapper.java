@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
  *
  */
 @Repository
-public class CommonMapper {
+public class CommonNormalMapper {
 
 }
