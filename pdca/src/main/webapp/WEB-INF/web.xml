@@ -10,11 +10,11 @@
 		<param-value>classpath:/META-INF/spring/root-context.xml</param-value>
 	</context-param>
 
-	<!-- spring3 profiles -->
 	<context-param>
 		<param-name>spring.profiles.active</param-name>
 		<param-value>tiles3</param-value>
 	</context-param>
+
 
 	<!-- log4j -->
 	<context-param>

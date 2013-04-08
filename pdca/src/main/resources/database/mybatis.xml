@@ -10,7 +10,7 @@
 	<!-- transaction manager -->
 	<bean id="myBatistransactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="loggingDataSource" />
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 
 	<!-- transaction annotation -->
@@ -19,7 +19,7 @@
 	<!-- ==== mybatis sessionFactory by edit sylee@in-soft.co.kr ==== -->
 	<!-- 로그 출력을 하기위해서는 mysql_datasource => loggingDataSource 로 변경 -->
 	<bean id="sqlSessionFactory" class="kr.co.pdca.core.mybatis.CustomSqlSessionFactoryBean">
-		<property name="dataSource" ref="loggingDataSource" />
+		<property name="dataSource" ref="dataSource" />
 		<!-- typeAlias Object Auto Scannig -->
 		<property name="typeAliasesPackage" value="kr.co.pdca.**.entity"></property>
 		<!-- query files -->
