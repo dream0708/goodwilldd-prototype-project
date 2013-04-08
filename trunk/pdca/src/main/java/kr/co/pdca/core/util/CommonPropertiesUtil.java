@@ -7,12 +7,14 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.configuration.XMLPropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
+
 /**
  * <pre>
  * 공통 Properties 관리
  * </pre>
+ * 
  * @author GoodwillDD (kr.goodwilldd@gmail.com)
- *
+ * 
  */
 public class CommonPropertiesUtil {
 

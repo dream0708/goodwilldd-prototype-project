@@ -233,7 +233,7 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.1.0.Final</version>
 		</dependency>
-		
+
 		<!-- Spring Integration -->
 		<dependency>
 			<groupId>org.springframework.integration</groupId>
@@ -257,14 +257,14 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
-		
+
 		<!-- postgresql -->
 		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901.jdbc4</version>
 		</dependency>
-		
+
 		<!-- MyBatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -577,6 +577,11 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
 		</dependency>
 	</dependencies>
 	<build>
