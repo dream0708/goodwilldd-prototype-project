@@ -1,0 +1,126 @@
+<div xmlns:form="http://www.springframework.org/tags/form" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:sec="http://www.springframework.org/security/tags">
+	
+	<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<c:url value="/main/1/work.htm" var="work"/>
+	<c:url var="firstUrl" value="/main/1/work.htm" />
+	<c:url var="lastUrl" value="/main/${financeList.totalPages}/work.htm" />
+	<c:url var="prevUrl" value="/main/${currentIndex - 1}/work.htm" />
+	<c:url var="nextUrl" value="/main/${currentIndex + 1}/work.htm" />
+	<table class="contents">
+		<tbody>
+			<tr>
+				<td class="leftArea">
+					<div id="calendarArea"></div>
+					<div id="customerListArea">
+						<button data-bind="click: openDialog">고객사 등록</button>
+						<table>
+						<c:forEach items="${customerList }" var="list">
+							<tr>
+								<td>${list.customerName }</td>
+								<td>${list.tel }</td>
+								<td>${list.mobile }</td>
+								<td>${list.email }</td>
+							</tr>
+						</c:forEach>
+						</table>
+					</div>
+				</td>
+				<td class="rightArea">
+					<div id="workArea">
+					<table class="contents">
+					<c:forEach items="${financeList.content }" var="list">
+						<tr>
+							<td>${list.workdate }</td>
+							<td>${list.worker }</td>
+							<td>${list.pay }</td>
+							<td>${list.company }</td>
+						</tr>
+					</c:forEach>
+					</table>
+					</div>
+					<div class="pagination">
+				    <ul>
+				        <c:choose>
+				            <c:when test="${currentIndex == 1}">
+				                <li class="disabled"><a href="#">&lt;&lt;</a></li>
+				                <li class="disabled"><a href="#">&lt;</a></li>
+				            </c:when>
+				            <c:otherwise>
+				                <li><a href="${firstUrl}">&lt;&lt;</a></li>
+				                <li><a href="${prevUrl}">&lt;</a></li>
+				            </c:otherwise>
+				        </c:choose>
+				        <c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
+				            <c:url var="pageUrl" value="/main/${i}/work.htm" />
+				            <c:choose>
+				                <c:when test="${i == currentIndex}">
+				                    <li class="active"><a href="${pageUrl}"><c:out value="${i}" /></a></li>
+				                </c:when>
+				                <c:otherwise>
+				                    <li><a href="${pageUrl}"><c:out value="${i}" /></a></li>
+				                </c:otherwise>
+				            </c:choose>
+				        </c:forEach>
+				        <c:choose>
+				            <c:when test="${currentIndex == financeList.totalPages}">
+				                <li class="disabled"><a href="#">&gt;</a></li>
+				                <li class="disabled"><a href="#">&gt;&gt;</a></li>
+				            </c:when>
+				            <c:otherwise>
+				                <li><a href="${nextUrl}">&gt;</a></li>
+				                <li><a href="${lastUrl}">&gt;&gt;</a></li>
+				            </c:otherwise>
+				        </c:choose>
+				    </ul>
+				</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<script type="text/javascript">
+	$(function() {
+		$("#calendarArea").datepicker({
+			"dayNames": ["일","월","화","수","목","금","토"],
+			"dayNamesMin":  ["일","월","화","수","목","금","토"],
+			"dayNamesShort": ["일","월","화","수","목","금","토"],
+			"monthNames": ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+			"monthNamesShort": ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+			"dateFormat": "yy-mm-dd",
+			onSelect:function(dateText, inst) {
+				console.log("dateText",dateText);
+				console.log("inst",inst);
+				$.post("${CONTEXT}/main/getData/"+dateText+".htm", null, doSelectCalendar);
+			}
+		});
+		
+		$("button").button();
+		
+		$("#dialogItem").dialog({
+			autoOpen: false,
+			show: {
+				effect: "blind",
+				duration: 500
+			},
+			hide: {
+				effect: "blind",
+				duration: 500
+			},
+			modal: true
+		});
+		
+		ko.applyBindings(new MainViewModel());
+	});
+	
+	function doSelectCalendar(res) {
+		console.log(res, res);
+	}
+	</script>
+	<div id="dialogItem" title="거래처 등록" class="dialog"><form:form modelAttribute="customer">
+		<form:label path="customerName">거래처 명</form:label><form:input path="customerName"/><br />
+		<form:label path="tel">거래처 전화번호</form:label><form:input path="tel"/><br />
+		<form:label path="mobile">거래처 핸드폰</form:label><form:input path="mobile"/><br />
+		<form:label path="email">거래처 이메일</form:label><form:input path="email"/><br />
+		<button data-bind="click: saveCustomer">등록</button></form:form>
+	</div>
+</div>

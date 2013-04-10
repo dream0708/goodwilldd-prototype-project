@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="application.version">1.0</entry>
+	<entry key="application.basePackage">kr.co.insoft</entry>
+	<entry key="application.mybatis.mapperLocations">classpath:common/mapper/*.xml</entry>
+	<entry key="application.mybatis.typeAliasesPackage">kr.co.insoft.**.entity</entry>
+	<entry key="application.mybatis.nomarl.basePackage">kr.co.insoft.**.mapper.normal.**</entry>
+	<entry key="application.mybatis.batch.basePackage">kr.co.insoft.**.mapper.batch.**</entry>
+</properties>
