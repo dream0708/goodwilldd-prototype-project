@@ -1,0 +1,32 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:sec="http://www.springframework.org/security/tags">
+
+	<jsp:output doctype-root-element="HTML"
+		doctype-system="about:legacy-compat" />
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+
+	<h1>Welcome!!!</h1>
+	<form:form modelAttribute="example" action="test.htm">
+		<form:input path="seq" />
+		<form:input path="username" />
+		<form:button>테스트</form:button>
+	</form:form>
+	<button type="button" onclick="json1();">get json1</button>
+	<button type="button" onclick="json2();">get json2</button>
+	<script type="text/javascript">
+	function json1() {
+		$.get("${CONTEXT}/exam/json1/4.json", null, returnLog);
+	}
+	
+	function json2() {
+		$.get("${CONTEXT}/exam/json2/4.json", null, returnLog);
+	}
+	
+	function returnLog(res) {
+		console.log("response", res);
+	}
+	</script>
+</div>

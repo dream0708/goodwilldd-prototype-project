@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="title">INSFOT</entry>
+	<entry key="loginFailureCause.maxsession">Max Session</entry>
+	<entry key="loginFailureCause.badcredentials">Invaild Login Infomation</entry>
+	<entry key="loginFailureCause.locked">Your's account locked, unknown cause</entry>
+	<entry key="loginFailureCause.disabled">plz, check your mail, Your's account revitalize</entry>
+	<entry key="loginFailureCause.defaultFalse">Invaild Login Infomation</entry>
+	<entry key="validation.mobilephone.message">Invalid format at mobile phone number</entry>
+	<entry key="myName">GoodwillDD</entry>
+</properties>
