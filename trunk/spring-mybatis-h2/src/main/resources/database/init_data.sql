@@ -1,0 +1,23 @@
+INSERT INTO TB_AUTH(username, password, enabled) VALUES('goodwilldd', 'STKLycBVQOpK7ljapjqIIg==', 'TRUE');
+INSERT INTO TB_AUTH(username, password, enabled) VALUES('ssamkj', 'GL1JUIvTVEiYZh+ZQyU0Mw==', 'TRUE');
+INSERT INTO TB_AUTH_ROLE(username, authority) VALUES('goodwilldd', 'ROLE_USER');
+INSERT INTO TB_AUTH_ROLE(username, authority) VALUES('goodwilldd', 'ROLE_SUPERROOKIE');
+INSERT INTO TB_AUTH_ROLE(username, authority) VALUES('ssamkj', 'ROLE_USER');
+INSERT INTO TB_AUTH_ROLE(username, authority) VALUES('ssamkj', 'ROLE_SUPERROOKIE');
+
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(1, '1', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(2, '2', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(3, '3', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(4, '4', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(5, '5', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(6, '6', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(7, '7', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(8, '8', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(9, '9', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(10, '10', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(11, '11', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(12, '12', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(13, '13', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(14, '14', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(15, '15', '1@1.com', '010-0000-0000');
+INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(16, '16', '1@1.com', '010-0000-0000');
