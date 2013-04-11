@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 		"/appServlet/servlet-context.xml" })
 public abstract class AbstractTest {
 	@Configuration
-	@ComponentScan(basePackages = { "kr.co.insoft" })
+	@ComponentScan(basePackageClasses = AbstractTest.class)
 	static class Config {
 	}
 }
