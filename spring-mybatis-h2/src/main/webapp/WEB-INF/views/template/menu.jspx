@@ -1,0 +1,18 @@
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" >
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<c:url value="/" var="home" />
+	<c:url value="/main/1/work.htm" var="work"/>
+	<c:url value="/sec/logout.htm" var="logout" />
+	<spring:message var="title" code="title"/>
+	<div class="header well">
+		<img src="${imgUrl }/springsource_banner_green.png"/>
+		<div class="page-header">
+			<h1>${title}</h1>
+		</div>	
+		<ul>
+			<li><a href="${home}">home</a></li>
+			<li><a href="${work}">작업목록</a></li>
+			<li><a href="${logout }">Logout</a></li>
+		</ul>
+	</div>
+</div>
