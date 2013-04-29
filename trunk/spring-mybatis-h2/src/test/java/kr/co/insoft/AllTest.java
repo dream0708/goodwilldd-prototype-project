@@ -28,7 +28,7 @@ public class AllTest extends AbstractTest {
 
 	@Test
 	public void testExampleController() throws Exception {
-		exampleController.m();
+		request.setRequestURI("/exam/main");
 	}
 
 	@Test

@@ -1,7 +1,7 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
            http://www.springframework.org/schema/security
            http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
@@ -27,17 +27,34 @@
 			authentication-success-handler-ref="customSuccessHandler" />
 		<logout delete-cookies="SEC_INSOFT" invalidate-session="true"
 			logout-success-url="/" logout-url="/sec/logout.htm" />
-		<session-management session-fixation-protection="migrateSession"
+		<custom-filter position="CONCURRENT_SESSION_FILTER" ref="concurrencyFilter" />
+		<session-management session-authentication-strategy-ref="sas" />
+		<!-- <session-management session-fixation-protection="migrateSession"
 			invalid-session-url="/">
 			<concurrency-control max-sessions="1"
 				error-if-maximum-exceeded="true" />
-		</session-management>
+		</session-management> -->
 	</http>
+	
 	<authentication-manager>
 		<authentication-provider user-service-ref="customUserDetailService">
 			<password-encoder ref="MD5PasswordEncoder" />
 		</authentication-provider>
 	</authentication-manager>
+	
+	<beans:bean id="sas"
+		class="org.springframework.security.web.authentication.session.ConcurrentSessionControlStrategy">
+		<beans:constructor-arg name="sessionRegistry" ref="sessionRegistry" />
+		<beans:property name="maximumSessions" value="1" />
+	</beans:bean>
+	
+	<beans:bean id="concurrencyFilter"
+		class="org.springframework.security.web.session.ConcurrentSessionFilter">
+		<beans:constructor-arg name="sessionRegistry" ref="sessionRegistry" />
+		<beans:constructor-arg name="expiredUrl" value="/session-expired.htm" />
+	</beans:bean>
+	
+	<beans:bean id="sessionRegistry" class="kr.co.insoft.core.security.ClusteredSessionRegistryImpl" />
 
 	<beans:bean id="customUserDetailService"
 		class="kr.co.insoft.security.service.CustomUserDetailService" />
