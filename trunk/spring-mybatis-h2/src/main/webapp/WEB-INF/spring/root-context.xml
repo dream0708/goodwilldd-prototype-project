@@ -11,5 +11,6 @@
 	<import resource="classpath:messages/messages-context.xml" />
 	<import resource="classpath:exceptions/exception-context.xml" />
 	<!-- <import resource="classpath:viewResolver/tiles3-context.xml"/> -->
+	<import resource="classpath:cache/cache-context.xml" />
 	<import resource="classpath:security/security-context.xml" />
 </beans>

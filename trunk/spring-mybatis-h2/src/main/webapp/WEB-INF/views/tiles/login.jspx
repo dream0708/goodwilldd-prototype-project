@@ -10,15 +10,15 @@
 		</thead>
 		<tbody>
 			<tr>
-				<th><label for="sec_userid">사용자 ID</label></th>
-				<td><input type="text" id="sec_userid" name="sec_userid" value=""/></td>
+				<th><label for="sec_userid"><spring:message code="login.userId" /></label></th>
+				<td><input type="text" id="sec_userid" name="sec_userid" value="goodwilldd"/></td>
 			</tr>
 			<tr>
-				<th><label for="sec_password">사용자 PASSWORD</label></th>
-				<td><input type="password" id="sec_password" name="sec_password" value=""/></td>
+				<th><label for="sec_password"><spring:message code="login.password" /></label></th>
+				<td><input type="password" id="sec_password" name="sec_password" value="goodwilldd"/></td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><button>로그인</button></td>
+				<td colspan="2" align="center"><button><spring:message code="login.loginButton" /></button></td>
 			</tr>
 		</tbody>
 	</table>

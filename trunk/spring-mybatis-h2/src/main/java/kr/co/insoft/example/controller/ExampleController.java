@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/exam")
@@ -22,16 +24,17 @@ public class ExampleController {
 	@Autowired
 	ExampleService exampleService;
 
-	@RequestMapping("/main")
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String examMain(Model model) {
 		model.addAttribute(new Example());
+		model.addAttribute("exampleList", exampleService.getExamList2());
 		return "tiles/example/home";
 	}
 
-	@RequestMapping("/test2")
+	@RequestMapping(value = "/main", method = RequestMethod.POST)
 	public String test2(Model model, Example exam) {
 		exampleService.doInsertExample(exam);
-		return "forward:main.htm";
+		return "redirect:main.htm";
 	}
 
 	@RequestMapping("/json2/{seq}")

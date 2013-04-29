@@ -9,24 +9,26 @@
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 
 	<h1>Welcome!!!</h1>
-	<form:form modelAttribute="example" action="test.htm">
-		<form:input path="seq" />
+	<ul>
+	<c:forEach items="${exampleList }" var="list">
+		<li>${list }</li>
+	</c:forEach>
+	</ul>
+	<form:form modelAttribute="example" action="main.htm" method="POST">
 		<form:input path="username" />
-		<form:button>테스트</form:button>
+		<form:input path="email" />
+		<form:input path="mobilePhone" />
+		<form:button>Save</form:button>
 	</form:form>
-	<button type="button" onclick="json1();">get json1</button>
-	<button type="button" onclick="json2();">get json2</button>
+	<button type="button" onclick="json2();">get json</button>
 	<script type="text/javascript">
-	function json1() {
-		$.get("${CONTEXT}/exam/json1/4.json", null, returnLog);
-	}
-	
 	function json2() {
 		$.get("${CONTEXT}/exam/json2/4.json", null, returnLog);
 	}
 	
 	function returnLog(res) {
 		console.log("response", res);
+		alert(res);
 	}
 	</script>
 </div>

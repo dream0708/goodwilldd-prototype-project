@@ -27,7 +27,7 @@ import org.springframework.util.Assert;
  * ehCache 를 이용하여 1개의 세션만을 유지
  * 
  * @author GoodwillDD (kr.goodwilldd@gmail.com)
- *
+ * 
  */
 public class ClusteredSessionRegistryImpl implements SessionRegistry,
 		ApplicationListener<SessionDestroyedEvent> {
@@ -39,6 +39,7 @@ public class ClusteredSessionRegistryImpl implements SessionRegistry,
 
 	@Override
 	public void onApplicationEvent(SessionDestroyedEvent event) {
+		logger.info("onApplicationEvent");
 		if (event instanceof HttpSessionDestroyedEvent) {
 			String sessionId = ((HttpSession) event.getSource()).getId();
 			removeSessionInformation(sessionId);
@@ -47,13 +48,14 @@ public class ClusteredSessionRegistryImpl implements SessionRegistry,
 
 	@Override
 	public List<Object> getAllPrincipals() {
-		// TODO Auto-generated method stub
+		logger.info("getAllPrincipals");
 		return null;
 	}
 
 	@Override
 	public List<SessionInformation> getAllSessions(Object principal,
 			boolean includeExpiredSessions) {
+		logger.info("getAllSessions");
 		Set<String> sessionsUsedByPrincipal = getSessionIds(principal);
 		List<SessionInformation> list = new ArrayList<SessionInformation>();
 		Iterator<String> iter = sessionsUsedByPrincipal.iterator();
@@ -70,14 +72,14 @@ public class ClusteredSessionRegistryImpl implements SessionRegistry,
 	}
 
 	private Set<String> getSessionIds(Object principal) {
-		Map<Object, Element> collection = sessionIds.getAll(sessionIds
-				.getKeys());
-		logger.info("Map size " + collection.size());
+		logger.info("getSessionIds");
+		List<?> collectionKeys = sessionIds.getKeys();
+		logger.info("collectionKeys size " + collectionKeys.size());
 		Set<String> principals = new HashSet<String>();
-
-		for (Map.Entry<Object, Element> entry : collection.entrySet()) {
-			Element element = entry.getValue();
-			if (element != null) {
+		Element element = null;
+		for(int i=0;i<collectionKeys.size();i++) {
+			element = sessionIds.get(collectionKeys.get(i));
+			if ( element != null ) {
 				SessionInformation sessionInformation = (SessionInformation) element
 						.getObjectValue();
 				if (sessionInformation.getPrincipal().equals(principal))
@@ -91,31 +93,36 @@ public class ClusteredSessionRegistryImpl implements SessionRegistry,
 
 	@Override
 	public SessionInformation getSessionInformation(String sessionId) {
+		logger.info("getSessionInformation");
 		Assert.hasText(sessionId,
 				"SessionId required as per interface contract");
-		Element element = sessionIds.get(sessionId);
-		if (element == null) {
-			logger.info("Session was null");
+		try {
+			Element element = sessionIds.get(sessionId);
+			if (element == null) {
+				logger.info("Session was null");
+				return null;
+			} else {
+				SessionInformation session = (SessionInformation) element
+						.getObjectValue();
+				logger.info("getSessionInformation: Returning session: "
+						+ session.getSessionId() + " principal  "
+						+ session.getPrincipal() + " session expired "
+						+ session.isExpired());
+				return session;
+			}
+		} catch (NullPointerException e) {
 			return null;
-		} else {
-			SessionInformation session = (SessionInformation) element
-					.getObjectValue();
-			logger.info("getSessionInformation: Returning session: "
-					+ session.getSessionId() + " principal  "
-					+ session.getPrincipal() + " session expired "
-					+ session.isExpired());
-			return session;
 		}
 	}
 
 	@Override
 	public void refreshLastRequest(String arg0) {
-		// TODO Auto-generated method stub
-
+		logger.info("refreshLastRequest");
 	}
 
 	@Override
 	public void registerNewSession(String sessionId, Object principal) {
+		logger.info("registerNewSession");
 		Assert.hasText(sessionId,
 				"SessionId required as per interface contract");
 		Assert.notNull(principal,
@@ -142,6 +149,7 @@ public class ClusteredSessionRegistryImpl implements SessionRegistry,
 
 	@Override
 	public void removeSessionInformation(String sessionId) {
+		logger.info("removeSessionInformation");
 		Assert.hasText(sessionId,
 				"SessionId required as per interface contract");
 		logger.info("About to remove session " + sessionId);

@@ -16,8 +16,8 @@ public interface NExampleMapper {
 	@Select(value = "select * from tb_example where seq=#{seq}")
 	Example getExam(long seq);
 
-	@SelectKey(before = true, keyProperty = "seq", resultType = Long.class, statement = "select coalesce(max(seq), 0) from tb_example", statementType = StatementType.PREPARED)
-	@Insert(value = "insert into tb_example(seq, username) values(#{seq}, #{username}")
+	@SelectKey(before = true, keyProperty = "seq", resultType = Long.class, statement = "select (coalesce(max(seq), 0)+1) from tb_example", statementType = StatementType.PREPARED)
+	@Insert(value = "insert into tb_example(seq, username, email, mobilePhone) values(#{seq}, #{username}, #{email}, #{mobilePhone})")
 	void save(Example exam);
 
 	@Select(value = "select * from tb_example")
