@@ -28,11 +28,6 @@ public class ExampleController {
 		return "tiles/example/home";
 	}
 
-	@RequestMapping("/m")
-	public String m() {
-		return "tiles/example/home";
-	}
-
 	@RequestMapping("/test2")
 	public String test2(Model model, Example exam) {
 		exampleService.doInsertExample(exam);

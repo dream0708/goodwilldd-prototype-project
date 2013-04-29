@@ -1,6 +1,5 @@
 package kr.co.insoft.core.config;
 
-import org.springframework.beans.factory.annotation.Value;
 
 /**
  * <pre>
