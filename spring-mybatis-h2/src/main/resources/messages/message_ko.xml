@@ -9,4 +9,7 @@
 	<entry key="loginFailureCause.defaultFalse">잘못된 접속 정보입니다.</entry>
 	<entry key="validation.mobilephone.message">잘못된 핸드폰 형식입니다.</entry>
 	<entry key="myName">이상용</entry>
+	<entry key="login.userId">사용자 ID</entry>
+	<entry key="login.password">사용자 비밀번호</entry>
+	<entry key="login.loginButton">로그인</entry>
 </properties>

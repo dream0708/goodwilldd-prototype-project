@@ -9,4 +9,7 @@
 	<entry key="loginFailureCause.defaultFalse">Invaild Login Infomation</entry>
 	<entry key="validation.mobilephone.message">Invalid format at mobile phone number</entry>
 	<entry key="myName">GoodwillDD</entry>
+	<entry key="login.userId">User ID</entry>
+	<entry key="login.password">User Password</entry>
+	<entry key="login.loginButton">Login</entry>
 </properties>
