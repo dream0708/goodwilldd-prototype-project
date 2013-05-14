@@ -15,4 +15,16 @@ create table tb_example(
 	username varchar(50) not null,
 	email varchar(255) not null,
 	mobilePhone varchar(13) not null
-);      
+);
+
+CREATE TABLE tb_board_data(
+	bseq INT(10) NOT NULL primary key,
+	boardName VARCHAR(50) NULL DEFAULT NULL,
+	subject TEXT NOT NULL,
+	content TEXT NULL,
+	register VARCHAR(50) NULL DEFAULT NULL,
+	regdate TIMESTAMP NOT NULL,
+	readNum INT(11) NOT NULL DEFAULT '0',
+	isEnabled TINYINT(4) NOT NULL DEFAULT '0',
+	reLevel INT(11) NOT NULL DEFAULT '0',
+	reStep BIGINT(11) NOT NULL DEFAULT '0');
