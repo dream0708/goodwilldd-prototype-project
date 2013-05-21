@@ -7,7 +7,7 @@ import java.util.Vector;
 import kr.co.insoft.core.util.ObjectUtil;
 import kr.co.insoft.security.entity.AuthenticationEntity;
 import kr.co.insoft.security.entity.UserRole;
-import kr.co.insoft.security.mapper.normal.SecurityMapper;
+import kr.co.insoft.security.mapper.SecurityMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;

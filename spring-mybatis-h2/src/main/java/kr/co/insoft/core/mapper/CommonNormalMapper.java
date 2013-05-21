@@ -1,4 +1,4 @@
-package kr.co.insoft.core.mapper.normal;
+package kr.co.insoft.core.mapper;
 
 import org.springframework.stereotype.Repository;
 /**

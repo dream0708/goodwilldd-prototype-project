@@ -1,6 +1,6 @@
 package kr.co.insoft.core.service;
 
-import kr.co.insoft.core.mapper.normal.CommonNormalMapper;
+import kr.co.insoft.core.mapper.CommonNormalMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

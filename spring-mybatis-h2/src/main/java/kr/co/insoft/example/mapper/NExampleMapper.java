@@ -1,4 +1,4 @@
-package kr.co.insoft.example.mapper.normal;
+package kr.co.insoft.example.mapper;
 
 import java.util.List;
 
