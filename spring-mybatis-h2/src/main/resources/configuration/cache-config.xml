@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
 
-	<ehcache:annotation-driven />
+	<ehcache:annotation-driven cache-manager="cacheManager" />
 
 	<ehcache:config cache-manager="cacheManager">
 		<ehcache:evict-expired-elements interval="300" />
@@ -16,7 +16,7 @@
 
 	<bean id="cacheManager"
 		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-		<property name="configLocation" value="classpath:cache/ehcache.xml" />
+		<property name="configLocation" value="classpath:ehcache.xml" />
 	</bean>
 
 </beans>

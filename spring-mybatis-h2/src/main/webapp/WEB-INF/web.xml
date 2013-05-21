@@ -27,7 +27,14 @@
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener> -->
-
+	
+	<!--  ***** ****************************************** ***** -->
+    <!--  *****     Handling System.out and System.err     ***** -->
+    <!--  ***** ****************************************** ***** -->
+	<listener>
+        <listener-class>uk.org.lidalia.sysoutslf4j.context.SysOutOverSLF4JServletContextListener</listener-class>
+    </listener>
+    
 	<listener>
 		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
 	</listener>
@@ -85,7 +92,10 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
-	<!-- Logback logger - Status Page -->
+	<!--  ***** ******************************************  ***** -->
+    <!--  ***** Providing URL for Logback Status (Optional) ***** -->
+    <!--  ***** With OnStatusConsoleListener (above)        ***** -->
+    <!--  ***** ******************************************  ***** -->
     <servlet>
         <servlet-name>LogbackStatus</servlet-name>
         <servlet-class>ch.qos.logback.classic.ViewStatusMessagesServlet</servlet-class>
@@ -95,7 +105,9 @@
         <url-pattern>/logbackStatus</url-pattern>
     </servlet-mapping>
 
-     <!--Tee Filter is used to be able to log HTTP Request & Response Messages - see logback-access.xml-->
+    <!--  ***** ****************************************************** ***** -->
+    <!--  ***** Handling HttpRequest and HttpResponse w Logback-Access ***** -->
+    <!--  ***** ****************************************************** ***** -->
     <filter>
         <filter-name>TeeFilter</filter-name>
         <filter-class>ch.qos.logback.access.servlet.TeeFilter</filter-class>
