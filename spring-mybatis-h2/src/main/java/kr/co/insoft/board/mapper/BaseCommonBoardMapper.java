@@ -10,7 +10,7 @@ public interface BaseCommonBoardMapper<T> {
 
 	public List<T> getList();
 
-	public long getListCount();
+	public int getListCount();
 
 	public T getDetails(long _seq);
 }

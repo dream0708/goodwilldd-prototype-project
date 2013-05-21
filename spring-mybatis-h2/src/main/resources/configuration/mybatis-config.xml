@@ -11,14 +11,11 @@
 	<!-- transaction annotation -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
-	<!-- <mybatis:scan base-package="kr.co.insoft"  /> -->
-
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<!-- <bean id="sqlSessionFactory" class="kr.co.insoft.core.mybatis.CustomSqlSessionFactoryBean"> -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="typeAliasesPackage"
@@ -27,16 +24,16 @@
 			value="#{applications['application.mybatis.mapperLocations']}" />
 	</bean>
 
-	<!-- ==== mybatis sqlSessionTemplate ==== -->
 	<bean id="sqlSessionReuseTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 		<constructor-arg name="executorType" value="REUSE" />
 	</bean>
-
-	<bean id="myBatisMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	
+	<mybatis:scan base-package="kr.co.insoft.**.mapper" annotation="org.springframework.stereotype.Repository" />
+	<!-- <bean id="myBatisMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage"
 			value="#{applications['application.mybatis.nomarl.basePackage']}"></property>
-		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
+		<property name="annotationClass" value="" />
 		<property name="sqlSessionTemplateBeanName" value="sqlSessionReuseTemplate" />
-	</bean>
+	</bean> -->
 </beans>
