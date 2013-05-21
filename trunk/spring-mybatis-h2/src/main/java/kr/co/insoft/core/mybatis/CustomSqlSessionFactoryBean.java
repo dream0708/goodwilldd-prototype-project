@@ -43,13 +43,13 @@ import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 /**
  * <pre>
  * Mybatis 3.2.1의 SqlSessionFactoryBean 클래스를 상속
- * Package Scanner를 활용하여 type alias를 자동으로 등록한다. 
+ * Package Scanner를 활용하여 type alias를 자동으로 등록한다.
  * </pre>
  * 
  * @See {@link SqlSessionFactoryBean}
  * 
  * @author GoodwillDD (kr.goodwilldd@gmail.com)
- *
+ * 
  */
 public class CustomSqlSessionFactoryBean extends SqlSessionFactoryBean {
 
@@ -397,6 +397,7 @@ public class CustomSqlSessionFactoryBean extends SqlSessionFactoryBean {
 					.debug("################################################################");
 			try {
 				for (BeanDefinition bean : scanner.getClasses()) {
+					@SuppressWarnings("rawtypes")
 					Class clz = ClassUtils.getClass(bean.getBeanClassName());
 					if (!clz.isInterface()) {
 						configuration.getTypeAliasRegistry().registerAlias(

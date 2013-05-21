@@ -1,9 +1,5 @@
 package kr.co.insoft.core.mybatis;
 
-import static org.springframework.util.Assert.notNull;
-
-import org.apache.ibatis.executor.ErrorContext;
-import org.apache.ibatis.session.Configuration;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.FactoryBean;
 

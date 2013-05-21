@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources location="/resources/style/" mapping="/css/**" />
+	<resources location="/resources/javascript/" mapping="/js/**" />
+	<resources location="/resources/images/" mapping="/img/**" />
+	<!-- <resources mapping="/resources/**" location="/resources/" /> -->
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jspx" />
+		<beans:property name="order" value="1" />
+	</beans:bean>
+	
+	<!-- <context:component-scan base-package="#{applications['application.basePackage']}" /> -->
+	<!-- <jpa:repositories base-package="#{applications['application.basePackage']}" /> -->
+	<context:component-scan base-package="kr.co.insoft" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<context:component-scan base-package="kr.co.insoft" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+	</context:component-scan>
+	
+	<context:component-scan base-package="kr.co.insoft" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+	
+	<!-- System.out.println & System.err.println handling through SLF4J -->
+    <beans:bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <beans:property name="targetClass" value="uk.org.lidalia.sysoutslf4j.context.SysOutOverSLF4J"/>
+        <beans:property name="staticMethod"
+                  value="uk.org.lidalia.sysoutslf4j.context.SysOutOverSLF4J.sendSystemOutAndErrToSLF4J"/>
+        <beans:property name="arguments">
+            <beans:list>
+                <!-- Set log level for System.out -->
+                <util:constant static-field="uk.org.lidalia.sysoutslf4j.context.LogLevel.DEBUG"/>
+                <!-- Set log level for System.err -->
+                <util:constant static-field="uk.org.lidalia.sysoutslf4j.context.LogLevel.ERROR"/>
+            </beans:list>
+        </beans:property>
+    </beans:bean>
+
+    <!-- Enable handling of java.util.logging through SLF4J -->
+    <beans:bean id="slf4JBridgeHandler" class="org.slf4j.bridge.SLF4JBridgeHandler"
+          init-method="removeHandlersForRootLogger"/>
+    <beans:bean class="org.slf4j.bridge.SLF4JBridgeHandler"
+          init-method="install"
+          depends-on="slf4JBridgeHandler"/>
+</beans:beans>
