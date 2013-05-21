@@ -5,13 +5,12 @@ import java.util.List;
 import kr.co.insoft.board.entity.DefaultDetailEntity;
 import kr.co.insoft.board.entity.DefaultListEntity;
 import kr.co.insoft.board.mapper.CommonBoardMapper;
+import kr.co.insoft.core.annotation.TService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
-@Transactional
+@TService
 public class CommonBoard implements ICommonBoard<DefaultDetailEntity> {
 
 	@Autowired
