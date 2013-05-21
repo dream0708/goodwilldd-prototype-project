@@ -4,6 +4,5 @@
 	<entry key="application.basePackage">kr.co.insoft</entry>
 	<entry key="application.mybatis.mapperLocations">classpath:common/mapper/*.xml</entry>
 	<entry key="application.mybatis.typeAliasesPackage">kr.co.insoft.**.entity</entry>
-	<entry key="application.mybatis.nomarl.basePackage">kr.co.insoft.**.mapper.normal.**</entry>
-	<entry key="application.mybatis.batch.basePackage">kr.co.insoft.**.mapper.batch.**</entry>
+	<entry key="application.mybatis.nomarl.basePackage">kr.co.insoft.**.mapper.**</entry>
 </properties>

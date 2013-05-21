@@ -2,7 +2,7 @@ package kr.co.insoft;
 
 import kr.co.insoft.example.controller.ExampleController;
 import kr.co.insoft.example.entity.Example;
-import kr.co.insoft.example.mapper.normal.NExampleMapper;
+import kr.co.insoft.example.mapper.NExampleMapper;
 import kr.co.insoft.example.service.ExampleService;
 
 import org.apache.commons.logging.Log;

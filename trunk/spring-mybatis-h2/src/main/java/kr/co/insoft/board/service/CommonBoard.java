@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.co.insoft.board.entity.DefaultDetailEntity;
 import kr.co.insoft.board.entity.DefaultListEntity;
-import kr.co.insoft.board.mapper.normal.CommonBoardMapper;
+import kr.co.insoft.board.mapper.CommonBoardMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

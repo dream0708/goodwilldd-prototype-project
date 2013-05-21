@@ -1,4 +1,4 @@
-package kr.co.insoft.security.mapper.normal;
+package kr.co.insoft.security.mapper;
 
 import java.util.List;
 

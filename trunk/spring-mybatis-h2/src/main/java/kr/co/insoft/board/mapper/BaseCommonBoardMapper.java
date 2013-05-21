@@ -1,4 +1,4 @@
-package kr.co.insoft.board.mapper.normal;
+package kr.co.insoft.board.mapper;
 
 import java.util.List;
 

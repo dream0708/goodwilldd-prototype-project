@@ -3,7 +3,7 @@ package kr.co.insoft.example.service;
 import java.util.List;
 
 import kr.co.insoft.example.entity.Example;
-import kr.co.insoft.example.mapper.normal.NExampleMapper;
+import kr.co.insoft.example.mapper.NExampleMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
