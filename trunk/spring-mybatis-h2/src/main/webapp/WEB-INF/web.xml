@@ -6,7 +6,7 @@
 	<!-- tomcat any server -Dspring.profiles.active=local -->
 	<context-param>
 		<param-name>spring.profiles.active</param-name>
-		<param-value>local</param-value>
+		<param-value>developement</param-value>
 	</context-param>
 
 	<!-- The definition of the Root Spring Container shared by all Servlets 

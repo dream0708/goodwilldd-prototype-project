@@ -4,15 +4,16 @@ import kr.co.insoft.board.entity.DefaultDetailEntity;
 import kr.co.insoft.board.entity.DefaultListEntity;
 import kr.co.insoft.board.service.ICommonBoard;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class DatabaseTest extends AbstractTest {
 
-	private static final Log logger = LogFactory.getLog(DatabaseTest.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(DatabaseTest.class);
 	
 	@Autowired
 	ICommonBoard<DefaultDetailEntity> commonBoard;

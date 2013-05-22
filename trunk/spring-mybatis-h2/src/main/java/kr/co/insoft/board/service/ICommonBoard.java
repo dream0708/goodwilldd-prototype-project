@@ -8,7 +8,7 @@ public interface ICommonBoard<T> {
 
 	public List<T> getList();
 
-	public long getListCount();
+	public int getListCount();
 
 	public DefaultListEntity<T> getListWithPaging();
 	
