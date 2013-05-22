@@ -18,4 +18,5 @@
 	<entry key="board.delete">Delete</entry>
 	<entry key="board.save">Save</entry>
 	<entry key="board.modify">Modify</entry>
+	<entry key="valid.notNull">this filed not empty!!</entry>
 </properties>
