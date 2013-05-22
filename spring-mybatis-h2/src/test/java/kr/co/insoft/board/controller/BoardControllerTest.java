@@ -17,12 +17,22 @@ public class BoardControllerTest extends AbstractTest {
 
 	DefaultListEntity<DefaultDetailEntity> entity;
 	
+	DefaultDetailEntity saveData;
+	
 	@Before
 	public void init() {
+		saveData.setBoardName("testBoard");
+		saveData.setContent("A");
+		
 	}
 	
 	@Test
-	public void testList() throws Exception{
+	public void testGetList() throws Exception{
 		mockMvc.perform(get("/b/testBoard/1/list.htm")).andExpect(status().isOk());
+	}
+	
+	@Test public void testSave() throws Exception {
+		mockMvc.perform(post("/b/testBoard/1/save.htm")
+				.requestAttr("data", entity)).andExpect(status().isOk());
 	}
 }

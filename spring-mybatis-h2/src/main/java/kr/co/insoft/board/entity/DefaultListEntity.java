@@ -21,7 +21,17 @@ public class DefaultListEntity<T> implements Serializable {
 	/**
 	 * 전체 목록의 수
 	 */
-	private long count;
+	private int count;
+	
+	/**
+	 * 현재 페이지
+	 */
+	private int currentPageIndex;
+	
+	/**
+	 * 게시판 이름
+	 */
+	private String boardName;
 
 	/**
 	 * 전체 목록 객체
@@ -74,11 +84,11 @@ public class DefaultListEntity<T> implements Serializable {
 		this.searchValue = searchValue;
 	}
 
-	public long getCount() {
+	public int getCount() {
 		return count;
 	}
 
-	public void setCount(long count) {
+	public void setCount(int count) {
 		this.count = count;
 	}
 
@@ -88,5 +98,21 @@ public class DefaultListEntity<T> implements Serializable {
 
 	public void setList(List<T> list) {
 		this.list = list;
+	}
+
+	public int getCurrentPageIndex() {
+		return currentPageIndex;
+	}
+
+	public void setCurrentPageIndex(int currentPageIndex) {
+		this.currentPageIndex = currentPageIndex;
+	}
+
+	public String getBoardName() {
+		return boardName;
+	}
+
+	public void setBoardName(String boardName) {
+		this.boardName = boardName;
 	}
 }

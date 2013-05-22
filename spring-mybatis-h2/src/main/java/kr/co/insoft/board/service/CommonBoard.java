@@ -4,7 +4,6 @@ import java.util.List;
 
 import kr.co.insoft.board.entity.DefaultDetailEntity;
 import kr.co.insoft.board.entity.DefaultListEntity;
-import kr.co.insoft.board.entity.DefaultSearchEnum;
 import kr.co.insoft.board.mapper.CommonBoardMapper;
 import kr.co.insoft.core.annotation.TService;
 import kr.co.insoft.core.util.CommonPropertiesUtil;
@@ -16,33 +15,35 @@ import org.springframework.transaction.annotation.Transactional;
 public class CommonBoard implements ICommonBoard<DefaultDetailEntity> {
 
 	@Autowired
-	CommonBoardMapper commonBoardMapper;
+	CommonBoardMapper<DefaultDetailEntity> commonBoardMapper;
 
 	@Autowired
 	CommonPropertiesUtil commonPropertiesUtil;
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<DefaultDetailEntity> getList() {
-		return commonBoardMapper.getList();
+	public List<DefaultDetailEntity> getList(DefaultListEntity<DefaultDetailEntity> entity) {
+		return commonBoardMapper.getList(entity);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public int getListCount() {
-		return commonBoardMapper.getListCount();
+	public int getListCount(DefaultListEntity<DefaultDetailEntity> entity) {
+		return commonBoardMapper.getListCount(entity);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
-	public DefaultListEntity<DefaultDetailEntity> getListWithPaging(int currentPageIndex) {
+	public DefaultListEntity<DefaultDetailEntity> getListWithPaging(
+			DefaultListEntity<DefaultDetailEntity> entity) {
 		int pageSize = commonPropertiesUtil.getInt("DEFAULT_PAGE_SIZE");
 		int pagingSize = commonPropertiesUtil.getInt("DEFAULT_PAGING_SIZE");
 
 		DefaultListEntity<DefaultDetailEntity> result = new DefaultListEntity<>();
-		result.setCount(getListCount());
-		result.setList(getList());
-		result.setPaging(getListCount(), currentPageIndex, pageSize, pagingSize);
+		int totalCount = getListCount(entity);
+		result.setCount(totalCount);
+		result.setList(getList(entity));
+		result.setPaging(totalCount, entity.getCurrentPageIndex(), pageSize, pagingSize);
 		return result;
 	}
 
