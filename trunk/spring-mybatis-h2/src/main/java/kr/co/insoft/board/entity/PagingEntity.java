@@ -1,25 +1,20 @@
-package kr.co.insoft.core.util;
+package kr.co.insoft.board.entity;
 
 import java.util.ArrayList;
 
-import org.springframework.beans.factory.annotation.Autowired;
+public class PagingEntity {
 
-public class PagingUtil {
-
-	@Autowired
-	CommonPropertiesUtil commonPropertiesUtil;
-
-	public int PAGE_SIZE = commonPropertiesUtil
-			.getInt("DEFAULT_PAGE_SIZE");
-	public int BLOCK_SIZE = commonPropertiesUtil
-			.getInt("DEFAULT_PAGING_SIZE");
+	public int PAGE_SIZE;
+	public int BLOCK_SIZE;
 
 	private int totalCount;
 	private int currentPageIndex;
 
-	public PagingUtil(int totalCount, int currentPageIndex) {
+	public PagingEntity(int totalCount, int currentPageIndex, int pageSize, int pagingSize) {
 		this.totalCount = totalCount;
 		this.currentPageIndex = currentPageIndex;
+		this.PAGE_SIZE = pageSize;
+		this.BLOCK_SIZE = pagingSize;
 	}
 
 	public int getTotalCount() {
@@ -75,8 +70,9 @@ public class PagingUtil {
 	}
 
 	public int getCurrentBlock() {
+//		return (int) Math.ceil((double) ((getCurrentPageNum() - 1) / BLOCK_SIZE)) + 1;
 		return (int) Math
-				.ceil((double) ((getCurrentPageNum() - 1) / BLOCK_SIZE)) + 1;
+				.ceil((double) ((getCurrentPageNum()) / BLOCK_SIZE)) + 1;
 	}
 
 	public int getStartBlock() {
