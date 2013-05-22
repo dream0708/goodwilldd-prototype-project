@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,7 +18,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/root-context.xml",
-		"/appServlet/servlet-context.xml" })
+		"/servlet-context.xml" })
+@Profile("test")
 public abstract class AbstractTest {
 	protected MockHttpServletRequest request;
 	protected MockHttpServletResponse response;

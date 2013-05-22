@@ -24,7 +24,7 @@ public class CommonBoard implements ICommonBoard<DefaultDetailEntity> {
 
 	@Override
 	@Transactional(readOnly = true)
-	public long getListCount() {
+	public int getListCount() {
 		return commonBoardMapper.getListCount();
 	}
 
@@ -34,6 +34,7 @@ public class CommonBoard implements ICommonBoard<DefaultDetailEntity> {
 		DefaultListEntity<DefaultDetailEntity> result = new DefaultListEntity<>();
 		result.setCount(getListCount());
 		result.setList(getList());
+		result.setPaging(getListCount(), 1);
 		return result;
 	}
 
