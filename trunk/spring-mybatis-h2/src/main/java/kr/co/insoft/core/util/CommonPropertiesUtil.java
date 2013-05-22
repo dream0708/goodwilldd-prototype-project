@@ -9,6 +9,7 @@ import org.apache.commons.configuration.XMLPropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 /**
  * <pre>
@@ -18,7 +19,8 @@ import org.slf4j.LoggerFactory;
  * @author GoodwillDD (kr.goodwilldd@gmail.com)
  * 
  */
-public class CommonPropertiesUtil {
+@Component
+public final class CommonPropertiesUtil {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(CommonPropertiesUtil.class);

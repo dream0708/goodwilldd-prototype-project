@@ -26,9 +26,6 @@ public class CustomUserDetailService implements UserDetailsService {
 	@Autowired
 	SecurityMapper securityMapper;
 
-	@Autowired
-	ObjectUtil objectUtil;
-
 	@Override
 	@DependsOn(value = { "securityMapper" })
 	public UserDetails loadUserByUsername(String username)
@@ -43,7 +40,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
 		try {
 			AuthenticationEntity domainUser = getUser(username);
-			if (objectUtil.isEmpty(domainUser)) {
+			if (ObjectUtil.isEmpty(domainUser)) {
 				domainUser.setPassword("");
 				domainUser.setUsername("");
 			}

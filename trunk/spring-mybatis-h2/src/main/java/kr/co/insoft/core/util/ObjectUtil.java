@@ -11,9 +11,9 @@ import java.util.Collection;
  *
  */
 @SuppressWarnings({ "rawtypes" })
-public class ObjectUtil {
+public final class ObjectUtil {
 
-	public boolean isEmpty(Object object) {
+	public static boolean isEmpty(Object object) {
 		if (object == null) {
 			return true;
 		}

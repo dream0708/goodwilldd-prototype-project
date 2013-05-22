@@ -6,11 +6,11 @@ import kr.co.insoft.board.entity.DefaultListEntity;
 
 public interface ICommonBoard<T> {
 
-	public List<T> getList();
+	public List<T> getList(DefaultListEntity<T> entity);
 
-	public int getListCount();
+	public int getListCount(DefaultListEntity<T> entity);
 
-	public DefaultListEntity<T> getListWithPaging(int currentPageIndex);
+	public DefaultListEntity<T> getListWithPaging(DefaultListEntity<T> entity);
 	
 	public boolean doSave(T t);
 

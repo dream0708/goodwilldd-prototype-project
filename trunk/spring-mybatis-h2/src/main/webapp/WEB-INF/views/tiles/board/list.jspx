@@ -1,16 +1,54 @@
-<html xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:spring="http://www.springframework.org/tags" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:sec="http://www.springframework.org/security/tags">
-	
-	<jsp:output doctype-root-element="HTML" doctype-system="about:legacy-compat" />
-	<jsp:directive.page contentType="text/html;charset=UTF-8" />  
-	
-	<head>
-		<meta charset="utf-8"/>
-		<title><c:out value="${title}"/></title>
-		<spring:url value="/css" var="styleUrl" />
-		<link href="${styleUrl}/app.css" rel="stylesheet"/>
-	</head>
-	
-	<body>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jsp/jstl/fmt"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:sec="http://www.springframework.org/security/tags">
+	<jsp:output doctype-root-element="HTML"
+		doctype-system="about:legacy-compat" />
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<spring:eval expression="@applications['application.version']"
+		var="applicationVersion" />
+	<script type="text/javascript" src="${jsUrl }/${applicationVersion }/board/board.js"><!-- --></script>
+	<div>
 		<h1>List</h1>
-	</body>
-</html>
+		<table>
+			<tr>
+				<th>제목</th>
+				<th>작성일</th>
+			</tr>
+			<tbody>
+				<c:forEach items="${list.list }" var="l">
+					<tr>
+						<td>${l.subject }</td>
+						<td>${l.regDate }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<c:if test="${list.count ne 0}">
+			<c:set var="page" value="${list.paging }" />
+			<table>
+				<tr>
+					<td>${page.getPreviousBlock() }</td>
+					<td>${page.getPrePageNum() }</td>
+					<c:forEach items="${page.getPages() }" var="p">
+						<c:choose>
+							<c:when test="${p eq page.getCurrentPageNum()}">
+								<td><strong>${p }</strong></td>
+							</c:when>
+							<c:otherwise>
+								<td>${p }</td>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<td>${page.getNextPageNum() }</td>
+					<td>${page.getNextBlock() }</td>
+				</tr>
+			</table>
+		</c:if>
+		<button name="write">
+			<spring:message code="board.write" />
+		</button>
+	</div>
+</div>

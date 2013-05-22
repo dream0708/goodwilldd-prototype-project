@@ -8,8 +8,14 @@
 	<entry key="loginFailureCause.disabled">plz, check your mail, Your's account revitalize</entry>
 	<entry key="loginFailureCause.defaultFalse">Invaild Login Infomation</entry>
 	<entry key="validation.mobilephone.message">Invalid format at mobile phone number</entry>
-	<entry key="myName">GoodwillDD</entry>
+	<entry key="welcome">{0} Welcome!</entry>
 	<entry key="login.userId">User ID</entry>
 	<entry key="login.password">User Password</entry>
 	<entry key="login.loginButton">Login</entry>
+	<entry key="board.write">Write</entry>
+	<entry key="board.list">List</entry>
+	<entry key="board.search">Search</entry>
+	<entry key="board.delete">Delete</entry>
+	<entry key="board.save">Save</entry>
+	<entry key="board.modify">Modify</entry>
 </properties>
