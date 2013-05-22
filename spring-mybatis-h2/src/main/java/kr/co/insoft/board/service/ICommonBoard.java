@@ -10,7 +10,7 @@ public interface ICommonBoard<T> {
 
 	public int getListCount();
 
-	public DefaultListEntity<T> getListWithPaging();
+	public DefaultListEntity<T> getListWithPaging(int currentPageIndex);
 	
 	public boolean doSave(T t);
 

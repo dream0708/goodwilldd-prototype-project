@@ -7,6 +7,8 @@ import javax.annotation.PostConstruct;
 
 import org.apache.commons.configuration.XMLPropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <pre>
@@ -18,6 +20,8 @@ import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
  */
 public class CommonPropertiesUtil {
 
+	private static final Logger logger = LoggerFactory
+			.getLogger(CommonPropertiesUtil.class);
 	XMLPropertiesConfiguration properties = null;
 
 	@PostConstruct
@@ -33,7 +37,7 @@ public class CommonPropertiesUtil {
 			reload.setRefreshDelay(1000L * 60L * 60L);
 			properties.setReloadingStrategy(reload);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("CommonPropertiesUtil \n\n{}", e);
 		}
 	}
 

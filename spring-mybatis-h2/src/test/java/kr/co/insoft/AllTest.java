@@ -1,5 +1,11 @@
 package kr.co.insoft;
 
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
+import static org.junit.matchers.JUnitMatchers.*;
+import static org.springframework.test.web.ModelAndViewAssert.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import kr.co.insoft.example.controller.ExampleController;
 import kr.co.insoft.example.entity.Example;
 import kr.co.insoft.example.mapper.NExampleMapper;
@@ -28,7 +34,7 @@ public class AllTest extends AbstractTest {
 
 	@Test
 	public void testExampleController() throws Exception {
-		request.setRequestURI("/exam/main");
+		mockMvc.perform(get("/exam/main")).andExpect(status().isOk());
 	}
 
 	@Test
