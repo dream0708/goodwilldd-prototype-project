@@ -18,4 +18,5 @@
 	<entry key="board.delete">삭제</entry>
 	<entry key="board.save">저장</entry>
 	<entry key="board.update">수정</entry>
+	<entry key="valid.notNull">빈값을 입력하실 수 없습니다.</entry>
 </properties>

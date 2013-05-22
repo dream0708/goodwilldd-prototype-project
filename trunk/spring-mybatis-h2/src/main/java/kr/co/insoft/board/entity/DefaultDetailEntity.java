@@ -1,12 +1,20 @@
 package kr.co.insoft.board.entity;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
 
 public class DefaultDetailEntity {
 	private long bseq;
+	@NotNull
 	private String boardName;
+
+	@NotNull(message = "valid.notNull")
+	@Size(min=2)
 	private String subject;
+
 	private String content;
 	private String register;
 	private String regDate;
