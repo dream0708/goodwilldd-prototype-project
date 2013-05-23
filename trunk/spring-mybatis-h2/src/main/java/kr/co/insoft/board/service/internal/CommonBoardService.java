@@ -1,4 +1,4 @@
-package kr.co.insoft.board.service;
+package kr.co.insoft.board.service.internal;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -7,6 +7,7 @@ import kr.co.insoft.board.entity.DefaultDetailEntity;
 import kr.co.insoft.board.entity.DefaultListEntity;
 import kr.co.insoft.board.exception.SaveException;
 import kr.co.insoft.board.mapper.CommonBoardMapper;
+import kr.co.insoft.board.service.ICommonBoardService;
 import kr.co.insoft.core.util.CommonPropertiesUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
