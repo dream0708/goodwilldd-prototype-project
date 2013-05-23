@@ -1,9 +1,9 @@
 INSERT INTO TB_AUTH(username, password, enabled) VALUES('goodwilldd', 'STKLycBVQOpK7ljapjqIIg==', 'TRUE');
 INSERT INTO TB_AUTH(username, password, enabled) VALUES('vocalstars', 'b2z2xZVwt97FsdmmoNbYlQ==', 'TRUE');
 INSERT INTO TB_AUTH_ROLE(username, authority) VALUES('goodwilldd', 'ROLE_USER');
-INSERT INTO TB_AUTH_ROLE(username, authority) VALUES('goodwilldd', 'ROLE_SUPERROOKIE');
+INSERT INTO TB_AUTH_ROLE(username, authority) VALUES('goodwilldd', 'ROLE_SUPERVISOR');
 INSERT INTO TB_AUTH_ROLE(username, authority) VALUES('vocalstars', 'ROLE_USER');
-INSERT INTO TB_AUTH_ROLE(username, authority) VALUES('vocalstars', 'ROLE_SUPERROOKIE');
+INSERT INTO TB_AUTH_ROLE(username, authority) VALUES('vocalstars', 'ROLE_SUPERVISOR');
 
 INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(1, '1', '1@1.com', '010-0000-0000');
 INSERT INTO TB_EXAMPLE(seq, username, email, mobilePhone) VALUES(2, '2', '1@1.com', '010-0000-0000');
