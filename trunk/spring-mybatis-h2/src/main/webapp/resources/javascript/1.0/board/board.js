@@ -6,4 +6,7 @@ $(function(){
 	$("button[name='list']").bind("click", function() {
 		location.href="list.htm";
 	});
+	$(".subject").bind("click", function() {
+		location.href="read/"+$(this).find("input").val()+".htm";
+	});
 });
