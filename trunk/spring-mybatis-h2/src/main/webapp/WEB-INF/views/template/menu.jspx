@@ -8,7 +8,7 @@
 	<c:url value="/sec/logout.htm" var="logout" />
 	<div class="header well">
 		<img src="${imgUrl }/springsource_banner_green.png" />
-		<sec:authorize ifAnyGranted="ROLE_SUPERROOKIE,ROLE_USER">
+		<sec:authorize ifAnyGranted="ROLE_SUPERVISOR,ROLE_USER">
 			<sec:authentication property="principal.username" var="username" />
 			<spring:message var="welcome" code="welcome" arguments="${username }" />
 			<div class="page-header">

@@ -21,7 +21,7 @@
 	<http auto-config="true">
 		<intercept-url pattern="/sec/**" access="IS_AUTHENTICATED_ANONYMOUSLY"
 			requires-channel="any" />
-		<intercept-url pattern="/**" access="ROLE_USER,ROLE_SUPERROOKIE"
+		<intercept-url pattern="/**" access="ROLE_USER,ROLE_SUPERVISOR"
 			requires-channel="any" />
 		<remember-me use-secure-cookie="true" key="SEC_INSOFT" />
 		<form-login login-page="/sec/login.htm"
