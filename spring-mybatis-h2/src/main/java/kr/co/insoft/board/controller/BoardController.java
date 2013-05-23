@@ -7,7 +7,7 @@ import javax.validation.Valid;
 import kr.co.insoft.board.entity.DefaultDetailEntity;
 import kr.co.insoft.board.entity.DefaultListEntity;
 import kr.co.insoft.board.exception.SaveException;
-import kr.co.insoft.board.service.ICommonBoard;
+import kr.co.insoft.board.service.ICommonBoardService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +19,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/b/{boardName}/{page}")
@@ -49,7 +50,7 @@ public class BoardController {
 	Redirect redirectUrl = new Redirect();
 
 	@Autowired
-	ICommonBoard<DefaultDetailEntity> commonBoard;
+	ICommonBoardService<DefaultDetailEntity> commonBoard;
 
 	@RequestMapping(value = "list")
 	public String list(Model model, @PathVariable String boardName,
@@ -64,6 +65,14 @@ public class BoardController {
 	@RequestMapping(value = "writeForm", method = RequestMethod.GET)
 	public String saveForm(Model model) {
 		model.addAttribute("defaultDetailEntity", new DefaultDetailEntity());
+		return SAVE;
+	}
+	
+	@RequestMapping(value = "replyForm", method = RequestMethod.GET)
+	public String replyForm(Model model, @RequestParam(value = "seq") Integer seq) {
+		DefaultDetailEntity entity = new DefaultDetailEntity();
+		entity.setBseq(seq);
+		model.addAttribute("defaultDetailEntity", entity);
 		return SAVE;
 	}
 
@@ -85,7 +94,11 @@ public class BoardController {
 		
 		try {
 			entity.setBoardName(boardName);
-			commonBoard.doSave(entity);	
+			logger.info("entity.getBseq() {}", entity.getBseq());
+			if ( entity.getBseq() != 0 )
+				commonBoard.doReply(entity);
+			else
+				commonBoard.doSave(entity);	
 		} catch(SQLException e1) {
 			return SAVE;
 		} catch(SaveException e) {

@@ -6,7 +6,7 @@ import java.util.List;
 import kr.co.insoft.board.entity.DefaultListEntity;
 import kr.co.insoft.board.exception.SaveException;
 
-public interface ICommonBoard<T> {
+public interface ICommonBoardService<T> {
 
 	public List<T> getList(DefaultListEntity<T> entity);
 
@@ -15,6 +15,8 @@ public interface ICommonBoard<T> {
 	public DefaultListEntity<T> getListWithPaging(DefaultListEntity<T> entity);
 
 	public int doSave(T t) throws SQLException, SaveException;
+	
+	public int doReply(T t) throws SQLException, SaveException;
 
 	public boolean doDelete(T t);
 

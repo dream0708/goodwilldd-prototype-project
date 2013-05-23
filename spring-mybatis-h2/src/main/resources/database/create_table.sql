@@ -17,7 +17,7 @@ create table tb_example(
 	mobilePhone varchar(13) not null
 );
 
-CREATE TABLE tb_board_data(
+CREATE TABLE TB_BOARD_DATA(
 	bseq INT(10) NOT NULL primary key,
 	boardName VARCHAR(50) NULL DEFAULT NULL,
 	subject TEXT NOT NULL,
@@ -28,3 +28,7 @@ CREATE TABLE tb_board_data(
 	isEnabled TINYINT(4) NOT NULL DEFAULT '0',
 	reLevel INT(11) NOT NULL DEFAULT '0',
 	reStep BIGINT(11) NOT NULL DEFAULT '0');
+	
+create unique index ix_board_data on TB_BOARD_DATA (bseq, boardName);
+
+CREATE SEQUENCE IF NOT EXISTS SEQ_BOARD_DATA START WITH 1 INCREMENT BY 1;

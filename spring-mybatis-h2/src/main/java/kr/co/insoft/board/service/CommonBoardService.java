@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CommonBoard implements ICommonBoard<DefaultDetailEntity> {
+public class CommonBoardService implements ICommonBoardService<DefaultDetailEntity> {
 
 	@Autowired
 	CommonBoardMapper<DefaultDetailEntity> commonBoardMapper;
@@ -55,6 +55,22 @@ public class CommonBoard implements ICommonBoard<DefaultDetailEntity> {
 	@Override
 	public int doSave(DefaultDetailEntity entity) throws SQLException, SaveException {
 		try {
+			commonBoardMapper.doSave(entity);	
+		} catch (SQLException sqlE) {
+			throw sqlE;
+		}
+		
+		if ( entity.getBseq() <= 0 ) {
+			throw new SaveException("fail");
+		}
+		
+		return entity.getBseq();
+	}
+	
+	@Override
+	public int doReply(DefaultDetailEntity entity) throws SQLException, SaveException {
+		try {
+			commonBoardMapper.doReStepUpdate(entity);
 			commonBoardMapper.doSave(entity);	
 		} catch (SQLException sqlE) {
 			throw sqlE;

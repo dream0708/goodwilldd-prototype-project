@@ -9,13 +9,14 @@
 	<spring:eval expression="@applications['application.version']"
 		var="applicationVersion" />
 	<sec:authentication property="principal.username" var="username" />
-	<spring:message code="board.save" var="save"/>
+	<spring:message code="board.reply" var="reply"/>
 	<spring:message code="board.list" var="list"/>
 	<script type="text/javascript" src="${jsUrl }/${applicationVersion }/board/board.js"><!-- --></script>
 	<h1>Read Form</h1>
 	<ul>
 		<li>${details.subject }</li>
-		<li></li>
-		<li></li>
+		<li>${details.register }</li>
+		<li>${details.content }</li>
 	</ul>
+	<button onclick="javascript:location.href='../replyForm.htm?seq=${details.bseq }';">${reply }</button><button onclick="javascript:location.href='../list.htm';">${list }</button>
 </div>

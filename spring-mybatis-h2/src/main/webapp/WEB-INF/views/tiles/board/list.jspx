@@ -20,7 +20,10 @@
 			<tbody>
 				<c:forEach items="${list.list }" var="l">
 					<tr>
-						<td class="subject"><input type="hidden" name="bseq" id="bseq" value="${l.bseq }"/>${l.subject }</td>
+						<td class="subject">
+						<input type="hidden" name="bseq" id="bseq" value="${l.bseq }"/>
+						<c:forEach begin="0" end="${l.reLevel * 4}" step="1"><![CDATA[&nbsp;]]></c:forEach>${l.subject }
+						</td>
 						<td>${l.regDate }</td>
 					</tr>
 				</c:forEach>
@@ -47,7 +50,7 @@
 				</tr>
 			</table>
 		</c:if>
-		<button name="write">
+		<button onclick="location.href='writeForm.htm';">
 			<spring:message code="board.write" />
 		</button>
 	</div>
