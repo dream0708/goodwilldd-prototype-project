@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<!--@AssertFalse--><entry key='javax.validation.constraints.AssertFalse.message'><![CDATA[must be false]]></entry>
+	<!--@AssertTrue--><entry key='javax.validation.constraints.AssertTrue.message'><![CDATA[must be true]]></entry>
+	<!--@DecimalMax--><entry key='javax.validation.constraints.DecimalMax.message'><![CDATA[must be less than or equal to {value}]]></entry>
+	<!--@DecimalMin--><entry key='javax.validation.constraints.DecimalMin.message'><![CDATA[must be greater than or equal to {value}]]></entry>
+	<!--@Digits--><entry key='javax.validation.constraints.Digits.message'><![CDATA[numeric value out of bounds (<{integer} digits>.<{fraction} digits> expected)]]></entry>
+	<!--@Future--><entry key='javax.validation.constraints.Future.message'><![CDATA[must be in the future]]></entry>
+	<!--@Max--><entry key='javax.validation.constraints.Max.message'><![CDATA[must be less than or equal to {value}]]></entry>
+	<!--@Min--><entry key='javax.validation.constraints.Min.message'><![CDATA[must be greater than or equal to {value}]]></entry>
+	<!--@NotNull--><entry key='javax.validation.constraints.NotNull.message'><![CDATA[may not be null]]></entry>
+	<!--@Null--><entry key='javax.validation.constraints.Null.message'><![CDATA[must be null]]></entry>
+	<!--@Past--><entry key='javax.validation.constraints.Past.message'><![CDATA[must be in the past]]></entry>
+	<!--@Pattern--><entry key='javax.validation.constraints.Pattern.message'><![CDATA[must match “{regexp}”]]></entry>
+	<!--@Size--><entry key='javax.validation.constraints.Size.message'><![CDATA[size must be between {min} and {max}]]></entry>
+	<!--@CreditCardNumber--><entry key='org.hibernate.validator.constraints.CreditCardNumber.message'><![CDATA[invalid credit card number]]></entry>
+	<!--@Email--><entry key='org.hibernate.validator.constraints.Email.message'><![CDATA[not a well-formed email address]]></entry>
+	<!--@Length--><entry key='org.hibernate.validator.constraints.Length.message'><![CDATA[length must be between {min} and {max}]]></entry>
+	<!--@NotBlank--><entry key='org.hibernate.validator.constraints.NotBlank.message'><![CDATA[may not be empty]]></entry>
+	<!--@NotEmpty--><entry key='org.hibernate.validator.constraints.NotEmpty.message'><![CDATA[may not be empty]]></entry>
+	<!--@Range--><entry key='org.hibernate.validator.constraints.Range.message'><![CDATA[must be between {min} and {max}]]></entry>
+	<!--@SafeHtml--><entry key='org.hibernate.validator.constraints.SafeHtml.message'><![CDATA[may have unsafe html content]]></entry>
+	<!--@ScriptAssert--><entry key='org.hibernate.validator.constraints.ScriptAssert.message'><![CDATA[script expression “{script}” didn’t evaluate to true]]></entry>
+	<!--@URL--><entry key='org.hibernate.validator.constraints.URL.message'><![CDATA[must be a valid URL]]></entry>
+</properties>

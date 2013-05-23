@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd"> 
+<properties>
+	<!--@AssertFalse--><entry key='javax.validation.constraints.AssertFalse.message'><![CDATA[거짓 값이여야 합니다.]]></entry>
+	<!--@AssertTrue--><entry key='javax.validation.constraints.AssertTrue.message'><![CDATA[참 값이여야 합니다.]]></entry>
+	<!--@DecimalMax--><entry key='javax.validation.constraints.DecimalMax.message'><![CDATA[적어도 {value}값 이하이어야합니다.]]></entry>
+	<!--@DecimalMin--><entry key='javax.validation.constraints.DecimalMin.message'><![CDATA[적어도 {value}값 이상이어야합니다.]]></entry>
+	<!--@Digits--><entry key='javax.validation.constraints.Digits.message'><![CDATA[정수값 (<{integer} digits>.<{fraction} digits> expected)]]></entry>
+	<!--@Future--><entry key='javax.validation.constraints.Future.message'><![CDATA[must be in the future]]></entry>
+	<!--@Max--><entry key='javax.validation.constraints.Max.message'><![CDATA[적어도 {value}값 이하이여야합니다.]]></entry>
+	<!--@Min--><entry key='javax.validation.constraints.Min.message'><![CDATA[적어도 {value}값 이상이여야합니다.]]></entry>
+	<!--@NotNull--><entry key='javax.validation.constraints.NotNull.message'><![CDATA[빈값일 수 없습니다.]]></entry>
+	<!--@Null--><entry key='javax.validation.constraints.Null.message'><![CDATA[빈값이어야합니다.]]></entry>
+	<!--@Past--><entry key='javax.validation.constraints.Past.message'><![CDATA[must be in the past]]></entry>
+	<!--@Pattern--><entry key='javax.validation.constraints.Pattern.message'><![CDATA[정규식 “{regexp}”와 일치하여야합니다.]]></entry>
+	<!--@Size--><entry key='javax.validation.constraints.Size.message'><![CDATA[최소 {min} 최대 {max} 사이의 값이여야합니다.]]></entry>
+	<!--@CreditCardNumber--><entry key='org.hibernate.validator.constraints.CreditCardNumber.message'><![CDATA[잘못된 카드 번호입니다.]]></entry>
+	<!--@Email--><entry key='org.hibernate.validator.constraints.Email.message'><![CDATA[이메일 형식과 일치하지 않습니다.]]></entry>
+	<!--@Length--><entry key='org.hibernate.validator.constraints.Length.message'><![CDATA[길이가 최소 {min} 최대 {max} 사이이어야합니다.]]></entry>
+	<!--@NotBlank--><entry key='org.hibernate.validator.constraints.NotBlank.message'><![CDATA[빈값일수없습니다.]]></entry>
+	<!--@NotEmpty--><entry key='org.hibernate.validator.constraints.NotEmpty.message'><![CDATA[빈값일수없습니다.]]></entry>
+	<!--@Range--><entry key='org.hibernate.validator.constraints.Range.message'><![CDATA[범위가 최소 {min} 최대 {max}값이야합니다.]]></entry>
+	<!--@SafeHtml--><entry key='org.hibernate.validator.constraints.SafeHtml.message'><![CDATA[검증되지 않은 내용이 들어있습니다.]]></entry>
+	<!--@ScriptAssert--><entry key='org.hibernate.validator.constraints.ScriptAssert.message'><![CDATA[script expression “{script}” didn’t evaluate to true]]></entry>
+	<!--@URL--><entry key='org.hibernate.validator.constraints.URL.message'><![CDATA[올바른 URL을 입력하세요.]]></entry>
+</properties>

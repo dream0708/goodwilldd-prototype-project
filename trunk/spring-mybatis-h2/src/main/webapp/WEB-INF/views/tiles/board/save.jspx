@@ -13,10 +13,10 @@
 	<spring:message code="board.list" var="list"/>
 	<script type="text/javascript" src="${jsUrl }/${applicationVersion }/board/board.js"><!-- --></script>
 	<h1>Save Form</h1>
-	<form:form commandName="defaultDetailEntity" method="post">
+	<form:form commandName="defaultDetailEntity" method="post" action="save.htm">
 	<form:errors path="*" cssClass="errorblock" element="div" />
 		<ul>
-			<li><form:input path="subject" /></li>
+			<li><form:input path="subject" /><form:errors path="subject" cssClass="error" /></li>
 			<li><form:textarea path="content" /></li>
 			<li><form:button type="submit">${save }</form:button><![CDATA[&nbsp;]]><form:button type="button" name="list">${list }</form:button></li>
 		</ul>
