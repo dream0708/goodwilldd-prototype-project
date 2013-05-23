@@ -16,7 +16,6 @@ public class DefaultDetailEntity {
 	@NotNull
 	@Size(min=2)
 	private String subject;
-
 	private String content;
 	private String register;
 	private String regDate;

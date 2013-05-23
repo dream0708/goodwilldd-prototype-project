@@ -14,11 +14,8 @@ import kr.co.insoft.example.service.ExampleService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 public class AllTest extends AbstractTest {
 
 	private static final Log logger = LogFactory.getLog(AllTest.class);

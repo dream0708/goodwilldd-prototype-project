@@ -27,6 +27,10 @@
     </appender>
 
     <logger name="kr.co.insoft" level="debug"/>
+    <logger name="org.springframework.core" level="info" />
+    <logger name="org.springframework.beans" level="info" />
+    <logger name="org.springframework.context" level="info" />
+    <logger name="org.springframework.web" level="info" />
 
     <root level="warn">
         <appender-ref ref="console"/>
