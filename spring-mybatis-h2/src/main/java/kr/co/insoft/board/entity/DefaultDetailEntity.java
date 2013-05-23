@@ -5,13 +5,15 @@ import javax.validation.constraints.Size;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class DefaultDetailEntity {
 	private long bseq;
 	@NotNull
 	private String boardName;
 
-	@NotNull(message = "valid.notNull")
+	@NotEmpty
+	@NotNull
 	@Size(min=2)
 	private String subject;
 

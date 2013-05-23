@@ -18,5 +18,7 @@
 	<entry key="board.delete">삭제</entry>
 	<entry key="board.save">저장</entry>
 	<entry key="board.update">수정</entry>
-	<entry key="valid.notNull">빈값을 입력하실 수 없습니다.</entry>
+	<entry key="not.empty">빈값을 입력하실 수 없습니다.</entry>
+	<entry key="not.null">빈값을 입력하실 수 없습니다.</entry>
+	<entry key="Size.DefaultDetailEntity.subject">최소 {0} 이상 입력하셔야합니다.</entry>
 </properties>
