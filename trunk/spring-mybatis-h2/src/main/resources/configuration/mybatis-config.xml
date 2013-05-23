@@ -25,7 +25,8 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
+	<bean id="sqlSessionFactory" class="kr.co.insoft.core.mybatis.CustomSqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="typeAliasesPackage"
 			value="#{applications['application.mybatis.typeAliasesPackage']}"></property>

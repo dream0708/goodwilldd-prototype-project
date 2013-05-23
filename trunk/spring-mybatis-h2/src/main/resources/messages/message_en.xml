@@ -18,7 +18,6 @@
 	<entry key="board.delete">Delete</entry>
 	<entry key="board.save">Save</entry>
 	<entry key="board.modify">Modify</entry>
-	<entry key="not.empty">This Field is Not Empty!!</entry>
-	<entry key="not.null">This Field is Not Null!!</entry>
-	<entry key="Size.DefaultDetailEntity.subject">{0} more..</entry>
+	<entry key="board.reply">Reply</entry>
+	<entry key="board.comment">comment</entry>
 </properties>

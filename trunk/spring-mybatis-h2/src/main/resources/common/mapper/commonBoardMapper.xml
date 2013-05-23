@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.insoft.board.mapper.CommonBoardMapper">
+	<insert id="doSave" parameterType="DefaultDetailEntity" flushCache="true"
+		keyColumn="bseq" keyProperty="bseq" useGeneratedKeys="true">
+		<selectKey order="AFTER" keyProperty="bseq" resultType="int"
+			statementType="PREPARED">select SEQ_BOARD_DATA.CURRVAL</selectKey>
+		insert into TB_BOARD_DATA(bSeq, boardName, register, subject, content, reStep,
+		reLevel, regdate)
+		<choose>
+			<when test="bseq != 0">
+				select SEQ_BOARD_DATA.NEXTVAL, #{boardName}, #{register}, #{subject},
+				#{content}, reStep-1, reLevel+1, CURRENT_DATE()
+				from TB_BOARD_DATA
+                where bSeq=#{bseq}
+			</when>
+			<otherwise>
+				select SEQ_BOARD_DATA.NEXTVAL, #{boardName}, #{register}, #{subject}, #{content},
+				ifnull(((floor(max(reStep)/100))+1)*100+99, 199), 0, CURRENT_DATE()
+				from TB_BOARD_DATA
+			</otherwise>
+		</choose>
+	</insert>
+	
+	<update id="doReStepUpdate" parameterType="int">
+       <![CDATA[
+       update TB_BOARD_DATA as t1 
+          set t1.reStep=t1.reStep-1 
+        where t1.reStep > (floor((select xx.reStep from (select t2.reStep from TB_BOARD_DATA as t2 where bSeq=#{bseq}) as xx)/100)*100)
+          and t1.reStep < (select xx.reStep from (select t2.reStep from TB_BOARD_DATA as t2 where bSeq=#{bseq}) as xx)
+       ]]>
+	</update>
+</mapper>

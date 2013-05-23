@@ -18,8 +18,12 @@
 		<ul>
 			<li><form:input path="subject" /><form:errors path="subject" cssClass="error" /></li>
 			<li><form:textarea path="content" /></li>
-			<li><form:button type="submit">${save }</form:button><![CDATA[&nbsp;]]><form:button type="button" name="list">${list }</form:button></li>
+			<li><form:button type="submit">${save }</form:button><![CDATA[&nbsp;]]><form:button type="button" onclick="javascript:location.href='list.htm';">${list }</form:button></li>
 		</ul>
+		<form:input path="bseq" value="${bseq }" type="hidden"/>
+		<form:input path="boardName" value="${boardName }" type="hidden"/>
 		<form:input path="register" value="${username }" type="hidden"/>
+		<form:input path="reLevel" value="${reLevel }" type="hidden"/>
+		<form:input path="reStep" value="${reStep }" type="hidden"/>
 	</form:form>
 </div>
