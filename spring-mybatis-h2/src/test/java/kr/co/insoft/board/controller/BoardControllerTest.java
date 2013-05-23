@@ -16,23 +16,25 @@ import org.junit.Test;
 public class BoardControllerTest extends AbstractTest {
 
 	DefaultListEntity<DefaultDetailEntity> entity;
-	
+
 	DefaultDetailEntity saveData;
-	
-	@Before
-	public void init() {
-		saveData.setBoardName("testBoard");
-		saveData.setContent("A");
-		
-	}
-	
+
 	@Test
-	public void testGetList() throws Exception{
-		mockMvc.perform(get("/b/testBoard/1/list.htm")).andExpect(status().isOk());
+	public void testGetList() throws Exception {
+		mockMvc.perform(get("/b/testBoard/1/list.htm")).andExpect(
+				status().isOk());
 	}
-	
-	@Test public void testSave() throws Exception {
-		mockMvc.perform(post("/b/testBoard/1/save.htm")
-				.requestAttr("data", entity)).andExpect(status().isOk());
+
+	@Test
+	public void testGetRead() throws Exception {
+		mockMvc.perform(get("/b/testBoard/1/read/1.htm")).andExpect(
+				status().isOk());
+	}
+
+	@Test
+	public void testSave() throws Exception {
+		mockMvc.perform(
+				post("/b/testBoard/1/save.htm").requestAttr("data", entity))
+				.andExpect(status().isOk());
 	}
 }
