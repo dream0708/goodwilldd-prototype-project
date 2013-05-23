@@ -1,0 +1,21 @@
+<div xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:sec="http://www.springframework.org/security/tags">
+	<jsp:output doctype-root-element="HTML"
+		doctype-system="about:legacy-compat" />
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<spring:eval expression="@applications['application.version']"
+		var="applicationVersion" />
+	<sec:authentication property="principal.username" var="username" />
+	<spring:message code="board.save" var="save"/>
+	<spring:message code="board.list" var="list"/>
+	<script type="text/javascript" src="${jsUrl }/${applicationVersion }/board/board.js"><!-- --></script>
+	<h1>Read Form</h1>
+	<ul>
+		<li>${details.subject }</li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>

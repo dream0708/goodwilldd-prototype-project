@@ -1,17 +1,18 @@
 package kr.co.insoft.board.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import kr.co.insoft.board.entity.DefaultDetailEntity;
 import kr.co.insoft.board.entity.DefaultListEntity;
+import kr.co.insoft.board.exception.SaveException;
 import kr.co.insoft.board.mapper.CommonBoardMapper;
-import kr.co.insoft.core.annotation.TService;
 import kr.co.insoft.core.util.CommonPropertiesUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
-@TService
+@Service
 public class CommonBoard implements ICommonBoard<DefaultDetailEntity> {
 
 	@Autowired
@@ -21,19 +22,17 @@ public class CommonBoard implements ICommonBoard<DefaultDetailEntity> {
 	CommonPropertiesUtil commonPropertiesUtil;
 
 	@Override
-	@Transactional(readOnly = true)
-	public List<DefaultDetailEntity> getList(DefaultListEntity<DefaultDetailEntity> entity) {
+	public List<DefaultDetailEntity> getList(
+			DefaultListEntity<DefaultDetailEntity> entity) {
 		return commonBoardMapper.getList(entity);
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public int getListCount(DefaultListEntity<DefaultDetailEntity> entity) {
 		return commonBoardMapper.getListCount(entity);
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public DefaultListEntity<DefaultDetailEntity> getListWithPaging(
 			DefaultListEntity<DefaultDetailEntity> entity) {
 		int pageSize = commonPropertiesUtil.getInt("DEFAULT_PAGE_SIZE");
@@ -43,19 +42,29 @@ public class CommonBoard implements ICommonBoard<DefaultDetailEntity> {
 		int totalCount = getListCount(entity);
 		result.setCount(totalCount);
 		result.setList(getList(entity));
-		result.setPaging(totalCount, entity.getCurrentPageIndex(), pageSize, pagingSize);
+		result.setPaging(totalCount, entity.getCurrentPageIndex(), pageSize,
+				pagingSize);
 		return result;
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public DefaultDetailEntity getDetails(long _seq) {
 		return commonBoardMapper.getDetails(_seq);
 	}
 
 	@Override
-	public boolean doSave(DefaultDetailEntity entity) {
-		return commonBoardMapper.doSave(entity) > 0;
+	public int doSave(DefaultDetailEntity entity) throws SQLException, SaveException {
+		try {
+			commonBoardMapper.doSave(entity);	
+		} catch (SQLException sqlE) {
+			throw sqlE;
+		}
+		
+		if ( entity.getBseq() <= 0 ) {
+			throw new SaveException("fail");
+		}
+		
+		return entity.getBseq();
 	}
 
 	@Override

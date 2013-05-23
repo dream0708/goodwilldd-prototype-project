@@ -11,6 +11,15 @@
 	<!-- transaction annotation -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!-- all methods starting with 'get' are read-only -->
+			<tx:method name="get*" read-only="true" />
+			<!-- other methods use the default transaction settings (see below) -->
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
@@ -28,12 +37,7 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 		<constructor-arg name="executorType" value="REUSE" />
 	</bean>
-	
-	<mybatis:scan base-package="kr.co.insoft.**.mapper" annotation="org.springframework.stereotype.Repository" />
-	<!-- <bean id="myBatisMapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage"
-			value="#{applications['application.mybatis.nomarl.basePackage']}"></property>
-		<property name="annotationClass" value="" />
-		<property name="sqlSessionTemplateBeanName" value="sqlSessionReuseTemplate" />
-	</bean> -->
+
+	<mybatis:scan base-package="kr.co.insoft.**.mapper"
+		annotation="org.springframework.stereotype.Repository" />
 </beans>

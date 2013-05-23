@@ -1,5 +1,6 @@
 package kr.co.insoft.board.mapper;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import kr.co.insoft.board.entity.DefaultDetailEntity;
@@ -18,7 +19,7 @@ public interface CommonBoardMapper<T> {
 
 	@SelectKey(before = true, keyProperty = "bseq", statementType = StatementType.PREPARED, statement = "SELECT (IFNULL(MAX(BSEQ),0)+1) as bseq FROM TB_BOARD_DATA", resultType = Long.class)
 	@Insert(value = "INSERT INTO TB_BOARD_DATA(bseq, boardName, register, subject, content, reStep, reLevel, regdate) SELECT #{bseq}, #{boardName}, #{register}, #{subject}, #{content}, ifnull(((floor(max(reStep)/100))+1)*100+99, 199) , 0, CURRENT_DATE() FROM TB_BOARD_DATA")
-	public int doSave(DefaultDetailEntity entity);
+	public int doSave(DefaultDetailEntity entity) throws SQLException;
 
 	@Delete(value = "DELETE FROM TB_BOARD_DATA WHERE bseq = #{bseq}")
 	public int doDelete(DefaultDetailEntity entity);

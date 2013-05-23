@@ -1,9 +1,12 @@
 package kr.co.insoft.board.controller;
 
+import java.sql.SQLException;
+
 import javax.validation.Valid;
 
 import kr.co.insoft.board.entity.DefaultDetailEntity;
 import kr.co.insoft.board.entity.DefaultListEntity;
+import kr.co.insoft.board.exception.SaveException;
 import kr.co.insoft.board.service.ICommonBoard;
 
 import org.slf4j.Logger;
@@ -25,6 +28,7 @@ public class BoardController {
 			.getLogger(BoardController.class);
 	final String LIST = "tiles/board/list";
 	final String SAVE = "tiles/board/save";
+	final String READ = "tiles/board/read";
 
 	class Redirect {
 		final String PREFIX = "redirect:/b/";
@@ -68,18 +72,26 @@ public class BoardController {
 			BindingResult result,
 			@PathVariable(value = "boardName") String boardName,
 			@PathVariable(value = "page") Integer page) {
-		logger.info("*********************************************************");
 		if (result.hasErrors()) {
-			for (ObjectError error : result.getAllErrors()) {
-				logger.info("{} : {}", error.getCode(),
-						error.getDefaultMessage());
+			if ( logger.isDebugEnabled() ) {
+				for (ObjectError error : result.getAllErrors()) {
+					logger.info("{} : {}", error.getCode(),
+							error.getDefaultMessage());
+				}
+				logger.info("result hasErrors ? {}", result.hasErrors());				
 			}
-			logger.info("result hasErrors ? {}", result.hasErrors());
 			return SAVE;
 		}
-		logger.info("*********************************************************");
-		entity.setBoardName(boardName);
-		commonBoard.doSave(entity);
+		
+		try {
+			entity.setBoardName(boardName);
+			commonBoard.doSave(entity);	
+		} catch(SQLException e1) {
+			return SAVE;
+		} catch(SaveException e) {
+			return SAVE;
+		}
+		
 		return redirectUrl.list(boardName, page);
 	}
 
@@ -96,7 +108,8 @@ public class BoardController {
 			@PathVariable(value = "boardName") String boardName,
 			@PathVariable(value = "page") Integer page,
 			@PathVariable(value = "seq") Integer seq) {
-		return LIST;
+		model.addAttribute("details", commonBoard.getDetails(seq));
+		return READ;
 	}
 
 	@RequestMapping(value = "delete/{seq}")

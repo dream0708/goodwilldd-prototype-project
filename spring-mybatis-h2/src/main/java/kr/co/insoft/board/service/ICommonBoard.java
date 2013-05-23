@@ -1,8 +1,10 @@
 package kr.co.insoft.board.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import kr.co.insoft.board.entity.DefaultListEntity;
+import kr.co.insoft.board.exception.SaveException;
 
 public interface ICommonBoard<T> {
 
@@ -11,8 +13,8 @@ public interface ICommonBoard<T> {
 	public int getListCount(DefaultListEntity<T> entity);
 
 	public DefaultListEntity<T> getListWithPaging(DefaultListEntity<T> entity);
-	
-	public boolean doSave(T t);
+
+	public int doSave(T t) throws SQLException, SaveException;
 
 	public boolean doDelete(T t);
 

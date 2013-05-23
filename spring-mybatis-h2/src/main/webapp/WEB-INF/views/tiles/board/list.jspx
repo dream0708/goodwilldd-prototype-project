@@ -20,7 +20,7 @@
 			<tbody>
 				<c:forEach items="${list.list }" var="l">
 					<tr>
-						<td>${l.subject }</td>
+						<td class="subject"><input type="hidden" name="bseq" id="bseq" value="${l.bseq }"/>${l.subject }</td>
 						<td>${l.regDate }</td>
 					</tr>
 				</c:forEach>

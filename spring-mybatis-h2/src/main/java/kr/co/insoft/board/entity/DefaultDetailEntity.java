@@ -8,7 +8,7 @@ import org.apache.commons.lang.builder.ToStringStyle;
 import org.hibernate.validator.constraints.NotEmpty;
 
 public class DefaultDetailEntity {
-	private long bseq;
+	private int bseq;
 	@NotNull
 	private String boardName;
 
@@ -30,11 +30,11 @@ public class DefaultDetailEntity {
 				ToStringStyle.MULTI_LINE_STYLE);
 	}
 
-	public long getBseq() {
+	public int getBseq() {
 		return bseq;
 	}
 
-	public void setBseq(long bseq) {
+	public void setBseq(int bseq) {
 		this.bseq = bseq;
 	}
 
