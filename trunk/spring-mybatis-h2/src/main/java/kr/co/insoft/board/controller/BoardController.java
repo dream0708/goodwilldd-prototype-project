@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import kr.co.insoft.board.entity.DefaultDetailEntity;
 import kr.co.insoft.board.entity.DefaultListEntity;
+import kr.co.insoft.board.exception.NullResultException;
 import kr.co.insoft.board.exception.SaveException;
 import kr.co.insoft.board.service.ICommonBoardService;
 
@@ -16,11 +17,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * 공통적으로 사용하는 게시판
+ * 
+ * @author GoodwillDD (kr.goodwilldd@gmail.com)
+ * 
+ */
 @Controller
 @RequestMapping(value = "/b/{boardName}/{page}")
 public class BoardController {
@@ -67,9 +75,10 @@ public class BoardController {
 		model.addAttribute("defaultDetailEntity", new DefaultDetailEntity());
 		return SAVE;
 	}
-	
+
 	@RequestMapping(value = "replyForm", method = RequestMethod.GET)
-	public String replyForm(Model model, @RequestParam(value = "seq") Integer seq) {
+	public String replyForm(Model model,
+			@RequestParam(value = "seq") Integer seq) {
 		DefaultDetailEntity entity = new DefaultDetailEntity();
 		entity.setBseq(seq);
 		model.addAttribute("defaultDetailEntity", entity);
@@ -77,34 +86,34 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "save", method = RequestMethod.POST)
-	public String save(Model model, @Valid DefaultDetailEntity entity,
+	public String save(Model model, @Valid @ModelAttribute("defaultDetailEntity") DefaultDetailEntity entity,
 			BindingResult result,
 			@PathVariable(value = "boardName") String boardName,
 			@PathVariable(value = "page") Integer page) {
 		if (result.hasErrors()) {
-			if ( logger.isDebugEnabled() ) {
+			if (logger.isDebugEnabled()) {
 				for (ObjectError error : result.getAllErrors()) {
 					logger.info("{} : {}", error.getCode(),
 							error.getDefaultMessage());
 				}
-				logger.info("result hasErrors ? {}", result.hasErrors());				
+				logger.info("result hasErrors ? {}", result.hasErrors());
 			}
 			return SAVE;
 		}
-		
+
 		try {
 			entity.setBoardName(boardName);
 			logger.info("entity.getBseq() {}", entity.getBseq());
-			if ( entity.getBseq() != 0 )
+			if (entity.getBseq() != 0)
 				commonBoard.doReply(entity);
 			else
-				commonBoard.doSave(entity);	
-		} catch(SQLException e1) {
+				commonBoard.doSave(entity);
+		} catch (SQLException e1) {
 			return SAVE;
-		} catch(SaveException e) {
+		} catch (SaveException e) {
 			return SAVE;
 		}
-		
+
 		return redirectUrl.list(boardName, page);
 	}
 

@@ -15,8 +15,8 @@ import org.springframework.stereotype.Repository;
 public interface CommonBoardMapper<T> {
 
 	public int doSave(DefaultDetailEntity entity) throws SQLException;
-	
-	public int doReStepUpdate(DefaultDetailEntity entity);	
+
+	public int doReStepUpdate(DefaultDetailEntity entity);
 
 	@Delete(value = "DELETE FROM TB_BOARD_DATA WHERE bseq = #{bseq}")
 	public int doDelete(DefaultDetailEntity entity);
@@ -29,6 +29,6 @@ public interface CommonBoardMapper<T> {
 	public int getListCount(DefaultListEntity<T> t);
 
 	@Select(value = "SELECT bseq, boardName, register, subject, content, reStep, reLevel, FORMATDATETIME(regdate, 'yyyy-MM-dd') as regdate FROM TB_BOARD_DATA WHERE bseq = #{_seq}")
-	public DefaultDetailEntity getDetails(long _seq);
-	
+	public DefaultDetailEntity getDetails(int _seq);
+
 }

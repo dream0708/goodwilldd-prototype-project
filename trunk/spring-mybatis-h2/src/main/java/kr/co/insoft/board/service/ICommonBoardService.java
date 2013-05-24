@@ -15,10 +15,10 @@ public interface ICommonBoardService<T> {
 	public DefaultListEntity<T> getListWithPaging(DefaultListEntity<T> entity);
 
 	public int doSave(T t) throws SQLException, SaveException;
-	
+
 	public int doReply(T t) throws SQLException, SaveException;
 
 	public boolean doDelete(T t);
 
-	public T getDetails(long _seq);
+	public T getDetails(int _seq);
 }
