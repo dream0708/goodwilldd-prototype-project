@@ -54,7 +54,15 @@ public class BoardController {
 			return PREFIX + boardName + "/" + page + "/read/" + seq + ".htm";
 		}
 	};
-
+	
+	class Forward {
+		final String PREFIX = "forward:/b/";
+		
+		public String list(String boardName, Integer page) {
+			return PREFIX + boardName + "/" + page + "/list.htm";
+		}
+	};
+	Forward forwardUrl = new Forward();
 	Redirect redirectUrl = new Redirect();
 
 	@Autowired
@@ -114,7 +122,7 @@ public class BoardController {
 			return SAVE;
 		}
 
-		return redirectUrl.list(boardName, page);
+		return forwardUrl.list(boardName, page);
 	}
 
 	@RequestMapping(value = "update/{seq}")
