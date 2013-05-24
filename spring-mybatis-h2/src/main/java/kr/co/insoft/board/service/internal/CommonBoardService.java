@@ -14,7 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CommonBoardService implements ICommonBoardService<DefaultDetailEntity> {
+public class CommonBoardService implements
+		ICommonBoardService<DefaultDetailEntity> {
 
 	@Autowired
 	CommonBoardMapper<DefaultDetailEntity> commonBoardMapper;
@@ -49,38 +50,40 @@ public class CommonBoardService implements ICommonBoardService<DefaultDetailEnti
 	}
 
 	@Override
-	public DefaultDetailEntity getDetails(long _seq) {
+	public DefaultDetailEntity getDetails(int _seq) {
 		return commonBoardMapper.getDetails(_seq);
 	}
 
 	@Override
-	public int doSave(DefaultDetailEntity entity) throws SQLException, SaveException {
+	public int doSave(DefaultDetailEntity entity) throws SQLException,
+			SaveException {
 		try {
-			commonBoardMapper.doSave(entity);	
+			commonBoardMapper.doSave(entity);
 		} catch (SQLException sqlE) {
 			throw sqlE;
 		}
-		
-		if ( entity.getBseq() <= 0 ) {
+
+		if (entity.getBseq() <= 0) {
 			throw new SaveException("fail");
 		}
-		
+
 		return entity.getBseq();
 	}
-	
+
 	@Override
-	public int doReply(DefaultDetailEntity entity) throws SQLException, SaveException {
+	public int doReply(DefaultDetailEntity entity) throws SQLException,
+			SaveException {
 		try {
 			commonBoardMapper.doReStepUpdate(entity);
-			commonBoardMapper.doSave(entity);	
+			commonBoardMapper.doSave(entity);
 		} catch (SQLException sqlE) {
 			throw sqlE;
 		}
-		
-		if ( entity.getBseq() <= 0 ) {
+
+		if (entity.getBseq() <= 0) {
 			throw new SaveException("fail");
 		}
-		
+
 		return entity.getBseq();
 	}
 

@@ -9,7 +9,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class DefaultDetailEntity {
 	private int bseq;
-	@NotNull
 	private String boardName;
 
 	@NotEmpty
