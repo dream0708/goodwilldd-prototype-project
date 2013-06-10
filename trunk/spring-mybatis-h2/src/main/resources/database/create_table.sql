@@ -17,6 +17,21 @@ create table tb_example(
 	mobilePhone varchar(13) not null
 );
 
+CREATE TABLE TB_MASTER_BOARD(
+	bseq INT(11) NOT NULL,
+	boardName VARCHAR(50) NOT NULL,
+	boardDesc TEXT,
+	boardListSize INT(11) DEFAULT 10,
+	boardListPageSize INT(11) DEFAULT 10,
+	boardType SMALLINT DEFAULT 1,
+	reLevel BIGINT(11) NOT NULL DEFAULT 0,
+	reStep BIGINT(11) NOT NULL DEFAULT 0
+);
+
+create unique index ix_master_board on TB_MASTER_BOARD (bseq, boardName);
+
+CREATE SEQUENCE IF NOT EXISTS SEQ_MASTER_BOARD START WITH 1 INCREMENT BY 1;
+
 CREATE TABLE TB_BOARD_DATA(
 	bseq INT(10) NOT NULL primary key,
 	boardName VARCHAR(50) NULL DEFAULT NULL,
