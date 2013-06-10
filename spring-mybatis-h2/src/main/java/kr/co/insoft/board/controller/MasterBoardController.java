@@ -1,5 +1,8 @@
 package kr.co.insoft.board.controller;
 
+import kr.co.insoft.board.service.IMasterBoardService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/mb")
 public class MasterBoardController {
 	final String FORM = "tiles/masterBoard/form";
+
+	@Autowired
+	IMasterBoardService masterBoardService;
+
 	/**
 	 * 게시판 관리 화면
 	 * 
@@ -29,7 +36,7 @@ public class MasterBoardController {
 
 	/**
 	 * 게시판 목록
-	 *  
+	 * 
 	 * @param model
 	 * @return
 	 */
